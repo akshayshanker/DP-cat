@@ -459,9 +459,11 @@ A theorem proved for all categories holds in particular for every $\mathsf{C}^{\
 
 ## Supremum, defined by arrows
 
-**Exercise 1.2.vii.** Regard a poset $(P, \leq)$ as a category: a unique morphism $x \to y$ exactly when $x \leq y$. Define the supremum of a collection of objects so that the dual statement defines the infimum.
+> **Exercise 1.2.vii** (Riehl, verbatim). "Regarding a poset $(P, \leq)$ as a category, define the supremum of a sub-collection of objects $A \in P$ in such a way that the dual statement defines the infimum. Prove that the supremum of a subset of objects is unique, whenever it exists, in such a way that the dual proof demonstrates the uniqueness of the infimum."
 
-**Definition.** Let $A \subseteq P$. An object $s$ is a **supremum** of $A$ when:
+In our notation: $(P, \leq)$ is the category with a unique morphism $x \to y$ exactly when $x \leq y$ (Example 1.1.4(iii)), and the sub-collection is $A \subseteq P$.
+
+**Definition.** An object $s$ is a **supremum** of $A$ when:
 
 - (i) for every $a \in A$ there is a morphism $a \to s$ — that is, $s$ is an upper bound of $A$;
 - (ii) for every $u$ admitting a morphism $a \to u$ from every $a \in A$, there is a morphism $s \to u$ — that is, $s$ maps into every upper bound.
@@ -478,13 +480,21 @@ A theorem proved for all categories holds in particular for every $\mathsf{C}^{\
 
 **Proposition.** If $s$ and $s'$ are both suprema of $A \subseteq P$, then $s = s'$.
 
-**Proof.**
+<style scoped>
+h2 { margin-bottom: 0.5em; }
+p { font-size: 17px; margin: 0 0 0.5em 0; }
+ol { font-size: 16px; margin: 0.3em 0 0.6em 0; }
+ol li { margin: 0 0 0.3em 0; }
+.callout.sm { font-size: 14.5px; line-height: 1.35; }
+</style>
+
+**Proof.** *Uses:* Definition 1.1.1 (identities and composition); Example 1.1.4(iii) (a poset has at most one morphism between any two objects); Definition 1.1.10 (isomorphism); Example 1.1.11(v) (in a poset the only isomorphisms are identities).
 
 1. $s$ and $s'$ are upper bounds of $A$ — condition (i), for each.
-2. There is a morphism $s' \to s$ — condition (ii) for $s'$, applied to the upper bound $s$.
-3. There is a morphism $s \to s'$ — condition (ii) for $s$, applied to the upper bound $s'$.
-4. The composites $s \to s' \to s$ and $s' \to s \to s'$ equal the identities, because in a poset each hom-set contains at most one morphism and $\mathrm{id}_s \in P(s, s)$. Hence $s \cong s'$.
-5. In a poset the only isomorphisms are the identities — Example 1.1.11(v), which is antisymmetry — so $s = s'$. $\blacksquare$
+2. There is a morphism $s' \to s$ — condition (ii) for $s'$, applied to the upper bound $s$ of step 1.
+3. There is a morphism $s \to s'$ — condition (ii) for $s$, applied to the upper bound $s'$ of step 1.
+4. The composites $s \to s' \to s$ and $s' \to s \to s'$ exist by Definition 1.1.1; each equals the identity, because a hom-set of a poset contains at most one morphism (Example 1.1.4(iii)) and $\mathrm{id}_s \in P(s, s)$ (Definition 1.1.1). By Definition 1.1.10, the morphisms of steps 2–3 are inverse isomorphisms: $s \cong s'$.
+5. In a poset the only isomorphisms are the identities (Example 1.1.11(v) — antisymmetry), so the isomorphism of step 4 is an identity and $s = s'$. $\blacksquare$
 
 **Duality.** Reading steps 1–5 in $P^{\mathrm{op}}$ proves, word for word, that the infimum is unique whenever it exists; no second argument is written.
 
@@ -550,6 +560,14 @@ blockquote { font-size: 16.5px; margin-top: 0.3em; }
 <div class="kicker p2">Category theory &middot; Riehl §1.3</div>
 
 ## The first lemma of category theory
+
+<style scoped>
+h2 { margin-bottom: 0.5em; }
+p { font-size: 17.5px; margin: 0 0 0.55em 0; }
+ul { font-size: 16.5px; }
+ul li { margin: 0 0 0.35em 0; }
+.katex-display { margin: 0.35em 0 !important; }
+</style>
 
 **Lemma 1.3.8.** *Functors preserve isomorphisms.*
 
@@ -664,6 +682,10 @@ $$v(m) \;=\; \max_{c \,\in\, \Gamma(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{
 <div class="kicker p2">Application &middot; example: elaboration, step by step</div>
 
 ## From the typed AST to the operator graph
+
+<style scoped>
+.callout.sm { font-size: 15px; line-height: 1.35; }
+</style>
 
 <div class="center">
 

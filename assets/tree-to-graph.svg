@@ -70,8 +70,8 @@
   <text x="62" y="202" font-size="11.5" fill="#212529" text-anchor="middle">c : A</text>
   <text x="62" y="220" font-size="11.5" fill="#212529" text-anchor="middle">&#958;&#8242; : Z</text>
   <!-- captions -->
-  <text x="195" y="306" font-size="12.5" fill="#495057" text-anchor="middle">op bellman lists first-order equations; the nodes record bare syntax</text>
-  <text x="195" y="322" font-size="11.5" fill="#2f8f3d" text-anchor="middle">typing is a judgment relative to the context: (m : X, c : A, &#958;&#8242; : Z) &#8866; R(m &#8722; c) + &#958;&#8242; : X</text>
+  <text x="205" y="306" font-size="12" fill="#495057" text-anchor="middle">the nodes record bare syntax; typing is a judgment relative to the context</text>
+  <text x="205" y="322" font-size="11.5" fill="#2f8f3d" text-anchor="middle">(m : X, c : A, &#958;&#8242; : Z) &#8866; R(m &#8722; c) + &#958;&#8242; : X</text>
   <!-- ============ middle: the map ============ -->
   <text x="398" y="124" font-size="22" fill="#676470" text-anchor="middle">&#8658;</text>
   <text x="398" y="156" font-size="26" fill="#1f476b" text-anchor="middle" font-style="italic">&#933;</text>
