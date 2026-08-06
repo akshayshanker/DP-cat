@@ -10,9 +10,11 @@ CLAUDE.md
 *.swp
 *~
 
-# Built PDFs (HTML is produced by Pages CI)
+# Built PDFs
 *.pdf
 
-# Local Marp HTML builds (CI rebuilds for Pages)
-*.html
+# Local Marp HTML outside docs/ (Pages serves docs/)
+/*.html
+talks/**/*.html
 !site-index.html
+!docs/**/*.html

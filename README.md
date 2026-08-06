@@ -18,4 +18,10 @@ marp "Categorical types and AGI -1.md" -o /tmp/agi.html --allow-local-files
 marp talks/session-01-motivation/deck.md -w
 ```
 
-Reading-group notes and session sheets stay in the local vault and are not in this repository.
+After editing a deck, rebuild the Pages HTML:
+
+```bash
+bash scripts/build-pages.sh
+```
+
+Reading-group notes, session sheets, and `CLAUDE.md` stay in the local vault (gitignored) and are not in this repository.
