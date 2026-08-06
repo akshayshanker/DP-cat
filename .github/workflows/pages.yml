@@ -23,4 +23,7 @@ jobs:
       - name: Install Marp CLI
         run: npm install -g @marp-team/marp-cli
       - name: Build and push gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: bash scripts/publish-pages.sh
