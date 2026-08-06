@@ -9,6 +9,8 @@ Categorical types and AGI -1 — math review.md
 # Local / editor
 .DS_Store
 .obsidian/
+__pycache__/
+*.pyc
 *.swp
 *~
 
