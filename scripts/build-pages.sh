@@ -10,6 +10,11 @@ marp "Categorical types and AGI -1.md" \
   --allow-local-files \
   --html
 
+marp "Categorical types and AGI -1.md" \
+  -o docs/categorical-types-and-agi/categorical-types-and-agi.pdf \
+  --allow-local-files \
+  --html
+
 marp talks/session-01-motivation/deck.md \
   -o docs/session-01-motivation/index.html \
   --allow-local-files \

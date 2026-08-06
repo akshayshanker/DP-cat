@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail when generated Pages HTML refers to a missing local image."""
+"""Fail when required Pages files or local image references are missing."""
 
 from html.parser import HTMLParser
 from pathlib import Path
@@ -10,15 +10,20 @@ class ImageSourceParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.sources: list[str] = []
+        self.links: list[str] = []
 
     def handle_starttag(
         self, tag: str, attrs: list[tuple[str, str | None]]
     ) -> None:
-        if tag != "img":
-            return
-        source = dict(attrs).get("src")
-        if source:
-            self.sources.append(source)
+        values = dict(attrs)
+        if tag == "img":
+            source = values.get("src")
+            if source:
+                self.sources.append(source)
+        elif tag == "a":
+            link = values.get("href")
+            if link:
+                self.links.append(link)
 
 
 def missing_images(site: Path) -> list[tuple[Path, str]]:
@@ -43,7 +48,19 @@ def main() -> int:
         for page, source in missing:
             print(f"{page.relative_to(site)}: missing {source}")
         return 1
-    print("All local image references resolve.")
+
+    pdf_link = "categorical-types-and-agi/categorical-types-and-agi.pdf"
+    pdf = site / pdf_link
+    index_parser = ImageSourceParser()
+    index_parser.feed((site / "index.html").read_text(encoding="utf-8"))
+    if not pdf.is_file():
+        print(f"missing required PDF: {pdf.relative_to(site)}")
+        return 1
+    if pdf_link not in index_parser.links:
+        print(f"index.html: missing link to {pdf_link}")
+        return 1
+
+    print("All local image references and the linked PDF resolve.")
     return 0
 
 
