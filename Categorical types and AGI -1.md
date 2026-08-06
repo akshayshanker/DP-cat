@@ -102,6 +102,16 @@ style: |-
     line-height: 1.5;
   }
   .callout strong { color: var(--ark-blue); font-weight: 500; }
+  .defbox {
+    margin: 0.85em 0;
+    padding: 0.55em 1.05em 0.6em;
+    background: #ffffff;
+    border: 1.5px solid var(--ark-blue);
+    border-radius: 0;
+  }
+  .defbox p { margin: 0 0 0.35em 0; }
+  .defbox p:last-child, .defbox ul:last-child { margin-bottom: 0; }
+  .defbox ul { margin: 0.25em 0 0.1em 0; }
   .alert {
     margin: 1em 0;
     padding: 0.75em 1.1em;
@@ -378,16 +388,42 @@ Closely related: functional programming (Backus, 1978) system for DP
 
 ## A category
 
+<div class="defbox">
+
 **Definition 1.1.1.** A category consists of a collection of **objects** $X, Y, Z, \ldots$ and a collection of **morphisms** $f, g, h, \ldots$ such that each morphism has a specified domain and codomain ($f : X \to Y$), each object has an identity $\mathrm{id}_X : X \to X$, and each composable pair has a specified composite — $f : X \to Y$ and $g : Y \to Z$ yield $gf : X \to Z$ — subject to two axioms:
 
 - **unitality**: $\mathrm{id}_Y f = f = f\, \mathrm{id}_X$ for every $f : X \to Y$;
 - **associativity**: $h(gf) = (hg)f$ for every composable triple.
 
-Nothing else is given: no elements, no membership, no underlying sets. The objects are recoverable from the identity morphisms (Remark 1.1.2), so of the two collections it is the **morphisms** that take primacy — a category is an algebra of composition.
+</div>
 
-**Notation and size.** For objects $x, y$, write $\mathsf{C}(x, y)$ for the collection of morphisms $x \to y$. A category is **small** when its morphisms form a set, and **locally small** when each $\mathsf{C}(x, y)$ is a set (Definitions 1.1.6–1.1.7).
+**Remark.** Nothing else is given: no elements, no membership, no underlying sets. The objects are recoverable from the identity morphisms (Remark 1.1.2), so of the two collections it is the **morphisms** that take primacy — a category is an algebra of composition.
 
-<div class="footnote">Riehl (2016), Definition 1.1.1 and Remark 1.1.2 (pp. 3–4); Definitions 1.1.6–1.1.7, small and locally small (pp. 6–7). Numbering verified against the chapter text held beside lit-kb.</div>
+<div class="footnote">Riehl (2016), Definition 1.1.1 and Remark 1.1.2 (pp. 3–4). Numbering verified against the chapter text held beside lit-kb.</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.1</div>
+
+## Categories versus sets
+
+**Remark (Remark 1.1.5).** "Russell's paradox implies that there is no set whose elements are 'all sets.' This is the reason why we have used the vague word 'collection' in Definition 1.1.1. Indeed, in each of the examples listed in 1.1.3, the collection of objects is not a set." Where set-sized foundations are wanted, Riehl points to inaccessible cardinals and Grothendieck universes.
+
+<div class="defbox">
+
+**Notation.** For objects $x, y$, write $\mathsf{C}(x, y)$ for the collection of morphisms $x \to y$.
+
+</div>
+
+<div class="defbox">
+
+**Definitions 1.1.6–1.1.7.** A category is **small** if it has only a set's worth of arrows in total, and **locally small** if between any pair of objects there is only a set's worth of morphisms — that is, each $\mathsf{C}(x, y)$ is a set. Small implies locally small (a subcollection of a set is a set); the converse fails.
+
+</div>
+
+**Remark.** The working contrast: a set is known through its elements and the membership relation; a category is known through its morphisms and their composition, and its notion of sameness is isomorphism (Definition 1.1.10), not equality.
+
+<div class="footnote">Riehl (2016), Remark 1.1.5 (p. 6), quoted verbatim; Definitions 1.1.6–1.1.7, small and locally small (pp. 6–7); inaccessible cardinals and Grothendieck universes, footnote 14 (p. 7).</div>
 
 ---
 
@@ -417,7 +453,7 @@ Nothing else is given: no elements, no membership, no underlying sets. The objec
 </div>
 </div>
 
-<div class="callout sm"><strong>Reading.</strong> Definition 1.1.1 is the algebra shared by linear maps written without vectors, monoids written without elements, and order relations written as arrows.</div>
+<div class="callout sm"><strong>Remark.</strong> Definition 1.1.1 is the algebra shared by linear maps written without vectors, monoids written without elements, and order relations written as arrows.</div>
 
 <div class="footnote">Riehl (2016), Example 1.1.3 (i), (v), (ix), (x) and Example 1.1.4 (i)–(iii), §1.1, pp. 4–5.</div>
 
@@ -427,7 +463,13 @@ Nothing else is given: no elements, no membership, no underlying sets. The objec
 
 ## Isomorphism: sameness without elements
 
+<div class="defbox">
+
 **Definition 1.1.10.** A morphism $f : X \to Y$ is an **isomorphism** when there exists $g : Y \to X$ with $gf = \mathrm{id}_X$ and $fg = \mathrm{id}_Y$; the objects are then isomorphic, $X \cong Y$.
+
+</div>
+
+**Examples 1.1.11.**
 
 - In $\mathsf{Set}$, the isomorphisms are the bijections.
 - In $\mathsf{Top}$, they are the homeomorphisms — strictly stronger than bijective-and-continuous. The ambient category, not the underlying sets, decides what counts as the same.
@@ -439,17 +481,99 @@ Nothing else is given: no elements, no membership, no underlying sets. The objec
 
 ---
 
+<div class="kicker p2">Category theory &middot; Riehl §1.6</div>
+
+## Commutative diagrams
+
+<style scoped>
+p { font-size: 18px; margin: 0 0 0.5em 0; }
+h2 { margin-bottom: 0.5em; }
+.defbox { margin: 0.55em 0; }
+</style>
+
+<div class="defbox">
+
+**Definition 1.6.4.** A **diagram** in a category $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$; the domain $\mathsf{J}$ is called the indexing category of the diagram.
+
+</div>
+
+**Remark.** Informally, a diagram is drawn as a quiver of morphisms, and it **commutes** when any two paths of composable arrows with common source and target have the same composite; a commutative triangle asserts that the hypotenuse equals the composite of the legs (1.6.1). A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf = kg$:
+
+<div class="center">
+
+![w:250](assets/comm-square.svg)
+
+</div>
+
+<div class="defbox">
+
+**Lemma 1.6.5.** Functors preserve commutative diagrams.
+
+</div>
+
+**Proof.** A diagram in $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$ (Definition 1.6.4); for any functor $G : \mathsf{C} \to \mathsf{D}$, the composite $GF : \mathsf{J} \to \mathsf{D}$ defines the image of the diagram in $\mathsf{D}$. $\blacksquare$
+
+<div class="footnote">Riehl (2016), §1.6: commuting paths and the triangle (1.6.1), p. 39; Definition 1.6.4, p. 40; Example 1.6.6 and Remark 1.6.7 — the square with hf = kg, p. 41; Lemma 1.6.5 with proof, p. 41.</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.6</div>
+
+## A diagram chase: the tool
+
+<div class="defbox">
+
+**Lemma 1.6.11.** If, inside a composable path $f_n, \ldots, f_1$, a segment satisfies $f_k \cdots f_i = g_m \cdots g_1$, then $f_n \cdots f_1 = f_n \cdots f_{k+1}\, g_m \cdots g_1\, f_{i-1} \cdots f_1$.
+
+</div>
+
+**Proof.** Composition is well-defined: if two composites define the same arrow, then pre- and postcomposing each with the same sequences of arrows again gives the same arrow. $\blacksquare$
+
+**Remark.** "This very simple result underlies most proofs by 'diagram chasing'": commutativity of a large diagram reduces to commutativity of its minimal subdiagrams — for the cube $2 \times 2 \times 2$, the six faces.
+
+<div class="footnote">Riehl (2016), §1.6: Lemma 1.6.11 with proof, pp. 42–43; minimal subdiagrams and the cube, p. 43; the section's epigraph is Eilenberg–Steenrod on diagrams, p. 39.</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.6</div>
+
+## A diagram chase: pasting squares
+
+**Example (pasting, diagram 1.6.10).** Suppose the two inner squares commute, $hf = kg$ and $\ell j = mh$. Then the outer rectangle commutes, $\ell(jf) = (mk)g$:
+
+<div class="center">
+
+![w:440](assets/comm-rect.svg)
+
+</div>
+
+**Chase.** $\ell j f = (mh)f$ — substitute $\ell j = mh$ (Lemma 1.6.11); $= m(hf)$ — associativity (Definition 1.1.1); $= m(kg)$ — substitute $hf = kg$ (Lemma 1.6.11); $= (mk)g$ — associativity. $\blacksquare$
+
+<div class="footnote">Riehl (2016), §1.6: the two-squares-make-a-rectangle diagram (1.6.10), p. 42.</div>
+
+---
+
 <div class="kicker p2">Category theory &middot; Riehl §1.2</div>
 
 ## The opposite category and duality
 
+<div class="defbox">
+
 **Definition 1.2.1.** The opposite category $\mathsf{C}^{\mathrm{op}}$ has the same objects as $\mathsf{C}$ and a morphism $f^{\mathrm{op}} : y \to x$ for each $f : x \to y$ of $\mathsf{C}$, with composites $f^{\mathrm{op}} g^{\mathrm{op}} = (gf)^{\mathrm{op}}$.
 
-A theorem proved for all categories holds in particular for every $\mathsf{C}^{\mathrm{op}}$, and re-reading it there yields a second theorem about $\mathsf{C}$ with all arrows reversed — "a two-for-one deal: any proof in category theory simultaneously proves two theorems" (p. 10).
+</div>
 
-**Lemma 1.2.3.** For $f : x \to y$ the following are equivalent: (i) $f$ is an isomorphism; (ii) postcomposition $f_{*} : \mathsf{C}(c, x) \to \mathsf{C}(c, y)$, $h \mapsto f h$, is a bijection for every $c$; (iii) precomposition $f^{*} : \mathsf{C}(y, c) \to \mathsf{C}(x, c)$, $k \mapsto k f$, is a bijection for every $c$. Riehl proves (i) ⇔ (ii) directly and obtains (i) ⇔ (iii) by running that argument in $\mathsf{C}^{\mathrm{op}}$ — an application of the duality principle.
+**Remark.** A theorem proved for all categories holds in particular for every $\mathsf{C}^{\mathrm{op}}$, and re-reading it there yields a second theorem about $\mathsf{C}$ with all arrows reversed — "a two-for-one deal: any proof in category theory simultaneously proves two theorems" (p. 10).
 
-<div class="callout sm"><strong>Worked next.</strong> The duality between supremum and infimum, familiar from analysis, is categorical duality exactly — Exercise 1.2.vii, on the following two slides.</div>
+<div class="defbox">
+
+**Lemma 1.2.3.** For $f : x \to y$ the following are equivalent: (i) $f$ is an isomorphism; (ii) postcomposition $f_{*} : \mathsf{C}(c, x) \to \mathsf{C}(c, y)$, $h \mapsto f h$, is a bijection for every $c$; (iii) precomposition $f^{*} : \mathsf{C}(y, c) \to \mathsf{C}(x, c)$, $k \mapsto k f$, is a bijection for every $c$.
+
+</div>
+
+**Remark.** Riehl proves (i) ⇔ (ii) directly and obtains (i) ⇔ (iii) by running that argument in $\mathsf{C}^{\mathrm{op}}$ — an application of the duality principle.
+
+<div class="callout sm"><strong>Worked next.</strong> The supremum–infimum duality of analysis is categorical duality exactly: Exercise 1.2.vii, next.</div>
 
 <div class="footnote">Riehl (2016), Definition 1.2.1 (p. 9); the two-for-one description of duality (p. 10); Lemma 1.2.3 and Remark 1.2.4 (p. 11) — isomorphisms are characterized representably.</div>
 
@@ -457,20 +581,36 @@ A theorem proved for all categories holds in particular for every $\mathsf{C}^{\
 
 <div class="kicker p2">Category theory &middot; Riehl §1.2, Exercise 1.2.vii</div>
 
+## Exercise 1.2.vii, as stated
+
+<div class="defbox">
+
+**Exercise 1.2.vii** (Riehl, verbatim). "Regarding a poset $(P, \leq)$ as a category, define the supremum of a sub-collection of objects $A \in P$ in such a way that the dual statement defines the infimum. Prove that the supremum of a subset of objects is unique, whenever it exists, in such a way that the dual proof demonstrates the uniqueness of the infimum."
+
+</div>
+
+**Notation.** $(P, \leq)$ is the category with a unique morphism $x \to y$ exactly when $x \leq y$ (Example 1.1.4(iii)), and the sub-collection is $A \subseteq P$.
+
+<div class="footnote">Riehl (2016), Exercise 1.2.vii (pp. 13–14).</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.2, Exercise 1.2.vii</div>
+
 ## Supremum, defined by arrows
 
-> **Exercise 1.2.vii** (Riehl, verbatim). "Regarding a poset $(P, \leq)$ as a category, define the supremum of a sub-collection of objects $A \in P$ in such a way that the dual statement defines the infimum. Prove that the supremum of a subset of objects is unique, whenever it exists, in such a way that the dual proof demonstrates the uniqueness of the infimum."
-
-In our notation: $(P, \leq)$ is the category with a unique morphism $x \to y$ exactly when $x \leq y$ (Example 1.1.4(iii)), and the sub-collection is $A \subseteq P$.
+<div class="defbox">
 
 **Definition.** An object $s$ is a **supremum** of $A$ when:
 
 - (i) for every $a \in A$ there is a morphism $a \to s$ — that is, $s$ is an upper bound of $A$;
 - (ii) for every $u$ admitting a morphism $a \to u$ from every $a \in A$, there is a morphism $s \to u$ — that is, $s$ maps into every upper bound.
 
+</div>
+
 **Dualization.** Read the same two conditions in $P^{\mathrm{op}}$, where every arrow is reversed. Condition (i) becomes "a morphism $i \to a$ for every $a \in A$": a lower bound. Condition (ii) becomes "every lower bound admits a morphism into $i$". The supremum in $P^{\mathrm{op}}$ is therefore the **infimum** in $P$ — the dual statement defines it, as the exercise requires.
 
-<div class="footnote">Riehl (2016), Exercise 1.2.vii (pp. 13–14). Conditions (i)–(ii) are a universal property, the shape Chapter 2 studies in general; in the language of Chapter 3, the supremum is the colimit of the collection A.</div>
+<div class="footnote">Conditions (i)–(ii) are a universal property, the shape Chapter 2 studies in general; in the language of Chapter 3, the supremum is the colimit of the collection A.</div>
 
 ---
 
@@ -478,14 +618,15 @@ In our notation: $(P, \leq)$ is the category with a unique morphism $x \to y$ ex
 
 ## Uniqueness of the supremum, step by step
 
+<div class="defbox">
+
 **Proposition.** If $s$ and $s'$ are both suprema of $A \subseteq P$, then $s = s'$.
 
+</div>
+
 <style scoped>
-h2 { margin-bottom: 0.5em; }
-p { font-size: 17px; margin: 0 0 0.5em 0; }
-ol { font-size: 16px; margin: 0.3em 0 0.6em 0; }
-ol li { margin: 0 0 0.3em 0; }
-.callout.sm { font-size: 14.5px; line-height: 1.35; }
+p { font-size: 19px; margin: 0 0 0.55em 0; }
+ol { font-size: 18px; }
 </style>
 
 **Proof.** *Uses:* Definition 1.1.1 (identities and composition); Example 1.1.4(iii) (a poset has at most one morphism between any two objects); Definition 1.1.10 (isomorphism); Example 1.1.11(v) (in a poset the only isomorphisms are identities).
@@ -496,11 +637,19 @@ ol li { margin: 0 0 0.3em 0; }
 4. The composites $s \to s' \to s$ and $s' \to s \to s'$ exist by Definition 1.1.1; each equals the identity, because a hom-set of a poset contains at most one morphism (Example 1.1.4(iii)) and $\mathrm{id}_s \in P(s, s)$ (Definition 1.1.1). By Definition 1.1.10, the morphisms of steps 2–3 are inverse isomorphisms: $s \cong s'$.
 5. In a poset the only isomorphisms are the identities (Example 1.1.11(v) — antisymmetry), so the isomorphism of step 4 is an identity and $s = s'$. $\blacksquare$
 
+<div class="footnote">Riehl (2016), Exercise 1.2.vii (pp. 13–14); Example 1.1.11(v), p. 8, for the isomorphisms of a poset.</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.2, Exercise 1.2.vii</div>
+
+## Uniqueness: duality, and where each axiom enters
+
 **Duality.** Reading steps 1–5 in $P^{\mathrm{op}}$ proves, word for word, that the infimum is unique whenever it exists; no second argument is written.
 
-<div class="callout sm"><strong>Where each axiom enters.</strong> Steps 1–4 use only the categorical structure, so in a preorder the supremum is unique up to isomorphism; antisymmetry enters at step 5 and converts the isomorphism into equality. Uniqueness up to isomorphism is the general categorical phenomenon; the poset case collapses it to equality.</div>
+**Remark.** Steps 1–4 use only the categorical structure, so in a preorder the supremum is unique up to isomorphism; antisymmetry enters at step 5 and converts the isomorphism into equality. Uniqueness up to isomorphism is the general categorical phenomenon; the poset case collapses it to equality.
 
-<div class="footnote">Riehl (2016), Exercise 1.2.vii (pp. 13–14); Example 1.1.11(v), p. 8, for the isomorphisms of a poset; the dual reading runs in the opposite category of Definition 1.2.1.</div>
+<div class="footnote">The dual reading runs in the opposite category of Definition 1.2.1; Example 1.1.4(iii) and Example 1.1.11(v) are self-dual, which is why the dual proof needs no adjustment.</div>
 
 ---
 
@@ -508,9 +657,15 @@ ol li { margin: 0 0 0.3em 0; }
 
 ## Monomorphisms and epimorphisms
 
-Definitions dualize as theorems do; the two notions below are each other's duals, and one proof serves both.
+**Remark.** Definitions dualize as theorems do; the two notions below are each other's duals, and one proof serves both.
+
+<div class="defbox">
 
 **Definition 1.2.7.** A morphism $f$ is a **monomorphism** if $fh = fk$ implies $h = k$, and an **epimorphism** if $hf = kf$ implies $h = k$; the two notions are dual.
+
+</div>
+
+**Examples.**
 
 - In $\mathsf{Set}$: monomorphisms are the injections and epimorphisms the surjections (Example 1.2.8); that every epimorphism in $\mathsf{Set}$ **splits** — has a right inverse, a section $s$ with $f s = \mathrm{id}$ — is precisely the axiom of choice (Remark 1.2.10).
 - In $\mathsf{Ring}$: the inclusion $\mathbb{Z} \hookrightarrow \mathbb{Q}$ is a monomorphism **and** an epimorphism yet not an isomorphism — a ring homomorphism out of $\mathbb{Q}$ is already determined on $\mathbb{Z}$ (Example 1.2.11).
@@ -525,7 +680,13 @@ Definitions dualize as theorems do; the two notions below are each other's duals
 
 ## Functors
 
+<div class="defbox">
+
 **Definition 1.3.1.** A functor $F : \mathsf{C} \to \mathsf{D}$ assigns an object $Fc$ to each object $c$ and a morphism $Ff : Fc \to Fc'$ to each $f : c \to c'$, preserving the structure: $Fg \cdot Ff = F(gf)$ and $F(\mathrm{id}_c) = \mathrm{id}_{Fc}$.
+
+</div>
+
+**Examples 1.3.2.**
 
 - The forgetful functor $U : \mathsf{Vect}_k \to \mathsf{Set}$ sends a vector space to its underlying set; the free functor $F : \mathsf{Set} \to \mathsf{Group}$ sends a set to the group of formal words in its elements.
 - The fundamental group $\pi_1 : \mathsf{Top}_* \to \mathsf{Group}$ — loops at a chosen basepoint, taken up to continuous deformation, on the category $\mathsf{Top}_*$ of spaces with basepoint — the archetype of an invariant.
@@ -538,22 +699,33 @@ Definitions dualize as theorems do; the two notions below are each other's duals
 
 <div class="kicker p2">Category theory &middot; Riehl §1.3</div>
 
-## Functoriality, in more detail
-
-<style scoped>
-ul { font-size: 18px; }
-blockquote { font-size: 16.5px; margin-top: 0.3em; }
-</style>
+## Represented functors
 
 > "…every sufficiently good analogy is yearning to become a functor." — John Baez, epigraph to §1.3
 
-- **Represented functors** (Definition 1.3.11). For locally small $\mathsf{C}$ and $c \in \mathsf{C}$: the covariant $\mathsf{C}(c, -) : \mathsf{C} \to \mathsf{Set}$ sends $x \mapsto \mathsf{C}(c, x)$ and $f \mapsto f_{*}$; the contravariant $\mathsf{C}(-, c) : \mathsf{C}^{\mathrm{op}} \to \mathsf{Set}$ sends $f \mapsto f^{*}$. Postcomposition is always covariant, precomposition always contravariant. The motivation's $\mathbb{R}^{(-)} = \mathsf{Set}(-, \mathbb{R})$ is the functor represented by $\mathbb{R}$.
-- **Connection to Lemma 1.2.3.** Applying "functors preserve isomorphisms" to the represented functors re-proves (i) ⇒ (ii) and (i) ⇒ (iii) of Lemma 1.2.3.
+<div class="defbox">
+
+**Definition 1.3.11.** For locally small $\mathsf{C}$ and $c \in \mathsf{C}$: the covariant represented functor $\mathsf{C}(c, -) : \mathsf{C} \to \mathsf{Set}$ sends $x \mapsto \mathsf{C}(c, x)$ and $f \mapsto f_{*}$; the contravariant $\mathsf{C}(-, c) : \mathsf{C}^{\mathrm{op}} \to \mathsf{Set}$ sends $f \mapsto f^{*}$.
+
+</div>
+
+**Remark.** Postcomposition is always covariant, precomposition always contravariant. The motivation's $\mathbb{R}^{(-)} = \mathsf{Set}(-, \mathbb{R})$ is the functor represented by $\mathbb{R}$.
+
+**Remark.** Applying "functors preserve isomorphisms" to the represented functors re-proves (i) ⇒ (ii) and (i) ⇒ (iii) of Lemma 1.2.3.
+
+<div class="footnote">Riehl (2016), §1.3: Definition 1.3.11 and the covariance remark (pp. 20–21); Baez epigraph (p. 14).</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.3</div>
+
+## Bifunctors, preservation, and Cat
+
 - **Bifunctoriality** (Definitions 1.3.12–1.3.13). The product $\mathsf{C} \times \mathsf{D}$ is formed componentwise, and the two represented functors combine into one **bifunctor** — a functor of two variables — $\mathsf{C}(-, -) : \mathsf{C}^{\mathrm{op}} \times \mathsf{C} \to \mathsf{Set}$, acting on morphisms by $g \mapsto h g f$.
 - **What functors preserve.** Split monomorphisms and epimorphisms — those admitting a one-sided inverse — are preserved, because the one-sided inverse is an equation between composites and functors preserve such equations; general monomorphisms and epimorphisms need not be.
 - **$\mathsf{Cat}$.** Small categories and functors form a category $\mathsf{Cat}$, which is locally small but not small — the size distinctions of §1.1 return.
 
-<div class="footnote">Riehl (2016), §1.3: Definition 1.3.11 and the covariance remark (pp. 20–21); Definitions 1.3.12–1.3.13 (p. 21); preservation of split monomorphisms and epimorphisms (p. 20); Cat (p. 21); Baez epigraph (p. 14).</div>
+<div class="footnote">Riehl (2016), §1.3: Definitions 1.3.12–1.3.13 (p. 21); preservation of split monomorphisms and epimorphisms (p. 20); Cat (p. 21).</div>
 
 ---
 
@@ -561,15 +733,11 @@ blockquote { font-size: 16.5px; margin-top: 0.3em; }
 
 ## The first lemma of category theory
 
-<style scoped>
-h2 { margin-bottom: 0.5em; }
-p { font-size: 17.5px; margin: 0 0 0.55em 0; }
-ul { font-size: 16.5px; }
-ul li { margin: 0 0 0.35em 0; }
-.katex-display { margin: 0.35em 0 !important; }
-</style>
+<div class="defbox">
 
 **Lemma 1.3.8.** *Functors preserve isomorphisms.*
+
+</div>
 
 **Proof.** *Uses:* Definition 1.1.10 (isomorphism and inverse); Definition 1.3.1 (the two functoriality axioms).
 
@@ -579,43 +747,19 @@ $$Fg \cdot Ff \;=\; F(gf) \;=\; F(\mathrm{id}_x) \;=\; \mathrm{id}_{Fx},$$
 
 the first equality by the composition axiom of Definition 1.3.1, the second because $gf = \mathrm{id}_x$ (Definition 1.1.10), the third by the identity axiom of Definition 1.3.1. So $Fg$ is a left inverse of $Ff$; exchanging the roles of $f$ and $g$ in the same three equalities gives $Ff \cdot Fg = \mathrm{id}_{Fy}$, so the inverse is two-sided and $Ff$ is an isomorphism (Definition 1.1.10). $\blacksquare$
 
+<div class="footnote">Riehl (2016), Lemma 1.3.8 with proof, §1.3, pp. 19–20. The lemma appears immediately after functors are first defined in Eilenberg–Mac Lane (1942) — "arguably the first lemma in category theory" (Riehl).</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.3</div>
+
+## Consequences of the first lemma
+
 - **Invariants.** If $\pi_1(X) \not\cong \pi_1(Y)$, then $X \not\cong Y$: any functorial assignment separates objects it sends to non-isomorphic values.
 - **Group actions.** A functor $\mathsf{B}G \to \mathsf{C}$ — with $\mathsf{B}G$ the one-object category of a group $G$, as on the examples slide — is exactly an action of $G$; each $g \in G$ is an isomorphism in $\mathsf{B}G$, so it must act by automorphisms (isomorphisms of an object with itself), with $(g^{-1})_* = (g_*)^{-1}$, no separate proof required (Corollary 1.3.10).
 - **Outlook.** In the motivation, elaboration was a functor; the lemma is the first instance of the pattern these sessions develop — properties established for the syntax transfer to every interpretation.
 
-<div class="footnote">Riehl (2016), Lemma 1.3.8 with proof, and Corollary 1.3.10, §1.3, pp. 19–20. The lemma appears immediately after functors are first defined in Eilenberg–Mac Lane (1942) — "arguably the first lemma in category theory" (Riehl).</div>
-
----
-
-<div class="kicker p3">Application &middot; standard of evaluation</div>
-
-## How we will proceed
-
-Approximately three quarters of the time will be devoted to definitions, examples, and short arguments. The aim is to become fluent in the mathematical language, rather than to survey ambitious applications.
-
-The applications to dynamic programming and AI provide the test. Each example should identify exactly what the categorical or typed formulation makes easier to state, compare, transform, or verify.
-
-<div class="cols">
-<div>
-
-### Potential return
-
-Greater precision, compositionality, and transfer across models.
-
-</div>
-<div>
-
-### Principal risk
-
-Additional abstraction that redescribes familiar mathematics without producing a practical gain.
-
-</div>
-</div>
-
-<!-- Optional epigraph:
-"Applied category theory is information plumbing. It is boring … but plumbers save more lives than doctors."
-— DisCoPy documentation
--->
+<div class="footnote">Riehl (2016), Corollary 1.3.10, §1.3, p. 20.</div>
 
 ---
 
@@ -669,7 +813,7 @@ $$v(m) \;=\; \max_{c \,\in\, \Gamma(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{
 
 <div class="center">
 
-![w:980](assets/binding-graph.svg)
+![w:540](assets/binding-graph.svg)
 
 </div>
 

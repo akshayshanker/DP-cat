@@ -18,10 +18,12 @@ marp "Categorical types and AGI -1.md" -o /tmp/agi.html --allow-local-files
 marp talks/session-01-motivation/deck.md -w
 ```
 
-After editing a deck, rebuild the Pages HTML:
+After editing a deck, rebuild and publish:
 
 ```bash
-bash scripts/build-pages.sh
+bash scripts/publish-pages.sh
 ```
 
-Reading-group notes, session sheets, and `CLAUDE.md` stay in the local vault (gitignored) and are not in this repository.
+Pushing to `main` also rebuilds and updates `gh-pages` via GitHub Actions.
+
+Reading-group notes, session sheets, context, and `CLAUDE.md` stay in the local vault (gitignored) and are not in this repository.

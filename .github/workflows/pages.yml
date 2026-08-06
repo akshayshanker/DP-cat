@@ -1,4 +1,4 @@
-name: Deploy slides to GitHub Pages
+name: Publish slides to gh-pages
 
 on:
   push:
@@ -6,16 +6,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: github-pages-dp-cat
+  group: publish-gh-pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,22 +22,5 @@ jobs:
           node-version: 22
       - name: Install Marp CLI
         run: npm install -g @marp-team/marp-cli
-      - name: Build site
-        run: |
-          set -euo pipefail
-          bash scripts/build-pages.sh
-          mkdir -p _site
-          cp -R docs/. _site/
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Build and push gh-pages
+        run: bash scripts/publish-pages.sh

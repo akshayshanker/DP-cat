@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <marker id="cs" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#495057"/></marker>
+  </defs>
+  <text x="60" y="36" font-size="18" font-style="italic" fill="#212529" text-anchor="middle">a</text>
+  <text x="260" y="36" font-size="18" font-style="italic" fill="#212529" text-anchor="middle">b</text>
+  <text x="60" y="132" font-size="18" font-style="italic" fill="#212529" text-anchor="middle">c</text>
+  <text x="260" y="132" font-size="18" font-style="italic" fill="#212529" text-anchor="middle">d</text>
+  <line x1="78" y1="30" x2="242" y2="30" stroke="#495057" stroke-width="1.5" marker-end="url(#cs)"/>
+  <text x="160" y="20" font-size="14" font-style="italic" fill="#1f476b" text-anchor="middle">f</text>
+  <line x1="60" y1="46" x2="60" y2="112" stroke="#495057" stroke-width="1.5" marker-end="url(#cs)"/>
+  <text x="46" y="84" font-size="14" font-style="italic" fill="#1f476b" text-anchor="middle">g</text>
+  <line x1="260" y1="46" x2="260" y2="112" stroke="#495057" stroke-width="1.5" marker-end="url(#cs)"/>
+  <text x="276" y="84" font-size="14" font-style="italic" fill="#1f476b" text-anchor="middle">h</text>
+  <line x1="78" y1="126" x2="242" y2="126" stroke="#495057" stroke-width="1.5" marker-end="url(#cs)"/>
+  <text x="160" y="146" font-size="14" font-style="italic" fill="#1f476b" text-anchor="middle">k</text>
+  <text x="160" y="88" font-size="14" fill="#39b54a" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif">hf = kg</text>
+</svg>
