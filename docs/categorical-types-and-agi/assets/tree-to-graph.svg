@@ -34,7 +34,7 @@
   <text x="55" y="85" font-size="12" fill="#212529" text-anchor="middle">u(c)</text>
   <rect x="97" y="58" width="80" height="34" rx="5" fill="#fff" stroke="#c41230" stroke-width="1.8"/>
   <text x="137" y="70" font-size="7.5" fill="#c41230" text-anchor="middle" letter-spacing="0.5">FEASIBILITY</text>
-  <text x="137" y="85" font-size="12" fill="#212529" text-anchor="middle">c &#8712; &#915;(m)</text>
+  <text x="137" y="85" font-size="12" fill="#212529" text-anchor="middle">c &#8712; &#119967;(m)</text>
   <rect x="182" y="58" width="56" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
   <text x="210" y="70" font-size="7.5" fill="#676470" text-anchor="middle" letter-spacing="0.5">EQUATION</text>
   <text x="210" y="85" font-size="13" fill="#1f476b" text-anchor="middle">=</text>
@@ -72,7 +72,7 @@
   <!-- the equation node itself denotes g; lifted, reversed, into the pipeline -->
   <path d="M 242,66 Q 360,42 466,80" fill="none" stroke="#ed217c" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#ahf)"/>
   <text x="620" y="204" font-size="11.5" fill="#ed217c" text-anchor="middle">&#10214; = &#10215; = g : X &#215; A &#215; Z &#8594; X &#8212; lifted, reversed, to &#120130;<tspan dy="3" font-size="8.5">g</tspan></text>
-  <text x="620" y="219" font-size="11.5" fill="#ed217c" text-anchor="middle">likewise u &#8594; &#120126; and &#915;(&#183;) &#8594; max<tspan dy="3" font-size="8.5">c</tspan></text>
+  <text x="620" y="219" font-size="11.5" fill="#ed217c" text-anchor="middle">likewise u &#8594; &#120126; and &#119967;(&#183;) &#8594; max<tspan dy="3" font-size="8.5">c</tspan></text>
   <!-- the signature, beside the context -->
   <rect x="10" y="244" width="160" height="48" rx="5" fill="#f5f8fb" stroke="#1f476b" stroke-width="1.6" stroke-dasharray="5,4"/>
   <text x="90" y="260" font-size="8" fill="#1f476b" text-anchor="middle" letter-spacing="0.6">SIGNATURE</text>
@@ -85,7 +85,7 @@
   <text x="398" y="156" font-size="26" fill="#1f476b" text-anchor="middle" font-style="italic">&#933;</text>
   <text x="398" y="178" font-size="11.5" fill="#1f476b" text-anchor="middle">elaboration</text>
   <!-- ============ right: the declaration's denotation, an operator pipeline ============ -->
-  <text x="670" y="16" font-size="13.5" fill="#1f476b" text-anchor="middle">&#10214;op bellman&#10215; = &#120139; = max<tspan dy="3" font-size="10">c</tspan><tspan dy="-3"> &#8728; &#120124;</tspan><tspan dy="3" font-size="10">&#958;&#8242;</tspan><tspan dy="-3"> &#8728; &#120126; &#8728; &#120130;</tspan><tspan dy="3" font-size="10">g</tspan></text>
+  <text x="670" y="16" font-size="13.5" fill="#1f476b" text-anchor="middle">&#933;(op bellman) = &#120139; = max<tspan dy="3" font-size="10">c</tspan><tspan dy="-3"> &#8728; &#120124;</tspan><tspan dy="3" font-size="10">&#958;&#8242;</tspan><tspan dy="-3"> &#8728; &#120126; &#8728; &#120130;</tspan><tspan dy="3" font-size="10">g</tspan></text>
   <line x1="420" y1="28" x2="920" y2="28" stroke="#ced4da" stroke-width="1.1"/>
   <line x1="420" y1="28" x2="420" y2="36" stroke="#ced4da" stroke-width="1.1"/>
   <line x1="920" y1="28" x2="920" y2="36" stroke="#ced4da" stroke-width="1.1"/>
@@ -109,7 +109,7 @@
   <text x="786" y="146" font-size="11" fill="#676470" text-anchor="middle">&#8477;<tspan dy="-4" font-size="8.5">X&#215;A</tspan></text>
   <rect x="809" y="80" width="70" height="46" rx="6" fill="#fff" stroke="#c41230" stroke-width="2.2"/>
   <text x="844" y="100" font-size="16" fill="#212529" text-anchor="middle">max<tspan dy="4" font-size="11">c</tspan></text>
-  <text x="844" y="118" font-size="9.5" fill="#676470" text-anchor="middle">optimise over &#915;(m)</text>
+  <text x="844" y="118" font-size="9.5" fill="#676470" text-anchor="middle">optimise over &#119967;(m)</text>
   <line x1="879" y1="103" x2="914" y2="103" stroke="#676470" stroke-width="1.6" marker-end="url(#ah)"/>
   <text x="898" y="146" font-size="11" fill="#676470" text-anchor="middle">&#120139;v : &#8477;<tspan dy="-4" font-size="8.5">X</tspan></text>
   <text x="670" y="172" font-size="11.5" fill="#495057" text-anchor="middle">the boxes are operators; the wire labels are the types of their inputs and outputs</text>

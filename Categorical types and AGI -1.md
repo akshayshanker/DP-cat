@@ -98,7 +98,7 @@ style: |-
     border-left: 4px solid var(--ark-blue);
     color: var(--ark-body);
     font-style: normal;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1.5;
   }
   .callout strong { color: var(--ark-blue); font-weight: 500; }
@@ -175,7 +175,7 @@ style: |-
   .cols pre { font-size: 13px; }
   .cols .katex-display { margin: 0.4em 0 !important; }
   .footnote, .footnote p, .footnote span {
-    font-size: 11px !important;
+    font-size: 13px !important;
     font-weight: 400 !important;
     color: var(--ark-grey) !important;
     line-height: 1.5 !important;
@@ -183,7 +183,7 @@ style: |-
   .footnote {
     position: absolute;
     bottom: 22px;
-    left: 130px;
+    left: 84px;
     right: 110px;
     text-align: left;
   }
@@ -208,7 +208,22 @@ style: |-
   .sp-l { height: 56px; }
   .sp-xl { height: 120px; }
   .callout.lg { font-size: 22px; }
-  .callout.sm { font-size: 16px; line-height: 1.4; }
+  .callout.sm { font-size: 20px; line-height: 1.45; }
+  /* QUOTE slide — vertically centred large quotation with a restrained source line. Apply with a local _class: quote directive. */
+  section.quote { justify-content: center; padding: 58px 170px 88px 170px; }
+  section.quote blockquote {
+    border-left: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    font-size: 31px;
+    line-height: 1.5;
+    color: var(--ark-gun);
+    font-style: italic;
+  }
+  section.quote blockquote p { margin: 0; }
+  section.quote .quote-src { font-size: 17px; color: var(--ark-grey); font-style: normal; margin: 1.6em 0 0 0; }
+  section.quote .quote-src em { color: var(--ark-grey); }
   pre.sm, .cols pre.sm { font-size: 12px; line-height: 1.38; }
   .eq-legend {
     display: grid;
@@ -314,8 +329,30 @@ style: |-
   .title-hero-logo { position: absolute; bottom: 84px; right: 84px; width: 196px; opacity: 1.0; }
   /* Title-slide eyebrow — orange uppercase kicker echoing the orange top rule; sharp accent on the navy field. */
   section.title .title-eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ark-yellow); margin: 0 0 0.7em 0; }
+  /* Keep mathematical text inside the eyebrow in its true case (the group name is the equation Tv = v). */
+  section.title .title-eyebrow .keep-case { text-transform: none; }
   section.title .title-authors { font-size: 23px; font-weight: 400; color: #cfe0ee; margin: 0.8em 0 0 0; }
   section.title .title-authors u { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+---
+
+<!-- _class: title -->
+
+<p class="title-eyebrow"><span class="keep-case">𝕋v = v</span> Reading Group</p>
+
+# Categorical types and AGI
+
+<p class="title-authors">Akshay Shanker</p>
+
+<img src="assets/tvv-mark.svg" alt="𝕋v = v" class="title-hero-logo" />
+
+---
+
+<!-- _class: quote -->
+
+> "Applied category theory is information plumbing. It’s boring… but plumbers save more lives than doctors."
+
+<p class="quote-src">DisCoPy project, "Why?" &middot; <a href="https://discopy.org/">discopy.org</a>.</p>
+
 ---
 
 <div class="kicker p1">Part 1</div>
@@ -328,15 +365,13 @@ style: |-
 
 ## Objective
 
-Over 6-8 talks:
+These sessions run over six to eight talks. Their objective is enough basic working fluency in **category theory** and **type theory** arguments to assess the usefulness of both languages for three subjects:
 
-Develop enough working *basic* fluency in **category theory** and **type theory** arguments to  assess their usefulness for:
-
-- applied high dimensional dynamic programming and reinforcement learning;
+- applied high-dimensional dynamic programming and reinforcement learning;
 - formal representation of models on the computer; and
-- AI systems that read, compare, transform, or *verify* those descriptions.
+- AI systems that read, compare, transform, or *verify* those representations.
 
-<div class="callout sm"><strong>Overarching question.</strong> Does categorical type theory allow us to formalize structures that are too <strong>complicated</strong>, or that remain <strong>implicit</strong>, in the notation of fields like analysis, calculus, and optimisation?</div>
+<div class="callout"><strong>Overarching question.</strong> Can categorical type theory formalize structures that are too <strong>complicated</strong>, or that remain <strong>implicit</strong>, in the notation of fields like analysis, calculus, and optimisation?</div>
 
 ---
 
@@ -344,44 +379,45 @@ Develop enough working *basic* fluency in **category theory** and **type theory*
 
 ## Category theory
 
-- Organizes objects and morphisms with specified domains and codomains.
-- The focus shifts from properties of objects to relations between objects and the transformations of those relations.
-- Standard results can be proved with "less complex" arguments:
-  - results general enough to be used across fields.
+- Category theory organizes objects and morphisms with specified domains and codomains.
+- Category theory shifts the focus from properties of objects to relations between objects and to transformations of those relations.
+- Standard results can be proved by simpler arguments that are general enough to be reused across fields.
 
 ---
 
 <div class="kicker p2">Introduction &middot; Type theory</div>
 
-## Type theory: well-formed syntax
+## Type theory
 
-- Formal system to classify objects by their types.
+- Type theory is a formal system that classifies objects by their types.
 - Types classify terms (expressions) and rule out invalid compositions among them.
+- A **typing judgment** $\Gamma \vdash t : A$ asserts that, under the assumptions recorded in the **context** $\Gamma$ — a finite list of typed variables $x_1 : A_1, \ldots, x_n : A_n$ — the **term** $t$ has the **type** $A$. The context, the term, and the type are three different pieces of syntax; the judgment is the assertion relating them.
 
 
-<div class="callout sm"><strong>Categorical type theory.</strong> A type theory generates a classifying category (what can be composed). 
-A model is a structure-preserving functor from that category into a **semantic** category.</div>
+<div class="callout"><strong>Categorical type theory.</strong> A type theory generates a classifying category, which records what can be composed.
+A model is a structure-preserving functor from that category into a <strong>semantic</strong> category.</div>
 
-<div class="footnote">Jacobs (1999), pp. 5–7 and Chapter 2: typed contexts and terms generate a category; models are structure-preserving functors from its classifying category.</div>
+<div class="footnote">Jacobs (1999), pp. 4–7 and Chapter 2: typed contexts and terms generate a category (judgments Γ ⊢ t : A appear in Definition 2.1.1, p. 124); models are structure-preserving functors from its classifying category.</div>
 
 ---
 
 <div class="kicker p3">Introduction &middot; Motivation </div>
 
-## Motivating research: symbolic DP
+## Symbolic dynamic programming
 
-Formal symbolic system to capture ADPs and RDPs
-- programmable 'syntax'
-- we want to represent the abstract model and map it to computational implementations
-- we *do not* want to represent computational procedures
-- denotational semantics (what expressions mean) rather than operational semantics (how a machine executes them). 
+The motivating research is a formal symbolic system that represents abstract dynamic programs and recursive decision processes.
 
-Closely related: functional programming (Backus, 1978) system for DP 
+- Its syntax is programmable.
+- The system represents the abstract model and maps it to computational implementations.
+- It does not represent computational procedures.
+- Its semantics is denotational (what expressions mean) rather than operational (how a machine executes them).
+
+A closely related project is a functional-programming system for dynamic programming in the style of Backus (1978).
 
 <div class="flow">
   <div class="node"><span class="role">declare</span>typed syntax<br/>signature + grammar</div>
   <div class="arrow">→</div>
-  <div class="node"><span class="role">organise</span>classifying category C<sub>Σ</sub></div>
+  <div class="node"><span class="role">organise</span>classifying category Cl(Σ)</div>
   <div class="arrow">→</div>
   <div class="node"><span class="role">interpret</span>semantics: mathematics or code</div>
 </div>
@@ -392,9 +428,36 @@ Closely related: functional programming (Backus, 1978) system for DP
 
 ## Contents
 
-1. **Introduction** — the objective, category theory and type theory, and the symbolic-DP motivation.
-2. **Categories and functors** — Riehl §§1.1–1.3 and §1.6: categories and examples, isomorphism, diagrams and a diagram chase, duality with Exercise 1.2.vii, monomorphisms and epimorphisms, functors, and the first lemma.
-3. **Application teaser: $\mathbb{T}v = v$** — typed dynamic programming and the elaboration of the Bellman operator.
+1. **Introduction.** Part 1 states the objective, introduces category theory and type theory, and presents the symbolic-dynamic-programming motivation.
+2. **Categories and functors.** Part 2 develops Riehl §§1.1–1.3 and §1.6: categories and their examples, isomorphism, commutative diagrams and a diagram chase, duality with Exercise 1.2.vii, monomorphisms and epimorphisms, functors, and the first lemma.
+3. **A dynamic-programming application.** Part 3 asks how the Bellman operator is elaborated from first-order typed syntax.
+
+---
+
+<div class="kicker p3">Introduction &middot; notation</div>
+
+## Notation
+
+- Categories are sans-serif ($\mathsf{C}, \mathsf{D}$); objects are lower case ($x, y, c$); functors are upper case ($F, G, U$); natural transformations are Greek ($\alpha, \beta, \eta$). The collection of morphisms $x \to y$ is written $\mathsf{C}(x, y)$.
+- $\alpha, \beta, \eta$ are reserved for natural transformations; the shock in the application section is written $\xi'$, never $\eta$.
+- $\Gamma$ always denotes a typing context, as in the judgment $\Gamma \vdash t : A$; the feasibility correspondence of the application section is written $\mathcal{D}$, with value $\mathcal{D}(m)$ at the state $m$.
+- $\operatorname{Cl}(\Sigma)$ denotes the classifying category of a signature $\Sigma$ (Jacobs 1999). In the application section, $\mathbb{R}^X$ denotes the bounded measurable real-valued functions on $X$, and $\mathbb{T} : \mathbb{R}^X \to \mathbb{R}^X$ is the Bellman operator.
+- $\llbracket\cdot\rrbracket$ denotes the first-order denotation map of the application section; $\Upsilon$ denotes the full elaboration, which applies $\llbracket\cdot\rrbracket$ and then the operator lift; the elaboration of the operator declaration is written $\Upsilon(\texttt{op bellman}) = \mathbb{T}$.
+- Scoped reuse, declared once: in the category-theory sections $f, g, h, k$ are generic morphisms (Riehl's convention); in the application section $g : X \times A \times Z \to X$ is the declared state transition. $P$ denotes a poset $(P, \leq)$.
+
+---
+
+<div class="kicker p3">Introduction &middot; preview</div>
+
+## Preview
+
+The destination of these sessions is the notion of a natural transformation, which needs one prior notion. A **functor** $F : \mathsf{C} \to \mathsf{D}$ assigns to each object $c$ of $\mathsf{C}$ an object $Fc$ of $\mathsf{D}$ and to each morphism $f : c \to c'$ a morphism $Ff : Fc \to Fc'$, preserving identities and composition. For parallel functors $F, G : \mathsf{C} \to \mathsf{D}$, a **natural transformation** $\alpha : F \Rightarrow G$ has a **component** $\alpha_c : Fc \to Gc$ for every object $c$ of $\mathsf{C}$, and for every morphism $f : c \to c'$ it satisfies
+
+$$\alpha_{c'} \circ Ff \;=\; Gf \circ \alpha_c.$$
+
+The later sessions define each part in full.
+
+<div class="footnote">Riehl (2016), Definition 1.3.1 (pp. 14–15) for functors; Definition 1.4.1 and the naturality equation (p. 25) for natural transformations.</div>
 
 ---
 
@@ -417,9 +480,9 @@ Closely related: functional programming (Backus, 1978) system for DP
 
 </div>
 
-**Remark.** Nothing else is given: no elements, no membership, no underlying sets. The objects are recoverable from the identity morphisms (Remark 1.1.2), so of the two collections it is the **morphisms** that take primacy — a category is an algebra of composition.
+Definition 1.1.1 supplies no elements, no membership relation, and no underlying sets. The objects are recoverable from the identity morphisms (Remark 1.1.2), so of the two collections the **morphisms** take primacy. A category is an algebra of composition.
 
-<div class="footnote">Riehl (2016), Definition 1.1.1 and Remark 1.1.2 (pp. 3–4). Numbering verified against the chapter text held beside lit-kb.</div>
+<div class="footnote">Riehl (2016), Definition 1.1.1 and Remark 1.1.2 (pp. 3–4).</div>
 
 ---
 
@@ -427,7 +490,7 @@ Closely related: functional programming (Backus, 1978) system for DP
 
 ## Categories versus sets
 
-**Remark (Remark 1.1.5).** "Russell's paradox implies that there is no set whose elements are 'all sets.' This is the reason why we have used the vague word 'collection' in Definition 1.1.1. Indeed, in each of the examples listed in 1.1.3, the collection of objects is not a set." Where set-sized foundations are wanted, Riehl points to inaccessible cardinals and Grothendieck universes.
+In each of the examples listed in Example 1.1.3, the collection of objects is not a set (Remark 1.1.5).
 
 <div class="defbox">
 
@@ -437,43 +500,41 @@ Closely related: functional programming (Backus, 1978) system for DP
 
 <div class="defbox">
 
-**Definitions 1.1.6–1.1.7.** A category is **small** if it has only a set's worth of arrows in total, and **locally small** if between any pair of objects there is only a set's worth of morphisms — that is, each $\mathsf{C}(x, y)$ is a set. Small implies locally small (a subcollection of a set is a set); the converse fails.
+**Definitions 1.1.6–1.1.7.** A category is **small** if it has only a set's worth of arrows in total, and **locally small** if between any pair of objects there is only a set's worth of morphisms — that is, each $\mathsf{C}(x, y)$ is a set. Small implies locally small, because a subcollection of a set is a set. The converse fails.
 
 </div>
 
-**Remark.** The working contrast: a set is known through its elements and the membership relation; a category is known through its morphisms and their composition, and its notion of sameness is isomorphism (Definition 1.1.10), not equality.
+A set is known through its elements and the membership relation. A category is known through its morphisms and their composition. Its notion of sameness is isomorphism (Definition 1.1.10), not equality.
 
-<div class="footnote">Riehl (2016), Remark 1.1.5 (p. 6), quoted verbatim; Definitions 1.1.6–1.1.7, small and locally small (pp. 6–7); inaccessible cardinals and Grothendieck universes, footnote 14 (p. 7).</div>
+<div class="footnote">Riehl (2016), Remark 1.1.5 (p. 6); Definitions 1.1.6–1.1.7, small and locally small (p. 7).</div>
 
 ---
 
 <div class="kicker p2">Category theory &middot; Riehl §1.1</div>
 
-## Examples: morphisms need not be functions
+## Morphisms need not be functions
 
 <div class="cols">
 <div>
 
-### Concrete — objects carry sets
+### The morphisms are functions
 
-- $\mathsf{Set}$: sets and functions.
-- $\mathsf{Vect}_k$: vector spaces over a field $k$ and linear maps.
-- $\mathsf{Meas}$: measurable spaces and measurable functions.
-- $\mathsf{Poset}$: partially ordered sets and order-preserving maps.
+- The objects of $\mathsf{Set}$ are sets, and its morphisms are functions.
+- The objects of $\mathsf{Vect}_k$ are vector spaces over a field $k$, and its morphisms are linear maps.
+- The objects of $\mathsf{Meas}$ are measurable spaces, and its morphisms are measurable functions.
+- The objects of $\mathsf{Poset}$ are partially ordered sets, and its morphisms are order-preserving maps.
 
 </div>
 <div>
 
-### Abstract — they need not
+### The morphisms are not functions
 
-- $\mathsf{Mat}_{\mathbb{R}}$: objects are positive integers; a morphism $n \to m$ is an $m \times n$ matrix; composition **is** matrix multiplication.
-- $\mathsf{B}M$: one object; morphisms are the elements of a monoid $M$ — a set with an associative multiplication and a unit; composition is that multiplication.
-- A preorder $(P, \leq)$: one morphism $x \to y$ exactly when $x \leq y$; transitivity is composition, reflexivity the identities.
+- The objects of $\mathsf{Mat}_{\mathbb{R}}$ are positive integers, its morphisms $n \to m$ are the $m \times n$ matrices, and composition is matrix multiplication.
+- The category $\mathsf{B}M$ has a single object. Its morphisms are the elements of a monoid $M$, a set carrying an associative multiplication with a unit, and composition is that multiplication.
+- A preorder $(P, \leq)$ is a category with exactly one morphism $x \to y$ when $x \leq y$ and none otherwise. Transitivity supplies the composites, and reflexivity supplies the identities.
 
 </div>
 </div>
-
-<div class="callout sm"><strong>Remark.</strong> Definition 1.1.1 is the algebra shared by linear maps written without vectors, monoids written without elements, and order relations written as arrows.</div>
 
 <div class="footnote">Riehl (2016), Example 1.1.3 (i), (v), (ix), (x) and Example 1.1.4 (i)–(iii), §1.1, pp. 4–5.</div>
 
@@ -481,7 +542,7 @@ Closely related: functional programming (Backus, 1978) system for DP
 
 <div class="kicker p2">Category theory &middot; Riehl §1.1</div>
 
-## Isomorphism: sameness without elements
+## Isomorphism
 
 <div class="defbox">
 
@@ -492,12 +553,18 @@ Closely related: functional programming (Backus, 1978) system for DP
 **Examples 1.1.11.**
 
 - In $\mathsf{Set}$, the isomorphisms are the bijections.
-- In $\mathsf{Top}$, they are the homeomorphisms — strictly stronger than bijective-and-continuous. The ambient category, not the underlying sets, decides what counts as the same.
-- In a poset, the only isomorphisms are the identities — the categorical statement of antisymmetry.
+- In $\mathsf{Top}$, the category whose objects are topological spaces and whose morphisms are continuous maps (Example 1.1.3(ii)), the isomorphisms are the homeomorphisms, a strictly stronger property than being bijective and continuous. The ambient category, not the underlying sets, decides what counts as the same.
+- In a poset, the only isomorphisms are the identities, which is the categorical statement of antisymmetry.
 
-> "A category provides a context in which to answer the question 'When is one thing the same as another thing?'" — Riehl, §1.1
+<div class="footnote">Riehl (2016), Definition 1.1.10 and Example 1.1.11 (i), (iii), (v), §1.1, pp. 7–8; Top as Example 1.1.3(ii), p. 4.</div>
 
-<div class="footnote">Riehl (2016), Definition 1.1.10 and Example 1.1.11 (i), (iii), (v), §1.1, pp. 7–8.</div>
+---
+
+<!-- _class: quote -->
+
+> "A category provides a context in which to answer the question 'When is one thing the same as another thing?'"
+
+<p class="quote-src">Riehl (2016), <em>Category Theory in Context</em>, §1.1, p. 7.</p>
 
 ---
 
@@ -505,23 +572,27 @@ Closely related: functional programming (Backus, 1978) system for DP
 
 ## Commutative diagrams
 
-<style scoped>
-p { font-size: 18px; margin: 0 0 0.5em 0; }
-h2 { margin-bottom: 0.5em; }
-.defbox { margin: 0.55em 0; }
-</style>
-
 <div class="defbox">
 
 **Definition 1.6.4.** A **diagram** in a category $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$; the domain $\mathsf{J}$ is called the indexing category of the diagram.
 
 </div>
 
-**Remark.** Informally, a diagram is drawn as a quiver of morphisms, and it **commutes** when any two paths of composable arrows with common source and target have the same composite; a commutative triangle asserts that the hypotenuse equals the composite of the legs (1.6.1). A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf = kg$:
+A **quiver** is a directed graph that may contain loops and parallel arrows. The objects and morphisms of a category form one, and every finite directed path in it has a specified composite, well defined by the associativity axiom of Definition 1.1.1 (pp. 3–4). A diagram is displayed as a quiver of morphisms, and the display **commutes** when the parallel directed paths it presents with common source and target have equal composites. A commutative triangle asserts that the hypotenuse equals the composite of the legs (1.6.1).
+
+<div class="footnote">Riehl (2016), §1.1: quivers, paths, and their composites, pp. 3–4; §1.6: commuting paths and the triangle (1.6.1), p. 39; Definition 1.6.4, p. 40.</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.6</div>
+
+## Commutative diagrams
+
+A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf = kg$:
 
 <div class="center">
 
-![w:250](assets/comm-square.svg)
+![w:420](assets/comm-square.svg)
 
 </div>
 
@@ -533,13 +604,13 @@ h2 { margin-bottom: 0.5em; }
 
 **Proof.** A diagram in $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$ (Definition 1.6.4); for any functor $G : \mathsf{C} \to \mathsf{D}$, the composite $GF : \mathsf{J} \to \mathsf{D}$ defines the image of the diagram in $\mathsf{D}$. $\blacksquare$
 
-<div class="footnote">Riehl (2016), §1.6: commuting paths and the triangle (1.6.1), p. 39; Definition 1.6.4, p. 40; Example 1.6.6 and Remark 1.6.7 — the square with hf = kg, p. 41; Lemma 1.6.5 with proof, p. 41.</div>
+<div class="footnote">Riehl (2016), Example 1.6.6 and Remark 1.6.7 — the square with hf = kg, p. 41; Lemma 1.6.5 with proof, p. 41.</div>
 
 ---
 
 <div class="kicker p2">Category theory &middot; Riehl §1.6</div>
 
-## A diagram chase: the tool
+## A diagram chase
 
 <div class="defbox">
 
@@ -549,7 +620,7 @@ h2 { margin-bottom: 0.5em; }
 
 **Proof.** Composition is well-defined: if two composites define the same arrow, then pre- and postcomposing each with the same sequences of arrows again gives the same arrow. $\blacksquare$
 
-**Remark.** "This very simple result underlies most proofs by 'diagram chasing'": commutativity of a large diagram reduces to commutativity of its minimal subdiagrams — for the cube $2 \times 2 \times 2$, the six faces.
+"This very simple result underlies most proofs by 'diagram chasing'." For a diagram depicted by a **simple acyclic quiver** — at most one edge between any two vertices, and no directed cycles — under the convention that the quiver represents a poset category, commutativity of the entire diagram follows from commutativity of its minimal subdiagrams; for the cube $2 \times 2 \times 2$, these are the six faces.
 
 <div class="footnote">Riehl (2016), §1.6: Lemma 1.6.11 with proof, pp. 42–43; minimal subdiagrams and the cube, p. 43; the section's epigraph is Eilenberg–Steenrod on diagrams, p. 39.</div>
 
@@ -557,13 +628,13 @@ h2 { margin-bottom: 0.5em; }
 
 <div class="kicker p2">Category theory &middot; Riehl §1.6</div>
 
-## A diagram chase: pasting squares
+## Pasting squares
 
 **Example (pasting, diagram 1.6.10).** Suppose the two inner squares commute, $hf = kg$ and $\ell j = mh$. Then the outer rectangle commutes, $\ell(jf) = (mk)g$:
 
 <div class="center">
 
-![w:440](assets/comm-rect.svg)
+![w:640](assets/comm-rect.svg)
 
 </div>
 
@@ -575,7 +646,7 @@ h2 { margin-bottom: 0.5em; }
 
 <div class="kicker p2">Category theory &middot; Riehl §1.2</div>
 
-## The opposite category and duality
+## Duality through the opposite category
 
 <div class="defbox">
 
@@ -583,7 +654,15 @@ h2 { margin-bottom: 0.5em; }
 
 </div>
 
-**Remark.** A theorem proved for all categories holds in particular for every $\mathsf{C}^{\mathrm{op}}$, and re-reading it there yields a second theorem about $\mathsf{C}$ with all arrows reversed — "a two-for-one deal: any proof in category theory simultaneously proves two theorems" (p. 10).
+**The duality principle.** A theorem of the form "for all categories $\mathsf{C}$, a given statement holds" applies in particular to every opposite category $\mathsf{C}^{\mathrm{op}}$. Re-expressing that conclusion in terms of the data of $\mathsf{C}$ reverses the direction of every morphism and the order of every composite. The re-expressed statement is the dual statement, and the re-expressed proof is the dual proof — "a two-for-one deal: any proof in category theory simultaneously proves two theorems" (p. 10).
+
+<div class="footnote">Riehl (2016), Definition 1.2.1 (p. 9); the duality principle and the two-for-one description (p. 10).</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.2</div>
+
+## Duality through the opposite category
 
 <div class="defbox">
 
@@ -591,25 +670,51 @@ h2 { margin-bottom: 0.5em; }
 
 </div>
 
-**Remark.** Riehl proves (i) ⇔ (ii) directly and obtains (i) ⇔ (iii) by running that argument in $\mathsf{C}^{\mathrm{op}}$ — an application of the duality principle.
+Riehl proves (i) ⇔ (ii) directly and obtains (i) ⇔ (iii) by re-reading (i) ⇔ (ii) in $\mathsf{C}^{\mathrm{op}}$. The next two slides work that dualization in full. It is the one worked dualization of these sessions, cited thereafter.
 
-<div class="callout sm"><strong>Worked next.</strong> The supremum–infimum duality of analysis is categorical duality exactly: Exercise 1.2.vii, next.</div>
+<div class="footnote">Riehl (2016), Lemma 1.2.3 and Remark 1.2.4 (p. 11) — isomorphisms are characterized representably.</div>
 
-<div class="footnote">Riehl (2016), Definition 1.2.1 (p. 9); the two-for-one description of duality (p. 10); Lemma 1.2.3 and Remark 1.2.4 (p. 11) — isomorphisms are characterized representably.</div>
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.2</div>
+
+## Applying duality to Lemma 1.2.3
+
+Fix $f : x \to y$ in $\mathsf{C}$; by Definition 1.2.1 it corresponds to $f^{\mathrm{op}} : y \to x$ in $\mathsf{C}^{\mathrm{op}}$. The equivalence (i) ⇔ (ii) of Lemma 1.2.3 is proved for all categories, so it holds in $\mathsf{C}^{\mathrm{op}}$. Three translations, each an instance of Definition 1.2.1, convert that statement into (i) ⇔ (iii) for $\mathsf{C}$.
+
+First, $\mathsf{C}^{\mathrm{op}}(c, y) = \mathsf{C}(y, c)$ for every object $c$: a morphism $c \to y$ of $\mathsf{C}^{\mathrm{op}}$ is $h^{\mathrm{op}}$ for exactly one $h : y \to c$ of $\mathsf{C}$.
+
+Second, postcomposition by $f^{\mathrm{op}}$ in $\mathsf{C}^{\mathrm{op}}$ is precomposition by $f$ in $\mathsf{C}$: for $h : y \to c$, the composition rule of Definition 1.2.1 gives $f^{\mathrm{op}} h^{\mathrm{op}} = (hf)^{\mathrm{op}} = (f^{*}h)^{\mathrm{op}}$, so under the first translation $(f^{\mathrm{op}})_{*} : \mathsf{C}^{\mathrm{op}}(c, y) \to \mathsf{C}^{\mathrm{op}}(c, x)$ is the map $f^{*} : \mathsf{C}(y, c) \to \mathsf{C}(x, c)$.
+
+<div class="footnote">Riehl (2016), proof of Lemma 1.2.3, pp. 11–12: the displays (1.2.5)–(1.2.6).</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.2</div>
+
+## Applying duality to Lemma 1.2.3
+
+Third, $f^{\mathrm{op}}$ is an isomorphism in $\mathsf{C}^{\mathrm{op}}$ if and only if $f$ is an isomorphism in $\mathsf{C}$: if $gf = \mathrm{id}_x$ and $fg = \mathrm{id}_y$ (Definition 1.1.10), the composition rule gives $f^{\mathrm{op}} g^{\mathrm{op}} = (gf)^{\mathrm{op}} = \mathrm{id}_x$ and $g^{\mathrm{op}} f^{\mathrm{op}} = (fg)^{\mathrm{op}} = \mathrm{id}_y$, so $g^{\mathrm{op}}$ inverts $f^{\mathrm{op}}$; the converse follows by the same argument in $\mathsf{C}^{\mathrm{op}}$, whose opposite is $\mathsf{C}$.
+
+Substituting the three translations into "(i) ⇔ (ii) for $f^{\mathrm{op}}$ in $\mathsf{C}^{\mathrm{op}}$" yields: $f$ is an isomorphism in $\mathsf{C}$ if and only if $f^{*} : \mathsf{C}(y, c) \to \mathsf{C}(x, c)$ is a bijection for every object $c$. That is the equivalence (i) ⇔ (iii) in $\mathsf{C}$.
+
+<div class="callout">Exercise 1.2.vii, worked next, shows that the supremum–infimum duality of analysis is exactly categorical duality.</div>
+
+<div class="footnote">Riehl (2016), proof of Lemma 1.2.3, pp. 11–12: "the notion of isomorphism, as defined in 1.1.10, is self-dual."</div>
 
 ---
 
 <div class="kicker p2">Category theory &middot; Riehl §1.2, Exercise 1.2.vii</div>
 
-## Exercise 1.2.vii, as stated
+## Exercise 1.2.vii
 
 <div class="defbox">
 
-**Exercise 1.2.vii** (Riehl, verbatim). "Regarding a poset $(P, \leq)$ as a category, define the supremum of a sub-collection of objects $A \in P$ in such a way that the dual statement defines the infimum. Prove that the supremum of a subset of objects is unique, whenever it exists, in such a way that the dual proof demonstrates the uniqueness of the infimum."
+**Exercise 1.2.vii** (Riehl, verbatim). "Regarding a poset $(P, \leq)$ as a category, define the supremum of a subcollection of objects $A \in P$ in such a way that the dual statement defines the infimum. Prove that the supremum of a subset of objects is unique, whenever it exists, in such a way that the dual proof demonstrates the uniqueness of the infimum."
 
 </div>
 
-**Notation.** $(P, \leq)$ is the category with a unique morphism $x \to y$ exactly when $x \leq y$ (Example 1.1.4(iii)), and the sub-collection is $A \subseteq P$.
+**Notation.** $(P, \leq)$ is the category with a unique morphism $x \to y$ exactly when $x \leq y$ (Example 1.1.4(iii)), and the subcollection is $A \subseteq P$.
 
 <div class="footnote">Riehl (2016), Exercise 1.2.vii (pp. 13–14).</div>
 
@@ -617,7 +722,7 @@ h2 { margin-bottom: 0.5em; }
 
 <div class="kicker p2">Category theory &middot; Riehl §1.2, Exercise 1.2.vii</div>
 
-## Supremum, defined by arrows
+## Supremum
 
 <div class="defbox">
 
@@ -628,15 +733,23 @@ h2 { margin-bottom: 0.5em; }
 
 </div>
 
-**Dualization.** Read the same two conditions in $P^{\mathrm{op}}$, where every arrow is reversed. Condition (i) becomes "a morphism $i \to a$ for every $a \in A$": a lower bound. Condition (ii) becomes "every lower bound admits a morphism into $i$". The supremum in $P^{\mathrm{op}}$ is therefore the **infimum** in $P$ — the dual statement defines it, as the exercise requires.
+**Dualization.** By Definition 1.2.1, a morphism $x \to y$ in $P^{\mathrm{op}}$ is a morphism $y \to x$ in $P$. Since $P$ has a morphism $y \to x$ exactly when $y \leq x$ (Example 1.1.4(iii)), the order of $P^{\mathrm{op}}$ is the reversed order: $x \leq y$ in $P^{\mathrm{op}}$ means $y \leq x$ in $P$.
 
-<div class="footnote">Conditions (i)–(ii) are a universal property, the shape Chapter 2 studies in general; in the language of Chapter 3, the supremum is the colimit of the collection A.</div>
+<div class="footnote">Conditions (i)–(ii) are a universal property, the shape Chapter 2 studies in general. In the language of Chapter 3, the supremum is the colimit of the collection A.</div>
 
 ---
 
 <div class="kicker p2">Category theory &middot; Riehl §1.2, Exercise 1.2.vii</div>
 
-## Uniqueness of the supremum, step by step
+## Supremum
+
+Now read the two conditions for an object $i$ of $P^{\mathrm{op}}$. Condition (i) asks for a morphism $a \to i$ in $P^{\mathrm{op}}$ for every $a \in A$; by the translation just stated, this says $i \leq a$ for every $a \in A$, so $i$ is a lower bound of $A$ in $P$. Condition (ii) asks for a morphism $i \to u$ in $P^{\mathrm{op}}$, that is, $u \leq i$ in $P$, for every $u$ that admits a morphism $a \to u$ in $P^{\mathrm{op}}$ from every $a \in A$, that is, for every lower bound $u$ of $A$ in $P$. Together the two conditions say: $i$ is a lower bound of $A$, and every lower bound $u$ satisfies $u \leq i$. By the definition of the infimum as the greatest lower bound, $i = \inf A$. The supremum in $P^{\mathrm{op}}$ is the **infimum** in $P$, as the exercise requires.
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.2, Exercise 1.2.vii</div>
+
+## Uniqueness of the supremum
 
 <div class="defbox">
 
@@ -645,17 +758,20 @@ h2 { margin-bottom: 0.5em; }
 </div>
 
 <style scoped>
-p { font-size: 19px; margin: 0 0 0.55em 0; }
-ol { font-size: 18px; }
+p { font-size: 20px; margin: 0 0 0.55em 0; }
 </style>
 
-**Proof.** *Uses:* Definition 1.1.1 (identities and composition); Example 1.1.4(iii) (a poset has at most one morphism between any two objects); Definition 1.1.10 (isomorphism); Example 1.1.11(v) (in a poset the only isomorphisms are identities).
+**Proof.** Assume $s$ and $s'$ each satisfy conditions (i) and (ii) of the definition of the supremum.
 
-1. $s$ and $s'$ are upper bounds of $A$ — condition (i), for each.
-2. There is a morphism $s' \to s$ — condition (ii) for $s'$, applied to the upper bound $s$ of step 1.
-3. There is a morphism $s \to s'$ — condition (ii) for $s$, applied to the upper bound $s'$ of step 1.
-4. The composites $s \to s' \to s$ and $s' \to s \to s'$ exist by Definition 1.1.1; each equals the identity, because a hom-set of a poset contains at most one morphism (Example 1.1.4(iii)) and $\mathrm{id}_s \in P(s, s)$ (Definition 1.1.1). By Definition 1.1.10, the morphisms of steps 2–3 are inverse isomorphisms: $s \cong s'$.
-5. In a poset the only isomorphisms are the identities (Example 1.1.11(v) — antisymmetry), so the isomorphism of step 4 is an identity and $s = s'$. $\blacksquare$
+**Step 1.** By condition (i), applied to $s$ and to $s'$ in turn, each of $s$ and $s'$ is an upper bound of $A$.
+
+**Step 2.** Condition (ii) for $s'$, applied to the upper bound $s$ produced by Step 1, yields a morphism $s' \to s$.
+
+**Step 3.** Condition (ii) for $s$, applied to the upper bound $s'$ produced by Step 1, yields a morphism $s \to s'$.
+
+**Step 4.** By Definition 1.1.1 the composites $s \to s' \to s$ and $s' \to s \to s'$ exist. A preorder, and in particular a poset, has at most one morphism between any two objects (Example 1.1.4(iii)), and $\mathrm{id}_s \in P(s, s)$ by Definition 1.1.1; hence the composite $s \to s' \to s$ equals $\mathrm{id}_s$, and likewise $s' \to s \to s'$ equals $\mathrm{id}_{s'}$. By Definition 1.1.10 the morphisms of Steps 2 and 3 are therefore mutually inverse isomorphisms, so $s \cong s'$.
+
+**Step 5.** In a poset the only isomorphisms are the identities, which is the categorical statement of antisymmetry (Example 1.1.11(v)); the isomorphism of Step 4 is thus an identity, and $s = s'$. $\blacksquare$
 
 <div class="footnote">Riehl (2016), Exercise 1.2.vii (pp. 13–14); Example 1.1.11(v), p. 8, for the isomorphisms of a poset.</div>
 
@@ -663,13 +779,13 @@ ol { font-size: 18px; }
 
 <div class="kicker p2">Category theory &middot; Riehl §1.2, Exercise 1.2.vii</div>
 
-## Uniqueness: duality, and where each axiom enters
+## Uniqueness by duality
 
-**Duality.** Reading steps 1–5 in $P^{\mathrm{op}}$ proves, word for word, that the infimum is unique whenever it exists; no second argument is written.
+**Duality.** Reading Steps 1–5 in $P^{\mathrm{op}}$ proves, word for word, that the infimum is unique whenever it exists. No second argument is written.
 
-**Remark.** Steps 1–4 use only the categorical structure, so in a preorder the supremum is unique up to isomorphism; antisymmetry enters at step 5 and converts the isomorphism into equality. Uniqueness up to isomorphism is the general categorical phenomenon; the poset case collapses it to equality.
+Steps 1–4 use conditions (i)–(ii), the category axioms, and the fact that a preorder has at most one morphism between any two objects. They do not use antisymmetry. Hence any two suprema of $A$ in a preorder are isomorphic. In a poset, antisymmetry enters at Step 5 and implies that the two suprema are equal.
 
-<div class="footnote">The dual reading runs in the opposite category of Definition 1.2.1; Example 1.1.4(iii) and Example 1.1.11(v) are self-dual, which is why the dual proof needs no adjustment.</div>
+<div class="footnote">The dual reading runs in the opposite category of Definition 1.2.1. Example 1.1.4(iii) and Example 1.1.11(v) are self-dual, which is why the dual proof needs no adjustment.</div>
 
 ---
 
@@ -677,22 +793,33 @@ ol { font-size: 18px; }
 
 ## Monomorphisms and epimorphisms
 
-**Remark.** Definitions dualize as theorems do; the two notions below are each other's duals, and one proof serves both.
+Definitions dualize as theorems do.
 
 <div class="defbox">
 
-**Definition 1.2.7.** A morphism $f$ is a **monomorphism** if $fh = fk$ implies $h = k$, and an **epimorphism** if $hf = kf$ implies $h = k$; the two notions are dual.
+**Definition 1.2.7.** A morphism $f : x \to y$ in a category $\mathsf{C}$ is a **monomorphism** if for every object $w$ and every parallel pair $h, k : w \to x$, $fh = fk$ implies $h = k$; and an **epimorphism** if for every object $z$ and every parallel pair $h, k : y \to z$, $hf = kf$ implies $h = k$.
 
 </div>
 
-**Examples.**
+**Duality.** $f : x \to y$ is a monomorphism in $\mathsf{C}$ if and only if $f^{\mathrm{op}} : y \to x$ is an epimorphism in $\mathsf{C}^{\mathrm{op}}$; and $f$ is an epimorphism in $\mathsf{C}$ if and only if $f^{\mathrm{op}}$ is a monomorphism in $\mathsf{C}^{\mathrm{op}}$. To verify the first claim: a parallel pair $h, k : w \to x$ in $\mathsf{C}$ is a parallel pair $h^{\mathrm{op}}, k^{\mathrm{op}} : x \to w$ in $\mathsf{C}^{\mathrm{op}}$, and the composition rule of Definition 1.2.1 gives $(fh)^{\mathrm{op}} = h^{\mathrm{op}} f^{\mathrm{op}}$ and $(fk)^{\mathrm{op}} = k^{\mathrm{op}} f^{\mathrm{op}}$; so the left-cancellation property "$fh = fk$ implies $h = k$" for $f$ in $\mathsf{C}$ is the right-cancellation property "$h^{\mathrm{op}} f^{\mathrm{op}} = k^{\mathrm{op}} f^{\mathrm{op}}$ implies $h^{\mathrm{op}} = k^{\mathrm{op}}$" for $f^{\mathrm{op}}$ in $\mathsf{C}^{\mathrm{op}}$, which is the epimorphism condition. The second claim follows by applying the first in $\mathsf{C}^{\mathrm{op}}$.
 
-- In $\mathsf{Set}$: monomorphisms are the injections and epimorphisms the surjections (Example 1.2.8); that every epimorphism in $\mathsf{Set}$ **splits** — has a right inverse, a section $s$ with $f s = \mathrm{id}$ — is precisely the axiom of choice (Remark 1.2.10).
-- In $\mathsf{Ring}$: the inclusion $\mathbb{Z} \hookrightarrow \mathbb{Q}$ is a monomorphism **and** an epimorphism yet not an isomorphism — a ring homomorphism out of $\mathbb{Q}$ is already determined on $\mathbb{Z}$ (Example 1.2.11).
+<div class="footnote">Riehl (2016), Definition 1.2.7 with the parallel-pair quantifiers and the duality clause following it (p. 12); Definition 1.2.1 (pp. 9–10).</div>
 
-<div class="callout sm"><strong>Moral.</strong> Categorical surjectivity is right-cancellability, and it can hold without surjectivity; the ambient category fixes the meaning of the concept.</div>
+---
 
-<div class="footnote">Riehl (2016), Definitions 1.2.1 and 1.2.7, Examples 1.2.8 and 1.2.11, Remark 1.2.10, §1.2, pp. 9–13.</div>
+<div class="kicker p2">Category theory &middot; Riehl §1.2</div>
+
+## Monomorphisms and epimorphisms in Set and Ring
+
+**Example 1.2.8.** In $\mathsf{Set}$, the monomorphisms are precisely the injections and the epimorphisms are precisely the surjections.
+
+**The axiom of choice.** Let $f : X \to Y$ be a surjection. A **section** of $f$ is a function $s : Y \to X$ such that $f \circ s = \mathrm{id}_Y$ (Example 1.2.9: a right inverse; an epimorphism admitting a section is **split**). The assertion that every surjection in $\mathsf{Set}$ admits a section is equivalent to the axiom of choice. Because the epimorphisms in $\mathsf{Set}$ are precisely the surjections (Example 1.2.8), this is Remark 1.2.10's formulation: the axiom of choice asserts that every epimorphism in the category of sets is a split epimorphism.
+
+**Example 1.2.11.** In $\mathsf{Ring}$, the inclusion $\mathbb{Z} \hookrightarrow \mathbb{Q}$ is a monomorphism **and** an epimorphism yet not an isomorphism: there are no ring homomorphisms $\mathbb{Q} \to \mathbb{Z}$. That the inclusion is epic is part of Exercise 1.2.iv; the argument is that a ring homomorphism out of $\mathbb{Q}$ is determined by its values on $\mathbb{Z}$.
+
+<div class="callout sm">Categorical surjectivity is right-cancellability, and right-cancellability can hold without surjectivity. Which morphisms are epimorphisms depends on the ambient category.</div>
+
+<div class="footnote">Riehl (2016), Examples 1.2.8 and 1.2.9 (p. 12), Remark 1.2.10 and Example 1.2.11 (p. 13), Exercise 1.2.iv (p. 13), §1.2.</div>
 
 ---
 
@@ -708,12 +835,23 @@ ol { font-size: 18px; }
 
 **Examples 1.3.2.**
 
-- The forgetful functor $U : \mathsf{Vect}_k \to \mathsf{Set}$ sends a vector space to its underlying set; the free functor $F : \mathsf{Set} \to \mathsf{Group}$ sends a set to the group of formal words in its elements.
-- The fundamental group $\pi_1 : \mathsf{Top}_* \to \mathsf{Group}$ — loops at a chosen basepoint, taken up to continuous deformation, on the category $\mathsf{Top}_*$ of spaces with basepoint — the archetype of an invariant.
-- The derivative: the chain rule $D(g \circ f)_a = Dg_{f(a)} \cdot Df_a$ states exactly that $f \mapsto Df$ is functorial on pointed Euclidean spaces (Example 1.3.2(x)).
-- A **contravariant** functor is a functor $\mathsf{C}^{\mathrm{op}} \to \mathsf{D}$ (Definition 1.3.5) — the shape of $\mathbb{R}^{(-)}$ in the motivation, which reversed the transition's direction.
+- The forgetful functor $U : \mathsf{Vect}_k \to \mathsf{Set}$ sends a vector space to its underlying set. The free functor $F : \mathsf{Set} \to \mathsf{Group}$ sends a set to the free group on it, whose elements are the reduced words in the set's elements and their formal inverses.
+- The fundamental group $\pi_1 : \mathsf{Top}_* \to \mathsf{Group}$, where $\mathsf{Top}_*$ is the category whose objects are pointed topological spaces — spaces with a chosen basepoint — and whose morphisms are basepoint-preserving continuous maps (Example 1.1.3(iii)). It assigns to a pointed space the group of loops at the basepoint taken up to continuous deformation, and it is the archetype of an invariant.
 
-<div class="footnote">Riehl (2016), Definitions 1.3.1 and 1.3.5, Example 1.3.2 (ii), (vi), (ix), (x), §1.3, pp. 14–18.</div>
+<div class="footnote">Riehl (2016), Definition 1.3.1, Example 1.3.2 (ii), (vi), (ix), §1.3, pp. 14–16; Top⋆ as Example 1.1.3(iii), p. 4.</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.3</div>
+
+## Functors
+
+**Examples 1.3.2.**
+
+- The chain rule $D(g \circ f)_a = Dg_{f(a)} \cdot Df_a$ states exactly that $f \mapsto Df$ is functorial on pointed Euclidean spaces. This is the tenth part of Riehl's Example 1.3.2, where the chain rule is expressed as functoriality of the derivative (pp. 15–16).
+- A **contravariant** functor is a functor $\mathsf{C}^{\mathrm{op}} \to \mathsf{D}$ (Definition 1.3.5). The closing application slides use one such functor, $\mathbb{R}^{(-)}$, which reverses the direction of the state transition.
+
+<div class="footnote">Riehl (2016), Definition 1.3.5, Example 1.3.2 (x), §1.3, pp. 15–18.</div>
 
 ---
 
@@ -729,21 +867,21 @@ ol { font-size: 18px; }
 
 </div>
 
-**Remark.** Postcomposition is always covariant, precomposition always contravariant. The motivation's $\mathbb{R}^{(-)} = \mathsf{Set}(-, \mathbb{R})$ is the functor represented by $\mathbb{R}$.
+Postcomposition is always covariant, and precomposition is always contravariant. The functor $\mathbb{R}^{(-)}$ of the closing application slides is the measurable-space analogue of the represented functor $\mathsf{Set}(-, \mathbb{R})$: it sends a measurable space $X$ to the bounded measurable functions on $X$ and a map to precomposition, exactly the pattern of Definition 1.3.11.
 
-**Remark.** Applying "functors preserve isomorphisms" to the represented functors re-proves (i) ⇒ (ii) and (i) ⇒ (iii) of Lemma 1.2.3.
+Applying "functors preserve isomorphisms" to the represented functors re-proves (i) ⇒ (ii) and (i) ⇒ (iii) of Lemma 1.2.3.
 
-<div class="footnote">Riehl (2016), §1.3: Definition 1.3.11 and the covariance remark (pp. 20–21); Baez epigraph (p. 14).</div>
+<div class="footnote">Riehl (2016), §1.3: Definition 1.3.11 and the covariance remark (p. 20); Baez epigraph (p. 14).</div>
 
 ---
 
 <div class="kicker p2">Category theory &middot; Riehl §1.3</div>
 
-## Bifunctors, preservation, and Cat
+## Additional properties of functors
 
 - **Bifunctoriality** (Definitions 1.3.12–1.3.13). The product $\mathsf{C} \times \mathsf{D}$ is formed componentwise, and the two represented functors combine into one **bifunctor** — a functor of two variables — $\mathsf{C}(-, -) : \mathsf{C}^{\mathrm{op}} \times \mathsf{C} \to \mathsf{Set}$, acting on morphisms by $g \mapsto h g f$.
-- **What functors preserve.** Split monomorphisms and epimorphisms — those admitting a one-sided inverse — are preserved, because the one-sided inverse is an equation between composites and functors preserve such equations; general monomorphisms and epimorphisms need not be.
-- **$\mathsf{Cat}$.** Small categories and functors form a category $\mathsf{Cat}$, which is locally small but not small — the size distinctions of §1.1 return.
+- **Preservation.** Split monomorphisms and epimorphisms — those admitting a one-sided inverse — are preserved, because a one-sided inverse is an equation between composites and functors preserve such equations. General monomorphisms and epimorphisms need not be preserved.
+- **$\mathsf{Cat}$.** Small categories and functors form a category $\mathsf{Cat}$, which is locally small but not small. The size distinctions of §1.1 return.
 
 <div class="footnote">Riehl (2016), §1.3: Definitions 1.3.12–1.3.13 (p. 21); preservation of split monomorphisms and epimorphisms (p. 20); Cat (p. 21).</div>
 
@@ -759,7 +897,7 @@ ol { font-size: 18px; }
 
 </div>
 
-**Proof.** *Uses:* Definition 1.1.10 (isomorphism and inverse); Definition 1.3.1 (the two functoriality axioms).
+**Proof.** The proof uses Definition 1.1.10 (isomorphism and inverse) and the two functoriality axioms of Definition 1.3.1.
 
 Let $F : \mathsf{C} \to \mathsf{D}$ be a functor and $f : x \to y$ an isomorphism with inverse $g : y \to x$ (Definition 1.1.10). Then
 
@@ -767,7 +905,7 @@ $$Fg \cdot Ff \;=\; F(gf) \;=\; F(\mathrm{id}_x) \;=\; \mathrm{id}_{Fx},$$
 
 the first equality by the composition axiom of Definition 1.3.1, the second because $gf = \mathrm{id}_x$ (Definition 1.1.10), the third by the identity axiom of Definition 1.3.1. So $Fg$ is a left inverse of $Ff$; exchanging the roles of $f$ and $g$ in the same three equalities gives $Ff \cdot Fg = \mathrm{id}_{Fy}$, so the inverse is two-sided and $Ff$ is an isomorphism (Definition 1.1.10). $\blacksquare$
 
-<div class="footnote">Riehl (2016), Lemma 1.3.8 with proof, §1.3, pp. 19–20. The lemma appears immediately after functors are first defined in Eilenberg–Mac Lane (1942) — "arguably the first lemma in category theory" (Riehl).</div>
+<div class="footnote">Riehl (2016), Lemma 1.3.8 with proof, §1.3, p. 19. The lemma appears immediately after functors are first defined in Eilenberg–Mac Lane (1942) — "arguably the first lemma in category theory" (Riehl).</div>
 
 ---
 
@@ -775,23 +913,41 @@ the first equality by the composition axiom of Definition 1.3.1, the second beca
 
 ## Consequences of the first lemma
 
-- **Invariants.** If $\pi_1(X) \not\cong \pi_1(Y)$, then $X \not\cong Y$: any functorial assignment separates objects it sends to non-isomorphic values.
-- **Group actions.** A functor $\mathsf{B}G \to \mathsf{C}$ — with $\mathsf{B}G$ the one-object category of a group $G$, as on the examples slide — is exactly an action of $G$; each $g \in G$ is an isomorphism in $\mathsf{B}G$, so it must act by automorphisms (isomorphisms of an object with itself), with $(g^{-1})_* = (g_*)^{-1}$, no separate proof required (Corollary 1.3.10).
-- **Outlook.** In the motivation, elaboration was a functor; the lemma is the first instance of the pattern these sessions develop — properties established for the syntax transfer to every interpretation.
+- If $\pi_1(X) \not\cong \pi_1(Y)$, then $X \not\cong Y$. Any functorial assignment separates objects that it sends to non-isomorphic values.
+- A functor $\mathsf{B}G \to \mathsf{C}$, where $\mathsf{B}G$ is the one-object category of a group $G$ (the construction $\mathsf{B}M$ of the slide "Morphisms need not be functions", applied to a group), is exactly an action of $G$ (Example 1.3.9). Each $g \in G$ is an isomorphism in $\mathsf{B}G$, so it must act by automorphisms (isomorphisms of an object with itself), with $(g^{-1})_* = (g_*)^{-1}$, and no separate proof is required (Corollary 1.3.10).
+- The introduction stated that a model of a type theory is a structure-preserving functor from its classifying category. The lemma is the first instance of the pattern these sessions develop, in which a property established for the syntax transfers to every interpretation. The closing application slides work one example in full.
 
-<div class="footnote">Riehl (2016), Corollary 1.3.10, §1.3, p. 20.</div>
+<div class="footnote">Riehl (2016), Example 1.3.9 (p. 19) and Corollary 1.3.10 (p. 20), §1.3.</div>
+
+---
+
+<div class="kicker p2">Category theory &middot; Riehl §1.3</div>
+
+## The Brouwer fixed-point theorem
+
+<div class="defbox">
+
+**Theorem 1.3.3** (Brouwer fixed-point theorem). Any continuous endomorphism of a 2-dimensional disk $D^2$ has a fixed point.
+
+</div>
+
+**The functorial argument.** If a fixed-point-free continuous map $f : D^2 \to D^2$ existed, the point where the ray from $f(x)$ through $x$ meets the boundary circle would define a retraction $r : D^2 \to S^1$ of the boundary inclusion $i : S^1 \hookrightarrow D^2$, that is, $ri = \mathrm{id}_{S^1}$; applying $\pi_1$ (with a basepoint chosen on $S^1$) and the two functoriality axioms of Definition 1.3.1 would give $\pi_1(r)\,\pi_1(i) = \pi_1(ri) = \mathrm{id}_{\pi_1(S^1)}$, making the identity of $\pi_1(S^1) \cong \mathbb{Z}$ factor through the trivial group $\pi_1(D^2) \cong 0$, which is impossible: a homomorphism that factors through the trivial group sends the generator $1 \in \mathbb{Z}$ to $0 \neq 1$.
+
+**Inputs not proved here.** The computations $\pi_1(S^1) \cong \mathbb{Z}$ and $\pi_1(D^2) \cong 0$ are inputs to the argument. Riehl obtains them from covering-space theory, which these sessions do not develop.
+
+<div class="footnote">Riehl (2016), Theorem 1.3.3 with proof, §1.3, pp. 16–17; π₁ : Top⋆ → Group is Example 1.3.2(vi), p. 15.</div>
 
 ---
 
 <div class="kicker p3">Part 3</div>
 
-# Application teaser: $\mathbb{T}v = v$
+# A dynamic-programming application
 
 ---
 
-<div class="kicker p1">Interim &middot; 2,500 year problem</div>
+<div class="kicker p1">Application &middot; grammar</div>
 
-## Context free grammar
+## Context-free grammar
 
 <div class="cols">
 <div class="center">
@@ -805,109 +961,165 @@ the first equality by the composition axiom of Definition 1.3.1, the second beca
 
 ![h:195](assets/backus.jpg)
 
-<div class="small" style="margin-top:8px;"><strong>John Backus</strong>, 1924–2007<br/><span class="cmt">made Fortran; father of functional programming</span></div>
+<div class="small" style="margin-top:8px;"><strong>John Backus</strong>, 1924–2007<br/><span class="cmt">creator of Fortran; proponent of functional programming</span></div>
 
 </div>
 </div>
 
 <div class="sp-s"></div>
 
-<div class="callout sm">A context-free grammar is a finite set of rewrite rules applied *recursively* to generate every well-formed expression of a language, each rule applying independently of surrounding context. Programming languages are parsed using a grammar (with some context) and then interpreted and compiled.</div>
+<div class="callout sm">A context-free grammar is a finite set of rewrite rules applied <em>recursively</em> to generate every well-formed expression of a language, each rule applying independently of surrounding context. Programming languages are parsed using a grammar (with some context) and then interpreted and compiled.</div>
 
 <div class="footnote">Ingerman (<em>CACM</em> 10(3), 1967) proposed "Pāṇini–Backus form" as the fairer name &middot; Penn &amp; Kiparsky, "On Pāṇini and the Generative Capacity of Contextualized Replacement Systems," <em>COLING 2012</em>, 943–950 — <a href="https://aclanthology.org/C12-2092/">aclanthology.org/C12-2092</a> &middot; images: Wikimedia Commons</div>
 
 ---
 
-<div class="kicker p1">Application &middot; dynamic programming examples</div>
+<div class="kicker p1">Application &middot; the buffer-stock example</div>
 
-## Typed formulations of dynamic programming
-
-**Deterministic dynamic programming.** Typing separates the declared data $g : X \times A \to X$ and $r : X \times A \to \mathbb{R}$ from what they induce: precomposition lifts the transition to $g^{*} : \mathbb{R}^{X} \to \mathbb{R}^{X \times A}$, and reward, discounting, and optimisation compose into the Bellman operator $\mathbb{T} = \max_a \circ\, (r + \beta\,\cdot) \circ g^{*}$.
-
-**Markov decision processes and reinforcement learning.** Replace $g$ by a stochastic kernel $P : X \times A \rightsquigarrow X$ — a measurable assignment of a probability distribution over next states to each state–action pair. Kernels compose by Chapman–Kolmogorov, the Dirac kernels are the identities, and expectation lifts $P$ to $\mathbb{E}_{P} : \mathbb{R}^{X} \to \mathbb{R}^{X \times A}$. Reinforcement learning adds typed objects for observations, samples, parameters, policies, and update maps.
-
-**Abstract dynamic programming.** Retain an abstract value object $V$ with admissible transition, aggregation, and optimisation morphisms, and ask which composition pattern is preserved across deterministic, stochastic, approximate, and executable interpretations.
-
-**Remark.** Types prevent domain–codomain errors; the categorical formulation makes the composition pattern common to the three cases explicit; functors relate one typed specification to its mathematical, numerical, and executable models.
-
-<div class="footnote">Measurable spaces and stochastic kernels form a category with Chapman–Kolmogorov composition and Dirac identities. The abstract-DP reading is a proposed application to be evaluated, not a claim that one categorical formalism already covers every case. More examples (Mahadevan): i) <a href="https://people.cs.umass.edu/~mahadeva/papers/catagi.pdf">Categories for AGI, the book</a> · ii) <a href="https://people.cs.umass.edu/~mahadeva/papers/udm.pdf">Universal Decisions with Kan Extensions</a> · iii) <a href="https://people.cs.umass.edu/~mahadeva/papers/url.pdf">Universal Reinforcement Learning</a>.</div>
-
----
-
-<div class="kicker p1">Application &middot; example: start from the model</div>
-
-## The model is higher-order; a parse tree is first-order
+## First-order syntax for the Bellman operator
 
 <style scoped>
-p { margin: 0 0 0.6em 0; }
-ol { font-size: 17.5px; }
-ol li { margin: 0 0 0.4em 0; }
-.katex-display { margin: 0.4em 0 !important; }
+.cols ul { font-size: 20px; line-height: 1.5; margin: 0.3em 0 0 0; padding-left: 1.2em; }
+.cols li { margin: 0 0 0.55em 0; }
+.katex-display { margin: 0.5em 0 0.9em !important; }
 </style>
 
-$$v(m) \;=\; \max_{c \,\in\, \Gamma(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{\xi'}\, v\big(R(m-c)+\xi'\big) \Big\} \qquad\text{i.e.}\qquad v = \mathbb{T}\,v$$
-
-<span class="small">The equation quantifies over a **function**: $v$ ranges over $\mathbb{R}^X$, and $\mathbb{T}$ maps functions to functions. A parser produces only first-order expressions between variables. Four problems follow, and one solution.</span>
-
-1. An AST is the term algebra of a first-order signature (ADJ 1977); its sorts are the grammar's expression categories, and no sort is a function space, so the grammar cannot type 𝕋 : ℝ^X → ℝ^X.
-2. Well-typedness is a judgment relative to a list of typed variables that the tree does not include, and no context-free rule expresses it.
-3. max_c and 𝔼_ξ′ bind variables; the tree structure does not determine their scope.
-4. The operator is never parsed: an op bellman node lists first-order equations, and the map between function spaces is the block's denotation.
-
-**Solution.** Parse only the first-order data (g, u, β) with their types; elaboration by Υ then produces the higher-order operator graph, as the next slides show.
-
-<div class="footnote">The CEF interoperability talk v2.4 states the point: a PBF/BNF tree has nodes for "expressions between variables" but "no node for an operator like 𝕋" — it must be "elaborated under a typed semantic context, not parsed"; the economist writes only first-order equations, and the lift induces the function-analytic objects. AST = initial algebra of a first-order signature: Goguen–Thatcher–Wagner–Wright (1977). In practice as well, well-formedness is stated outside the grammar: Stan's manual gives BNF "plus extra-grammatical constraints on function typing" (lit-kb chunk). Binding beyond first-order trees: higher-order abstract syntax (Pfenning–Elliott 1988; Oliveira–Löh 2012 for DSLs); initial semantics with binding: Fiore–Plotkin–Turi (1999), Lamiaux–Ahrens (2024).</div>
-
----
-
-<div class="kicker p1">Application &middot; example: what the tree cannot carry</div>
-
-## An AST cannot represent bound variables
-
-<style scoped>
-.cols p { font-size: 16.5px; margin: 0 0 0.6em 0; }
-</style>
+$$v(m) \;=\; \max_{c \,\in\, \mathcal{D}(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{\xi'}\, v\big(R(m-c)+\xi'\big) \Big\} \qquad\text{i.e.}\qquad v = \mathbb{T}\,v$$
 
 <div class="cols">
 <div>
 
-![w:460](assets/binding-graph.svg)
+- $X$ is the state space, and $m \in X$ is current resources. $A$ is the choice space, $\mathcal{D}(m) \subseteq A$ is the feasible set at $m$, and $c \in \mathcal{D}(m)$ is current consumption.
+- $Z$ is the shock space, and $\xi' \in Z$ is the next-period income shock, drawn from a fixed probability distribution on $Z$; $\mathbb{E}_{\xi'}$ denotes expectation under that law.
 
 </div>
 <div>
 
-**Two failures.** The relation between a binder and its occurrences is not an edge of the tree — the association runs only through the repeated letter c — and once it is drawn as edges the structure is a graph. And distinct trees, max_c u(c) and max_d u(d), denote the same function, so equality of trees is strictly finer than equality of meaning; higher-order abstract syntax is the representation that repairs both.
-
-**Why AST + types at all.** Concrete context-free syntax fixes only which strings parse: parenthesisation and precedence are artifacts, and one meaning has many strings. The AST removes the concrete noise; the typing context supplies what no context-free rule expresses; and binding, as the figure shows, needs more still.
+- $R > 0$ is the gross return factor, and $g : X \times A \times Z \to X$, defined by $g(m, c, \xi') = R(m-c) + \xi'$, is the transition.
+- $u : A \to \mathbb{R}$ is one-period utility, $\beta \in (0,1)$ is the discount factor, and $v$ is a candidate continuation-value function in $\mathbb{R}^X$, the bounded measurable functions on $X$. $\mathbb{T}$ is the Bellman operator, which sends a candidate function $v$ to a new function $\mathbb{T}v$ in the same space $\mathbb{R}^X$.
 
 </div>
 </div>
-
-<div class="footnote">Bound occurrences are coloured with their binders (c with max_c, ξ′ with 𝔼_ξ′); m is free and is typed by the context, which the next slide draws in full. Higher-order abstract syntax: Pfenning–Elliott (1988); abstract syntax graphs for DSLs: Oliveira–Löh (2012); initial semantics with binding: Fiore–Plotkin–Turi (1999), Lamiaux–Ahrens (2024) — the last three indexed in lit-kb.</div>
 
 ---
 
-<div class="kicker p2">Application &middot; example: elaboration, step by step</div>
+<div class="kicker p1">Application &middot; the buffer-stock example</div>
 
-## From the typed AST to the operator graph
+## First-order syntax for the Bellman operator
+
+$$v(m) \;=\; \max_{c \,\in\, \mathcal{D}(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{\xi'}\, v\big(R(m-c)+\xi'\big) \Big\} \qquad\text{i.e.}\qquad v = \mathbb{T}\,v$$
+
+Three assumptions support the display. For each $m \in X$ the feasible set $\mathcal{D}(m)$ is nonempty and compact and the objective $c \mapsto u(c) + \beta\, \mathbb{E}_{\xi'}\, v(R(m-c)+\xi')$ is continuous, so the maximum is attained. Because $\xi'$ has a probability distribution on $Z$ and $v$ is bounded and measurable, the expectation is finite. Because $R(m-c)+\xi' \in X$ for every $m \in X$, every $c \in \mathcal{D}(m)$, and every realization of $\xi'$, the transition returns to the state space.
+
+The display quantifies over a function, since $v$ ranges over $\mathbb{R}^X$ and $\mathbb{T}$ maps functions to functions. Call a map **higher-order** when it takes a function as an input or returns one as an output, and call syntax **first-order** when functions are not themselves inputs or outputs of the parsed expressions.
+
+---
+
+<div class="kicker p1">Application &middot; the buffer-stock example</div>
+
+## First-order syntax for the Bellman operator
+
+A parser produces an **abstract syntax tree** (AST): one syntax tree built from the grammar's constructors. The collection of such trees, with those constructor operations, forms the **term algebra** of the grammar's signature (Goguen–Thatcher–Wagner–Wright 1977). **Elaboration** is the construction of the typed semantic object denoted by parsed syntax.
+
+<div class="sp-s"></div>
+
+<div class="callout">
+
+How can first-order typed syntax elaborate the transition and payoff expressions into the higher-order map $\mathbb{T} : v \mapsto \mathbb{T}v$?
+
+</div>
+
+<div class="footnote">Goguen, Thatcher, Wagner, and Wright (1977), Proposition 2.1: the well-formed expressions (trees) of each sort form the carriers of the term algebra.</div>
+
+---
+
+<div class="kicker p1">Application &middot; binding</div>
+
+## An AST cannot represent bound variables
+
+<div class="center">
+
+![w:760](assets/binding-graph.svg)
+
+</div>
+
+<div class="footnote">Higher-order abstract syntax: Pfenning–Elliott (1988); abstract syntax graphs for DSLs: Oliveira–Löh (2013); initial semantics with binding: Fiore–Plotkin–Turi (1999), Lamiaux–Ahrens (2024).</div>
+
+---
+
+<div class="kicker p1">Application &middot; binding</div>
+
+## An AST cannot represent bound variables
+
+<div style="font-size: 20px; line-height: 1.5; color: var(--ark-grey);">
+
+Bound occurrences are coloured with their binders ($c$ with $\max_c$, $\xi'$ with $\mathbb{E}_{\xi'}$). The variable $m$ is free and is typed by the context, which the next slide draws in full.
+
+</div>
+
+The tree fails in two ways. First, the relation between a binder and its occurrences is not an edge of the tree. The association runs only through the repeated letter $c$, and once the relation is drawn as edges the structure is a graph. Second, the distinct trees $\max_c u(c)$ and $\max_d u(d)$ denote the same function, so equality of trees is strictly finer than equality of meaning. Higher-order abstract syntax is one representation that repairs both failures.
+
+The abstract syntax tree and the typing context remain necessary. Concrete context-free syntax fixes only which strings parse, so parenthesisation and precedence are artifacts and one meaning has many strings. The tree removes those artifacts. The typing context supplies what no context-free rule expresses. Binding, as the figure shows, needs more still.
+
+<div class="footnote">In practice, too, well-formedness is stated outside the grammar: Stan Development Team (2025), <em>Stan Reference Manual</em>, version 2.39, ch. 11, p. 152, gives BNF "plus extra-grammatical constraints on function typing".</div>
+
+---
+
+<div class="kicker p2">Application &middot; elaboration</div>
+
+## Elaboration of the Bellman operator
 
 <style scoped>
-.callout.sm { font-size: 14px; line-height: 1.32; }
+.callout p { margin: 0; }
+</style>
+
+<div class="cols" style="grid-template-columns: 500px 1fr; gap: 1.4em;">
+<div>
+
+![w:490](assets/tree-to-graph-syntax.svg)
+
+</div>
+<div>
+
+<div class="callout sm" style="margin-top: 0.2em;">
+
+① The parser produces the $\texttt{op bellman}$ node, which lists first-order equations. The context drawn beside the tree types the leaves, and the signature gives the operator symbol the type $\texttt{op bellman} : \texttt{Val} \to \texttt{Val}$, where $\texttt{Val}$ is the signature's sort for value functions. ② The denotation map $\llbracket\cdot\rrbracket$ sends each equation to its first-order denotation: the arrow $g$, the reward $u$, and the feasibility correspondence $m \mapsto \mathcal{D}(m)$. The syntax trees together form the term algebra of the first-order signature, and $\llbracket\cdot\rrbracket$ is the unique homomorphism from that term algebra into the first-order semantic algebra, whose carriers are the declared spaces ($X$, $A$, $Z$, $\mathbb{R}$, their products, and the subsets of $A$, in which the feasibility correspondence takes its values) and whose operations are the declared maps (Goguen–Thatcher–Wagner–Wright 1977).
+
+</div>
+
+</div>
+</div>
+
+<div class="footnote">Term algebras and initial-algebra semantics: Goguen–Thatcher–Wagner–Wright (1977).</div>
+
+---
+
+<div class="kicker p2">Application &middot; elaboration</div>
+
+## Elaboration of the Bellman operator
+
+<style scoped>
+.callout.sm { line-height: 1.42; }
+.callout p { margin: 0; }
 </style>
 
 <div class="center">
 
-![w:1000](assets/tree-to-graph.svg)
+![w:780](assets/tree-to-graph-pipeline.svg)
 
 </div>
 
-<div class="callout sm"><strong>Step by step.</strong> ① Parse the declaration: an op bellman node lists first-order equations; the context — drawn beside the tree — types its leaves, and the signature types the operator symbol: op bellman : Val → Val. ② ⟦·⟧ sends each equation to its first-order denotation, the arrow g, the reward u, and the feasibility correspondence m ↦ Γ(m); this map is the unique homomorphism out of the term algebra, the algebra of the syntax trees themselves (ADJ 1977). ③ The functor ℝ^(−) sends each denotation to its operator box, reversing the direction of g — the categorical form of backward induction. ④ Composition yields ⟦op bellman⟧ = 𝕋 : ℝ^X → ℝ^X, realizing the declared signature — the higher-order object that was never parsed.</div>
+<div class="callout sm">
 
-<div class="footnote">Buffer stock (CEF interoperability talk v2.4): 𝕋v(m) = max_c { u(c) + β 𝔼_ξ′ v(R(m−c) + ξ′) }, g(m, c, ξ′) = R(m−c) + ξ′; R enters by calibration, not through the context. Operator names follow the Bellman-calculus decomposition B_≻ = 𝔼_η ∘ 𝔾_≻ ∘ 𝕂_g≻; max = evaluate ∘ ⟨id, argmax⟩ is derived, and the 𝔼 ∘ 𝔾 ∘ 𝕂 split assumes an expected-utility kernel. Υ is the unique homomorphism out of the term algebra — initial-algebra semantics (ADJ 1977).</div>
+③ The functor $\mathbb{R}^{(-)}$ sends each first-order denotation to its operator box, reversing the direction of $g$. The reversal is a categorical reading of backward induction. ④ Composition yields $\Upsilon(\texttt{op bellman}) = \mathbb{T} : \mathbb{R}^X \to \mathbb{R}^X$, realizing the declared signature, with the sort $\texttt{Val}$ interpreted as $\mathbb{R}^X$. The result is the higher-order object that was never parsed. The boxes apply the reward before the expectation; this order is valid because the aggregator $w \mapsto u(c) + \beta w$ is affine in $w$ and the shock distribution has total mass one, so the constant $u(c)$ passes through $\mathbb{E}_{\xi'}$.
+
+</div>
+
+<div class="footnote">The attainment, boundedness, and closure assumptions stated on the slide "First-order syntax for the Bellman operator" apply to the composite as well.</div>
 
 ---
 
-<div class="kicker p3">Introduction &middot; sequence</div>
+<div class="kicker p3">Closing &middot; the session sequence</div>
 
 ## Topics
 
@@ -921,3 +1133,61 @@ $$v(m) \;=\; \max_{c \,\in\, \Gamma(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{
 8. Applications
    - dynamic programming, MDPs, and reinforcement learning
    - precise model descriptions for AI
+
+---
+
+<div class="kicker p3">Closing &middot; resources</div>
+
+## Further examples
+
+- The [Category Theory for AGI, Spring 2026 course page](https://people.cs.umass.edu/~mahadeva/categorical-agi.html) is Sridhar Mahadevan's seminar at the University of Massachusetts Amherst.
+- [Lecture 2: Functors](https://people.cs.umass.edu/~mahadeva/papers/lecture2.pdf) contains the example in which the objects are Markov decision processes, the arrows are MDP homomorphisms, and reinforcement-learning algorithms are presented as functors to value functions.
+- [Categories for AGI](https://people.cs.umass.edu/~mahadeva/papers/catagi.pdf) is a longer treatment of the MDP and reinforcement-learning example.
+- [Universal Decisions with Kan Extensions](https://people.cs.umass.edu/~mahadeva/papers/udm.pdf) is a more advanced decision-theory example.
+
+---
+
+<div class="kicker p3">Closing &middot; references</div>
+
+## References
+
+- Backus, John (1978). "Can Programming Be Liberated from the von Neumann Style? A Functional Style and Its Algebra of Programs." ACM Turing Award lecture. *Communications of the ACM* 21(8), 613–641.
+- Baez, John (2006). "Quantum Quandaries: A Category-Theoretic Perspective." Cited as the source of the epigraph to Riehl §1.3.
+- DisCoPy project. "Why?" [discopy.org](https://discopy.org/), accessed 7 August 2026.
+- Eilenberg, Samuel, and Saunders Mac Lane (1942). "Natural isomorphisms in group theory." *Proceedings of the National Academy of Sciences USA* 28, 537–543.
+- Eilenberg, Samuel, and Norman Steenrod (1952). *Foundations of Algebraic Topology*. Cited as the source of the epigraph to Riehl §1.6.
+
+---
+
+<div class="kicker p3">Closing &middot; references</div>
+
+## References
+
+- Fiore, Marcelo P., Gordon D. Plotkin, and Daniele Turi (1999). "Abstract Syntax and Variable Binding." *Proceedings of the Fourteenth Annual IEEE Symposium on Logic in Computer Science*, 193–202. DOI 10.1109/LICS.1999.782615.
+- Goguen, J. A., J. W. Thatcher, E. G. Wagner, and J. B. Wright (1977). "Initial Algebra Semantics and Continuous Algebras." *Journal of the ACM* 24(1), 68–95.
+- Ingerman, Peter Zilahy (1967). "'Pāṇini-Backus Form' Suggested." *Communications of the ACM* 10(3), 137. DOI 10.1145/363162.363165.
+- Jacobs, Bart (1999). *Categorical Logic and Type Theory*. Studies in Logic and the Foundations of Mathematics 141. Amsterdam: Elsevier (North-Holland). ISBN 0-444-50170-3.
+- Lamiaux, Thomas, and Benedikt Ahrens (2024). "An Introduction to Different Approaches to Initial Semantics." arXiv:2401.09366 [cs.LO].
+
+---
+
+<div class="kicker p3">Closing &middot; references</div>
+
+## References
+
+- Mahadevan, Sridhar. *Category Theory for AGI*, Spring 2026 course page, University of Massachusetts Amherst. [people.cs.umass.edu/~mahadeva/categorical-agi.html](https://people.cs.umass.edu/~mahadeva/categorical-agi.html), accessed 7 August 2026.
+- Mahadevan, Sridhar. "Lecture 2: Functors." [people.cs.umass.edu/~mahadeva/papers/lecture2.pdf](https://people.cs.umass.edu/~mahadeva/papers/lecture2.pdf), accessed 7 August 2026.
+- Mahadevan, Sridhar. *Categories for AGI*. [people.cs.umass.edu/~mahadeva/papers/catagi.pdf](https://people.cs.umass.edu/~mahadeva/papers/catagi.pdf), accessed 7 August 2026.
+- Mahadevan, Sridhar. *Universal Decisions with Kan Extensions*. [people.cs.umass.edu/~mahadeva/papers/udm.pdf](https://people.cs.umass.edu/~mahadeva/papers/udm.pdf), accessed 7 August 2026.
+- Oliveira, Bruno C. d. S., and Andres Löh (2013). "Abstract Syntax Graphs for Domain Specific Languages." *Proceedings of PEPM '13*, 87–96. DOI 10.1145/2426890.2426909.
+
+---
+
+<div class="kicker p3">Closing &middot; references</div>
+
+## References
+
+- Penn, Gerald, and Paul Kiparsky (2012). "On Pāṇini and the Generative Capacity of Contextualized Replacement Systems." *Proceedings of COLING 2012: Posters*, 943–950, Mumbai. [aclanthology.org/C12-2092](https://aclanthology.org/C12-2092/).
+- Pfenning, Frank, and Conal Elliott (1988). "Higher-Order Abstract Syntax." *Proceedings of PLDI '88*, 199–208. DOI 10.1145/53990.54010.
+- Riehl, Emily (2016). *Category Theory in Context*. Dover Publications. Author's free PDF: [emilyriehl.github.io/files/context.pdf](https://emilyriehl.github.io/files/context.pdf).
+- Stan Development Team (2025). *Stan Reference Manual*, version 2.39.
