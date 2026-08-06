@@ -1,0 +1,18 @@
+# Private vault material — never publish
+notes/
+context/
+sessions/
+CLAUDE.md
+
+# Local / editor
+.DS_Store
+.obsidian/
+*.swp
+*~
+
+# Built PDFs (HTML is produced by Pages CI)
+*.pdf
+
+# Local Marp HTML builds (CI rebuilds for Pages)
+*.html
+!site-index.html
