@@ -68,7 +68,7 @@
   <!-- the signature, beside the context -->
   <rect x="10" y="244" width="160" height="48" rx="5" fill="#f5f8fb" stroke="#1f476b" stroke-width="1.6" stroke-dasharray="5,4"/>
   <text x="90" y="260" font-size="9" fill="#1f476b" text-anchor="middle" letter-spacing="0.6">SIGNATURE</text>
-  <text x="90" y="278" font-size="12.5" fill="#212529" text-anchor="middle">op bellman : <tspan fill="#c41230">Val &#8594; Val</tspan></text>
+  <text x="90" y="278" font-size="11.5" fill="#212529" text-anchor="middle">op bellman : <tspan fill="#c41230">Val[&gt;] &#8594; Val[~]</tspan></text>
   <!-- captions -->
   <text x="190" y="312" font-size="12.5" fill="#495057" text-anchor="middle">the nodes record bare syntax;</text>
   <text x="190" y="328" font-size="12.5" fill="#495057" text-anchor="middle">typing is a judgment relative to the context</text>

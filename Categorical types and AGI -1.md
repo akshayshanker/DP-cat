@@ -331,6 +331,7 @@ style: |-
   section.title .title-eyebrow .keep-case { text-transform: none; }
   section.title .title-authors { font-size: 23px; font-weight: 400; color: #cfe0ee; margin: 0.8em 0 0 0; }
   section.title .title-authors u { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  section.title .title-date { display: block; font-size: 19px; margin-top: 0.35em; }
 ---
 
 <!-- _class: title -->
@@ -341,7 +342,7 @@ style: |-
 
 ## 1. Categories and Functors
 
-<p class="title-authors">Akshay Shanker</p>
+<p class="title-authors">Akshay Shanker<span class="title-date">7 August 2026</span></p>
 
 ---
 
@@ -741,7 +742,19 @@ Substituting the three translations into "(i) ⇔ (ii) for $f^{\mathrm{op}}$ in 
 
 ## Supremum
 
-Now read the two conditions for an object $i$ of $P^{\mathrm{op}}$. Condition (i) asks for a morphism $a \to i$ in $P^{\mathrm{op}}$ for every $a \in A$; by the translation just stated, this says $i \leq a$ for every $a \in A$, so $i$ is a lower bound of $A$ in $P$. Condition (ii) asks for a morphism $i \to u$ in $P^{\mathrm{op}}$, that is, $u \leq i$ in $P$, for every $u$ that admits a morphism $a \to u$ in $P^{\mathrm{op}}$ from every $a \in A$, that is, for every lower bound $u$ of $A$ in $P$. Together the two conditions say: $i$ is a lower bound of $A$, and every lower bound $u$ satisfies $u \leq i$. By the definition of the infimum as the greatest lower bound, $i = \inf A$. The supremum in $P^{\mathrm{op}}$ is the **infimum** in $P$, as the exercise requires.
+Now read the two conditions for an object $i$ of $P^{\mathrm{op}}$.
+
+Condition (i) asks for a morphism $a \to i$ in $P^{\mathrm{op}}$ for every $a \in A$; by the translation just stated, this says $i \leq a$ for every $a \in A$, so $i$ is a lower bound of $A$ in $P$.
+
+Condition (ii) asks for a morphism $i \to u$ in $P^{\mathrm{op}}$, that is, $u \leq i$ in $P$, for every $u$ that admits a morphism $a \to u$ in $P^{\mathrm{op}}$ from every $a \in A$, that is, for every lower bound $u$ of $A$ in $P$.
+
+Together the two conditions say: $i$ is a lower bound of $A$, and every lower bound $u$ satisfies $u \leq i$. By the definition of the infimum as the greatest lower bound, $i = \inf A$.
+
+<div class="callout">
+
+The supremum in $P^{\mathrm{op}}$ is the **infimum** in $P$, as the exercise requires.
+
+</div>
 
 ---
 
@@ -994,7 +1007,7 @@ $$v(m) \;=\; \max_{c \,\in\, \mathcal{D}(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb
 <div>
 
 - $R > 0$ is the gross return factor, and $g : X \times A \times Z \to X$, defined by $g(m, c, \xi') = R(m-c) + \xi'$, is the transition.
-- $u : A \to \mathbb{R}$ is one-period utility, $\beta \in (0,1)$ is the discount factor, and $v$ is a candidate continuation-value function in $\mathbb{R}^X$, the bounded measurable functions on $X$. $\mathbb{T}$ is the Bellman operator, which sends a candidate function $v$ to a new function $\mathbb{T}v$ in the same space $\mathbb{R}^X$.
+- $u : A \to \mathbb{R}$ is one-period utility, $\beta \in (0,1)$ is the discount factor, and $v$ is a candidate continuation-value function in $\mathbb{R}^X$, the bounded measurable functions on $X$.
 
 </div>
 </div>
@@ -1003,13 +1016,22 @@ $$v(m) \;=\; \max_{c \,\in\, \mathcal{D}(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb
 
 <div class="kicker p1">Application &middot; the buffer-stock example</div>
 
-## First-order syntax for the Bellman operator
+## Syntax for the Bellman operator
 
-$$v(m) \;=\; \max_{c \,\in\, \mathcal{D}(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{\xi'}\, v\big(R(m-c)+\xi'\big) \Big\} \qquad\text{i.e.}\qquad v = \mathbb{T}\,v$$
 
-Three assumptions support the display. For each $m \in X$ the feasible set $\mathcal{D}(m)$ is nonempty and compact and the objective $c \mapsto u(c) + \beta\, \mathbb{E}_{\xi'}\, v(R(m-c)+\xi')$ is continuous, so the maximum is attained. Because $\xi'$ has a probability distribution on $Z$ and $v$ is bounded and measurable, the expectation is finite. Because $R(m-c)+\xi' \in X$ for every $m \in X$, every $c \in \mathcal{D}(m)$, and every realization of $\xi'$, the transition returns to the state space.
+Formally we will say something like "$v\in \mathcal{B}_{\varphi}(X)$, the space of bounded measurable functions on $X$ for some $\varphi$" and let $\mathbb{T}$ be defined by the evaluation:
 
-The display quantifies over a function, since $v$ ranges over $\mathbb{R}^X$ and $\mathbb{T}$ maps functions to functions. Call a map **higher-order** when it takes a function as an input or returns one as an output, and call syntax **first-order** when functions are not themselves inputs or outputs of the parsed expressions.
+$$v(m) \;=\; \max_{c \,\in\, \mathcal{D}(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{\xi'}\, v\big(R(m-c)+\xi'\big) \Big\} \qquad\forall m \in X$$
+
+<div class="sp-s"></div>
+
+... how do I explain this to an AI such that it recognizes it deterministically? (verification)
+
+<br>
+<br>
+
+We want a symbolic representation of the Bellman operator. 
+
 
 ---
 
@@ -1017,7 +1039,12 @@ The display quantifies over a function, since $v$ ranges over $\mathbb{R}^X$ and
 
 ## First-order syntax for the Bellman operator
 
-A parser produces an **abstract syntax tree** (AST): one syntax tree built from the grammar's constructors. The collection of such trees, with those constructor operations, forms the **term algebra** of the grammar's signature (Goguen–Thatcher–Wagner–Wright 1977). **Elaboration** is the construction of the typed semantic object denoted by parsed syntax.
+Call a map **higher-order** when it takes a function as an input or returns one as an output, and call syntax **first-order** when functions are not themselves inputs or outputs of the parsed expressions.
+
+A parser produces an **abstract syntax tree** (AST): one syntax tree built from the grammar's constructors. 
+
+- an AST *cannot* represent bound variables
+- higher order requires some context
 
 <div class="sp-s"></div>
 
@@ -1035,10 +1062,61 @@ How can first-order typed syntax elaborate the transition and payoff expressions
 
 ## An AST cannot represent bound variables
 
-<div class="center">
+<style scoped>
+.binding-layout {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 1.4em;
+  align-items: center;
+  margin-top: 0.15em;
+}
+.binding-source-label {
+  margin: 0 0 0.4em 0.2em;
+  color: var(--ark-grey);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.perch-legend {
+  margin: -0.1em 0 0.55em 0.2em;
+  color: var(--ark-grey);
+  font-size: 15px;
+}
+.perch-legend code { font-size: 15px; }
+.bellman-source {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.binding-diagram { transform: translateX(14px); }
+.bind-c { color: var(--ark-red); font-weight: 500; }
+.bind-xi { color: #0b7fae; font-weight: 500; }
+.free-m { color: #2f8f3d; font-weight: 500; }
+.type-expr { color: var(--ark-red); font-weight: 500; }
+</style>
 
-![w:760](assets/binding-graph.svg)
+<div class="binding-layout">
+<div>
 
+<div class="binding-source-label">Normalized symbolic source</div>
+<div class="perch-legend"><code>Val[>]</code> is continuation; <code>Val[~]</code> is decision.</div>
+
+<pre class="bellman-source"><code>op bellman(v : <span class="type-expr">Val[>]</span>) : <span class="type-expr">Val[~]</span> {
+  v(<span class="free-m">m</span>) =
+    <span class="bind-c">max</span>_{<span class="bind-c">c</span> ∈ D(<span class="free-m">m</span>)} {
+      u(<span class="bind-c">c</span>) + β <span class="bind-xi">E</span>_{<span class="bind-xi">ξ′</span>}[
+        v(g(<span class="free-m">m</span>, <span class="bind-c">c</span>, <span class="bind-xi">ξ′</span>))
+      ]
+    }
+}</code></pre>
+
+</div>
+<div class="binding-diagram">
+
+![w:580](assets/binding-graph.svg)
+
+</div>
 </div>
 
 <div class="footnote">Higher-order abstract syntax: Pfenning–Elliott (1988); abstract syntax graphs for DSLs: Oliveira–Löh (2013); initial semantics with binding: Fiore–Plotkin–Turi (1999), Lamiaux–Ahrens (2024).</div>
@@ -1049,15 +1127,10 @@ How can first-order typed syntax elaborate the transition and payoff expressions
 
 ## An AST cannot represent bound variables
 
-<div style="font-size: 20px; line-height: 1.5; color: var(--ark-grey);">
-
-Bound occurrences are coloured with their binders ($c$ with $\max_c$, $\xi'$ with $\mathbb{E}_{\xi'}$). The variable $m$ is free and is typed by the context, which the next slide draws in full.
-
-</div>
-
-The tree fails in two ways. First, the relation between a binder and its occurrences is not an edge of the tree. The association runs only through the repeated letter $c$, and once the relation is drawn as edges the structure is a graph. Second, the distinct trees $\max_c u(c)$ and $\max_d u(d)$ denote the same function, so equality of trees is strictly finer than equality of meaning. Higher-order abstract syntax is one representation that repairs both failures.
-
-The abstract syntax tree and the typing context remain necessary. Concrete context-free syntax fixes only which strings parse, so parenthesisation and precedence are artifacts and one meaning has many strings. The tree removes those artifacts. The typing context supplies what no context-free rule expresses. Binding, as the figure shows, needs more still.
+- **Bound occurrences** share a colour with their binders: $c$ with $\max_c$ and $\xi'$ with $\mathbb{E}_{\xi'}$. The typing context assigns a type to the free variable $m$.
+- **The abstract syntax tree** contains no edge from a binder to its occurrences. Repeated names encode that association; drawing it explicitly turns the tree into a graph.
+- **Raw tree equality** distinguishes $\max_c u(c)$ from $\max_d u(d)$, although the two terms denote the same function. Higher-order abstract syntax represents binding so that a change of bound name is irrelevant.
+- **Concrete syntax, the tree, and the typing context** perform distinct tasks. Concrete context-free syntax determines which strings parse, the tree removes parenthesisation and precedence artifacts, and the typing context assigns types to free variables; none of these structures alone records binding.
 
 <div class="footnote">In practice, too, well-formedness is stated outside the grammar: Stan Development Team (2025), <em>Stan Reference Manual</em>, version 2.39, ch. 11, p. 152, gives BNF "plus extra-grammatical constraints on function typing".</div>
 
@@ -1068,7 +1141,9 @@ The abstract syntax tree and the typing context remain necessary. Concrete conte
 ## Elaboration of the Bellman operator
 
 <style scoped>
-.callout p { margin: 0; }
+.callout ul { margin: 0; padding-left: 1.15em; }
+.callout li { margin: 0 0 0.7em 0; }
+.callout li:last-child { margin-bottom: 0; }
 </style>
 
 <div class="cols" style="grid-template-columns: 500px 1fr; gap: 1.4em;">
@@ -1081,7 +1156,9 @@ The abstract syntax tree and the typing context remain necessary. Concrete conte
 
 <div class="callout sm" style="margin-top: 0.2em;">
 
-① The parser produces the $\texttt{op bellman}$ node, which lists first-order equations. The context drawn beside the tree types the leaves, and the signature gives the operator symbol the type $\texttt{op bellman} : \texttt{Val} \to \texttt{Val}$, where $\texttt{Val}$ is the signature's sort for value functions. ② The denotation map $\llbracket\cdot\rrbracket$ sends each equation to its first-order denotation: the arrow $g$, the reward $u$, and the feasibility correspondence $m \mapsto \mathcal{D}(m)$. The syntax trees together form the term algebra of the first-order signature, and $\llbracket\cdot\rrbracket$ is the unique homomorphism from that term algebra into the first-order semantic algebra, whose carriers are the declared spaces ($X$, $A$, $Z$, $\mathbb{R}$, their products, and the subsets of $A$, in which the feasibility correspondence takes its values) and whose operations are the declared maps (Goguen–Thatcher–Wagner–Wright 1977).
+- **The parser** produces an $\texttt{op bellman}$ node containing the first-order equations. The context types the leaves, and the node has signature <code>Val[>] → Val[~]</code>.
+- **The denotation map** $\llbracket\cdot\rrbracket$ sends the parsed transition, reward, and feasibility expressions to $g$, $u$, and $m \mapsto \mathcal{D}(m)$.
+- **The term-algebra property** determines this map uniquely: $\llbracket\cdot\rrbracket$ is the unique homomorphism from syntax trees to the algebra of declared spaces and maps.
 
 </div>
 
@@ -1094,26 +1171,32 @@ The abstract syntax tree and the typing context remain necessary. Concrete conte
 
 <div class="kicker p2">Application &middot; elaboration</div>
 
-## Elaboration of the Bellman operator
+## The value-function functor
 
 <style scoped>
-.callout.sm { line-height: 1.42; }
-.callout p { margin: 0; }
+.functor-definition {
+  margin: 0.15em 0 0.3em 0;
+  padding: 0.55em 0.9em;
+  font-size: 18px;
+  line-height: 1.4;
+}
+.functor-definition p { margin: 0; }
+.lift-points {
+  margin: 0.2em 0 0 0;
+  padding-left: 1.15em;
+  font-size: 18px;
+  line-height: 1.4;
+}
+.lift-points li { margin: 0 0 0.45em 0; }
 </style>
 
 <div class="center">
 
-![w:780](assets/tree-to-graph-pipeline.svg)
+![w:760](assets/tree-to-graph-pipeline.svg)
 
 </div>
 
-<div class="callout sm">
-
-③ The functor $\mathbb{R}^{(-)}$ sends each first-order denotation to its operator box, reversing the direction of $g$. The reversal is a categorical reading of backward induction. ④ Composition yields $\Upsilon(\texttt{op bellman}) = \mathbb{T} : \mathbb{R}^X \to \mathbb{R}^X$, realizing the declared signature, with the sort $\texttt{Val}$ interpreted as $\mathbb{R}^X$. The result is the higher-order object that was never parsed. The boxes apply the reward before the expectation; this order is valid because the aggregator $w \mapsto u(c) + \beta w$ is affine in $w$ and the shock distribution has total mass one, so the constant $u(c)$ passes through $\mathbb{E}_{\xi'}$.
-
-</div>
-
-<div class="footnote">The attainment, boundedness, and closure assumptions stated on the slide "First-order syntax for the Bellman operator" apply to the composite as well.</div>
+<div class="footnote">For well-definedness, $g$ must be measurable. Expectation and maximization must preserve the chosen function space, and the displayed maximum must be attained; these conditions are not proved here.</div>
 
 ---
 

@@ -4,7 +4,7 @@
   <defs>
     <marker id="ahp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#676470"/></marker>
   </defs>
-  <text x="300" y="16" font-size="14" fill="#1f476b" text-anchor="middle">&#933;(op bellman) = &#120139; = max<tspan dy="3" font-size="10.5">c</tspan><tspan dy="-3"> &#8728; &#120124;</tspan><tspan dy="3" font-size="10.5">&#958;&#8242;</tspan><tspan dy="-3"> &#8728; &#120126; &#8728; &#120130;</tspan><tspan dy="3" font-size="10.5">g</tspan></text>
+  <text x="300" y="17" font-size="17.5" fill="#1f476b" text-anchor="middle"><tspan font-family="STIXGeneral, STIX Two Math, Cambria Math, Times New Roman, serif">&#978;</tspan>(op bellman) = &#120139; = max<tspan dy="3.5" font-size="13">c</tspan><tspan dy="-3.5"> &#8728; &#120124;</tspan><tspan dy="3.5" font-size="13">&#958;&#8242;</tspan><tspan dy="-3.5"> &#8728; &#120126; &#8728; &#120130;</tspan><tspan dy="3.5" font-size="13">g</tspan></text>
   <line x1="20" y1="28" x2="580" y2="28" stroke="#ced4da" stroke-width="1.1"/>
   <line x1="20" y1="28" x2="20" y2="36" stroke="#ced4da" stroke-width="1.1"/>
   <line x1="580" y1="28" x2="580" y2="36" stroke="#ced4da" stroke-width="1.1"/>
@@ -13,7 +13,7 @@
   <text x="28" y="122" font-size="12.5" fill="#676470" text-anchor="middle">v : <tspan fill="#c41230">&#8477;</tspan><tspan fill="#c41230" dy="-4" font-size="9.5">X</tspan></text>
   <rect x="50" y="52" width="98" height="48" rx="6" fill="#fff" stroke="#39b54a" stroke-width="2.2"/>
   <text x="99" y="74" font-size="16" fill="#212529" text-anchor="middle">&#120130;<tspan dy="4" font-size="11">g</tspan></text>
-  <text x="99" y="93" font-size="12.5" fill="#676470" text-anchor="middle">pull back via g</text>
+  <text x="99" y="93" font-size="12.5" fill="#676470" text-anchor="middle">precompose</text>
   <line x1="148" y1="76" x2="179" y2="76" stroke="#676470" stroke-width="1.6" marker-end="url(#ahp)"/>
   <text x="163" y="122" font-size="12.5" fill="#c41230" text-anchor="middle">&#8477;<tspan dy="-4" font-size="9.5">X&#215;A&#215;Z</tspan></text>
   <rect x="184" y="52" width="108" height="48" rx="6" fill="#fff" stroke="#f05a28" stroke-width="2.2"/>
@@ -32,7 +32,7 @@
   <line x1="566" y1="76" x2="592" y2="76" stroke="#676470" stroke-width="1.6" marker-end="url(#ahp)"/>
   <text x="568" y="122" font-size="12.5" fill="#676470" text-anchor="middle">&#120139;v : <tspan fill="#c41230">&#8477;</tspan><tspan fill="#c41230" dy="-4" font-size="9.5">X</tspan></text>
   <text x="300" y="148" font-size="12.5" fill="#495057" text-anchor="middle">the boxes are operators; the wire labels are the types of their inputs and outputs</text>
-  <!-- the equation node's denotation, lifted and reversed into the pipeline -->
-  <text x="300" y="172" font-size="12.5" fill="#ed217c" text-anchor="middle">&#10214; = &#10215; = g : <tspan fill="#c41230">X &#215; A &#215; Z &#8594; X</tspan> &#8212; lifted, reversed, to &#120130;<tspan dy="3" font-size="9.5">g</tspan></text>
-  <text x="300" y="190" font-size="12.5" fill="#ed217c" text-anchor="middle">likewise u &#8594; &#120126; and &#119967;(&#183;) &#8594; max<tspan dy="3" font-size="9.5">c</tspan></text>
+  <!-- precomposition sends the transition to the first operator box -->
+  <text x="300" y="172" font-size="12.5" fill="#ed217c" text-anchor="middle">g maps to &#120130;<tspan dy="3" font-size="9.5">g</tspan><tspan dy="-3"> by precomposition</tspan></text>
+  <text x="300" y="190" font-size="12.5" fill="#ed217c" text-anchor="middle">(&#120130;<tspan dy="3" font-size="9.5">g</tspan><tspan dy="-3">v)(m,c,&#958;&#8242;) = v(g(m,c,&#958;&#8242;))</tspan></text>
 </svg>

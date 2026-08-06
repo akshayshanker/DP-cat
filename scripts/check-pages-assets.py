@@ -60,7 +60,15 @@ def main() -> int:
         print(f"index.html: missing link to {pdf_link}")
         return 1
 
-    print("All local image references and the linked PDF resolve.")
+    obsolete_deck = "session-01-motivation"
+    if (site / obsolete_deck).exists():
+        print(f"obsolete deck remains in published output: {obsolete_deck}")
+        return 1
+    if any(obsolete_deck in link for link in index_parser.links):
+        print(f"index.html: obsolete deck remains linked: {obsolete_deck}")
+        return 1
+
+    print("All local image references and the single linked PDF resolve.")
     return 0
 
 
