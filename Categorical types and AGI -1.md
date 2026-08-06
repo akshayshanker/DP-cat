@@ -1156,16 +1156,16 @@ How can first-order typed syntax elaborate the transition and payoff expressions
 
 <div class="callout sm" style="margin-top: 0.2em;">
 
-- **The parser** produces an $\texttt{op bellman}$ node containing the first-order equations. The context types the leaves, and the node has signature <code>Val[>] → Val[~]</code>.
-- **The denotation map** $\llbracket\cdot\rrbracket$ sends the parsed transition, reward, and feasibility expressions to $g$, $u$, and $m \mapsto \mathcal{D}(m)$.
-- **The term-algebra property** determines this map uniquely: $\llbracket\cdot\rrbracket$ is the unique homomorphism from syntax trees to the algebra of declared spaces and maps.
+- **Contexts are objects.** The typed syntax generates the classifying category $\operatorname{Cl}(\Sigma)$: its objects are the contexts — finite lists of typed variables such as $(m : X,\, c : A,\, \xi' : Z)$ — and its morphisms are terms in context, with substitution as composition.
+- **Judgments are arrows.** The judgment beneath the tree, $(m : X,\, c : A,\, \xi' : Z) \vdash R(m-c)+\xi' : X$, exhibits the parsed transition expression as an arrow $(m : X,\, c : A,\, \xi' : Z) \to X$ of $\operatorname{Cl}(\Sigma)$.
+- **A model is a functor.** A model is a structure-preserving functor from $\operatorname{Cl}(\Sigma)$ to the semantic category: it sends the types to the declared spaces and the arrow above to the transition $g : X \times A \times Z \to X$. The next slide applies $\Upsilon$ to the operator declaration.
 
 </div>
 
 </div>
 </div>
 
-<div class="footnote">Term algebras and initial-algebra semantics: Goguen–Thatcher–Wagner–Wright (1977).</div>
+<div class="footnote">Jacobs (1999): contexts and terms form the classifying category (Definition 2.1.1, p. 124); models are structure-preserving functors from it (Theorem 2.2.1, p. 126; Definition 2.2.2, p. 128).</div>
 
 ---
 
@@ -1196,7 +1196,7 @@ How can first-order typed syntax elaborate the transition and payoff expressions
 
 </div>
 
-<div class="footnote">For well-definedness, $g$ must be measurable. Expectation and maximization must preserve the chosen function space, and the displayed maximum must be attained; these conditions are not proved here.</div>
+<div class="footnote">For well-definedness, <em>g</em> must be measurable. Expectation and maximization must preserve the chosen function space, and the displayed maximum must be attained; these conditions are not proved here.</div>
 
 ---
 
