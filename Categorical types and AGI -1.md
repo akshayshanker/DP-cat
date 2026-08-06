@@ -318,6 +318,12 @@ style: |-
   section.title .title-authors u { text-decoration-thickness: 1px; text-underline-offset: 3px; }
 ---
 
+<div class="kicker p1">Part 1</div>
+
+# Introduction
+
+---
+
 <div class="kicker p1">Introduction &middot; purpose and method</div>
 
 ## Objective
@@ -330,7 +336,7 @@ Develop enough working *basic* fluency in **category theory** and **type theory*
 - formal representation of models on the computer; and
 - AI systems that read, compare, transform, or *verify* those descriptions.
 
-<div class="callout sm"><strong>Overarching question.</strong> Does categorical type theory allow us to write structures that are too <strong>complicated</strong>, or that remain <strong>implicit</strong>, in the notation of fields like analysis, calculus, and optimisation?</div>
+<div class="callout sm"><strong>Overarching question.</strong> Does categorical type theory allow us to formalize structures that are too <strong>complicated</strong>, or that remain <strong>implicit</strong>, in the notation of fields like analysis, calculus, and optimisation?</div>
 
 ---
 
@@ -349,14 +355,12 @@ Develop enough working *basic* fluency in **category theory** and **type theory*
 
 ## Type theory: well-formed syntax
 
-- A **term** is a syntactic expression built from typed variables, constants, and operation symbols by finitely many applications of the formation rules — for example $u(c)$ or $R(m-c)+\xi'$.
-- Types classify terms and rule out invalid combinations among them.
-- A judgment $\Gamma \vdash t : A$ says that the term $t$ has type $A$ in context $\Gamma$.
-- Contexts record the typed inputs available; substitution describes how one well-typed expression is inserted into another.
+- Formal system to classify objects by their types.
+- Types classify terms (expressions) and rule out invalid compositions among them.
 
-<div class="callout sm"><strong>Categorical type theory.</strong> A type theory generates a syntactic or classifying category. 
-A model is a structure-preserving functor from that category into a semantic category.
- Type theory specifies what may be composed; category theory records how it composes and how it is interpreted.</div>
+
+<div class="callout sm"><strong>Categorical type theory.</strong> A type theory generates a classifying category (what can be composed). 
+A model is a structure-preserving functor from that category into a **semantic** category.</div>
 
 <div class="footnote">Jacobs (1999), pp. 5–7 and Chapter 2: typed contexts and terms generate a category; models are structure-preserving functors from its classifying category.</div>
 
@@ -364,7 +368,7 @@ A model is a structure-preserving functor from that category into a semantic cat
 
 <div class="kicker p3">Introduction &middot; Motivation </div>
 
-## Motivating application: symbolic DP
+## Motivating research: symbolic DP
 
 Formal symbolic system to capture ADPs and RDPs
 - programmable 'syntax'
@@ -381,6 +385,22 @@ Closely related: functional programming (Backus, 1978) system for DP
   <div class="arrow">→</div>
   <div class="node"><span class="role">interpret</span>semantics: mathematics or code</div>
 </div>
+
+---
+
+<div class="kicker p3">Introduction &middot; contents</div>
+
+## Contents
+
+1. **Introduction** — the objective, category theory and type theory, and the symbolic-DP motivation.
+2. **Categories and functors** — Riehl §§1.1–1.3 and §1.6: categories and examples, isomorphism, diagrams and a diagram chase, duality with Exercise 1.2.vii, monomorphisms and epimorphisms, functors, and the first lemma.
+3. **Application teaser: $\mathbb{T}v = v$** — typed dynamic programming and the elaboration of the Bellman operator.
+
+---
+
+<div class="kicker p2">Part 2</div>
+
+# Categories and functors
 
 ---
 
@@ -763,9 +783,44 @@ the first equality by the composition axiom of Definition 1.3.1, the second beca
 
 ---
 
+<div class="kicker p3">Part 3</div>
+
+# Application teaser: $\mathbb{T}v = v$
+
+---
+
+<div class="kicker p1">Interim &middot; 2,500 year problem</div>
+
+## Context free grammar
+
+<div class="cols">
+<div class="center">
+
+![h:195](assets/panini-stamp-2004.jpg)
+
+<div class="small" style="margin-top:8px;"><strong>Pāṇini</strong>, c. 4th century BCE<br/><span class="cmt">the <em>Aṣṭādhyāyī</em></span></div>
+
+</div>
+<div class="center">
+
+![h:195](assets/backus.jpg)
+
+<div class="small" style="margin-top:8px;"><strong>John Backus</strong>, 1924–2007<br/><span class="cmt">made Fortran; father of functional programming</span></div>
+
+</div>
+</div>
+
+<div class="sp-s"></div>
+
+<div class="callout sm">A context-free grammar is a finite set of rewrite rules applied *recursively* to generate every well-formed expression of a language, each rule applying independently of surrounding context. Programming languages are parsed using a grammar (with some context) and then interpreted and compiled.</div>
+
+<div class="footnote">Ingerman (<em>CACM</em> 10(3), 1967) proposed "Pāṇini–Backus form" as the fairer name &middot; Penn &amp; Kiparsky, "On Pāṇini and the Generative Capacity of Contextualized Replacement Systems," <em>COLING 2012</em>, 943–950 — <a href="https://aclanthology.org/C12-2092/">aclanthology.org/C12-2092</a> &middot; images: Wikimedia Commons</div>
+
+---
+
 <div class="kicker p1">Application &middot; dynamic programming examples</div>
 
-## The same bridge in dynamic programming
+## Typed formulations of dynamic programming
 
 **Deterministic dynamic programming.** Typing separates the declared data $g : X \times A \to X$ and $r : X \times A \to \mathbb{R}$ from what they induce: precomposition lifts the transition to $g^{*} : \mathbb{R}^{X} \to \mathbb{R}^{X \times A}$, and reward, discounting, and optimisation compose into the Bellman operator $\mathbb{T} = \max_a \circ\, (r + \beta\,\cdot) \circ g^{*}$.
 
@@ -773,9 +828,9 @@ the first equality by the composition axiom of Definition 1.3.1, the second beca
 
 **Abstract dynamic programming.** Retain an abstract value object $V$ with admissible transition, aggregation, and optimisation morphisms, and ask which composition pattern is preserved across deterministic, stochastic, approximate, and executable interpretations.
 
-<div class="callout sm"><strong>The proposed gain.</strong> Types prevent domain–codomain errors; categories expose the common composition; functors relate one typed specification to its mathematical, numerical, and executable models.</div>
+**Remark.** Types prevent domain–codomain errors; the categorical formulation makes the composition pattern common to the three cases explicit; functors relate one typed specification to its mathematical, numerical, and executable models.
 
-<div class="footnote">Measurable spaces and stochastic kernels form a category with Chapman–Kolmogorov composition and Dirac identities. The abstract-DP reading is a proposed application to be evaluated, not a claim that one categorical formalism already covers every case.</div>
+<div class="footnote">Measurable spaces and stochastic kernels form a category with Chapman–Kolmogorov composition and Dirac identities. The abstract-DP reading is a proposed application to be evaluated, not a claim that one categorical formalism already covers every case. More examples (Mahadevan): i) <a href="https://people.cs.umass.edu/~mahadeva/papers/catagi.pdf">Categories for AGI, the book</a> · ii) <a href="https://people.cs.umass.edu/~mahadeva/papers/udm.pdf">Universal Decisions with Kan Extensions</a> · iii) <a href="https://people.cs.umass.edu/~mahadeva/papers/url.pdf">Universal Reinforcement Learning</a>.</div>
 
 ---
 
@@ -784,24 +839,22 @@ the first equality by the composition axiom of Definition 1.3.1, the second beca
 ## The model is higher-order; a parse tree is first-order
 
 <style scoped>
-.reasons { gap: 14px; margin: 0.7em 0 0.3em; }
-.reason { padding: 0.55em 1em 0.65em; }
-.reason .rt { font-size: 18px; }
-.reason .rb { font-size: 15px; line-height: 1.38; }
-.katex-display { margin: 0.4em 0 !important; }
 p { margin: 0 0 0.6em 0; }
+ol { font-size: 17.5px; }
+ol li { margin: 0 0 0.4em 0; }
+.katex-display { margin: 0.4em 0 !important; }
 </style>
 
 $$v(m) \;=\; \max_{c \,\in\, \Gamma(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{\xi'}\, v\big(R(m-c)+\xi'\big) \Big\} \qquad\text{i.e.}\qquad v = \mathbb{T}\,v$$
 
-<span class="small">The equation quantifies over a **function**: $v$ ranges over $\mathbb{R}^X$, and $\mathbb{T}$ maps functions to functions. A parser produces only first-order expressions between variables. There are three reasons why no node of the tree can be $\mathbb{T}$, and one repair:</span>
+<span class="small">The equation quantifies over a **function**: $v$ ranges over $\mathbb{R}^X$, and $\mathbb{T}$ maps functions to functions. A parser produces only first-order expressions between variables. Four problems follow, and one solution.</span>
 
-<div class="reasons">
-<div class="reason r-red"><div class="rn">1</div><div class="rt">No sort for function spaces</div><div class="rb">An AST is the term algebra of a <strong>first-order</strong> signature (ADJ 1977); its sorts are the grammar's expression categories — scalars here. 𝕋 : ℝ^X → ℝ^X is a map between function spaces, for which the grammar has no sort.</div></div>
-<div class="reason r-orng"><div class="rn">2</div><div class="rt">Typing and binding are not part of the tree</div><div class="rb">Well-typedness is a judgment made relative to a list of typed variables that the tree does not include, and no context-free rule expresses it; max_c and 𝔼_ξ′ bind variables whose scope the tree structure does not determine.</div></div>
-<div class="reason r-cyan"><div class="rn">3</div><div class="rt">𝕋 is named, never parsed</div><div class="rb">A declaration node — op bellman — can list the equations, but that node is first-order syntax. The map between function spaces is the block's <strong>denotation</strong>, produced by elaboration under a typed semantic context rather than by parsing.</div></div>
-<div class="reason r-green"><div class="rn">4</div><div class="rt">The repair</div><div class="rb">Parse only the <strong>first-order data</strong> (g, u, β) with their types; <strong>elaboration</strong> by Υ then produces the higher-order operator graph, as the next slides show.</div></div>
-</div>
+1. An AST is the term algebra of a first-order signature (ADJ 1977); its sorts are the grammar's expression categories, and no sort is a function space, so the grammar cannot type 𝕋 : ℝ^X → ℝ^X.
+2. Well-typedness is a judgment relative to a list of typed variables that the tree does not include, and no context-free rule expresses it.
+3. max_c and 𝔼_ξ′ bind variables; the tree structure does not determine their scope.
+4. The operator is never parsed: an op bellman node lists first-order equations, and the map between function spaces is the block's denotation.
+
+**Solution.** Parse only the first-order data (g, u, β) with their types; elaboration by Υ then produces the higher-order operator graph, as the next slides show.
 
 <div class="footnote">The CEF interoperability talk v2.4 states the point: a PBF/BNF tree has nodes for "expressions between variables" but "no node for an operator like 𝕋" — it must be "elaborated under a typed semantic context, not parsed"; the economist writes only first-order equations, and the lift induces the function-analytic objects. AST = initial algebra of a first-order signature: Goguen–Thatcher–Wagner–Wright (1977). In practice as well, well-formedness is stated outside the grammar: Stan's manual gives BNF "plus extra-grammatical constraints on function typing" (lit-kb chunk). Binding beyond first-order trees: higher-order abstract syntax (Pfenning–Elliott 1988; Oliveira–Löh 2012 for DSLs); initial semantics with binding: Fiore–Plotkin–Turi (1999), Lamiaux–Ahrens (2024).</div>
 
@@ -811,13 +864,24 @@ $$v(m) \;=\; \max_{c \,\in\, \Gamma(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{
 
 ## An AST cannot represent bound variables
 
-<div class="center">
+<style scoped>
+.cols p { font-size: 16.5px; margin: 0 0 0.6em 0; }
+</style>
 
-![w:540](assets/binding-graph.svg)
+<div class="cols">
+<div>
+
+![w:460](assets/binding-graph.svg)
 
 </div>
+<div>
 
-<div class="callout sm"><strong>Two failures.</strong> The relation between a binder and its occurrences is not an edge of the tree: the association runs only through the repeated letter c, and once it is drawn as edges the structure is a graph. Distinct trees, max_c u(c) and max_d u(d), denote the same function, so equality of trees is strictly finer than equality of meaning. A first-order tree therefore neither records binding nor respects α-equivalence; higher-order abstract syntax is the representation that does both.</div>
+**Two failures.** The relation between a binder and its occurrences is not an edge of the tree — the association runs only through the repeated letter c — and once it is drawn as edges the structure is a graph. And distinct trees, max_c u(c) and max_d u(d), denote the same function, so equality of trees is strictly finer than equality of meaning; higher-order abstract syntax is the representation that repairs both.
+
+**Why AST + types at all.** Concrete context-free syntax fixes only which strings parse: parenthesisation and precedence are artifacts, and one meaning has many strings. The AST removes the concrete noise; the typing context supplies what no context-free rule expresses; and binding, as the figure shows, needs more still.
+
+</div>
+</div>
 
 <div class="footnote">Bound occurrences are coloured with their binders (c with max_c, ξ′ with 𝔼_ξ′); m is free and is typed by the context, which the next slide draws in full. Higher-order abstract syntax: Pfenning–Elliott (1988); abstract syntax graphs for DSLs: Oliveira–Löh (2012); initial semantics with binding: Fiore–Plotkin–Turi (1999), Lamiaux–Ahrens (2024) — the last three indexed in lit-kb.</div>
 
@@ -828,7 +892,7 @@ $$v(m) \;=\; \max_{c \,\in\, \Gamma(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{
 ## From the typed AST to the operator graph
 
 <style scoped>
-.callout.sm { font-size: 15px; line-height: 1.35; }
+.callout.sm { font-size: 14px; line-height: 1.32; }
 </style>
 
 <div class="center">
@@ -837,25 +901,9 @@ $$v(m) \;=\; \max_{c \,\in\, \Gamma(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{
 
 </div>
 
-<div class="callout sm"><strong>Step by step.</strong> ① Parse the declaration: an op bellman node lists first-order equations, and the context — drawn beside the tree — assigns types to its leaves. ② ⟦·⟧ sends each equation to its first-order denotation, the arrow g, the reward u, and the feasibility correspondence m ↦ Γ(m); this map is the unique homomorphism out of the term algebra — the algebra whose elements are the syntax trees themselves (ADJ 1977). ③ The functor ℝ^(−) sends each denotation to its operator box, reversing the direction of g — the categorical form of backward induction. ④ Composition yields ⟦op bellman⟧ = 𝕋: the denotation of the declaration is the higher-order object that was never parsed.</div>
+<div class="callout sm"><strong>Step by step.</strong> ① Parse the declaration: an op bellman node lists first-order equations; the context — drawn beside the tree — types its leaves, and the signature types the operator symbol: op bellman : Val → Val. ② ⟦·⟧ sends each equation to its first-order denotation, the arrow g, the reward u, and the feasibility correspondence m ↦ Γ(m); this map is the unique homomorphism out of the term algebra, the algebra of the syntax trees themselves (ADJ 1977). ③ The functor ℝ^(−) sends each denotation to its operator box, reversing the direction of g — the categorical form of backward induction. ④ Composition yields ⟦op bellman⟧ = 𝕋 : ℝ^X → ℝ^X, realizing the declared signature — the higher-order object that was never parsed.</div>
 
 <div class="footnote">Buffer stock (CEF interoperability talk v2.4): 𝕋v(m) = max_c { u(c) + β 𝔼_ξ′ v(R(m−c) + ξ′) }, g(m, c, ξ′) = R(m−c) + ξ′; R enters by calibration, not through the context. Operator names follow the Bellman-calculus decomposition B_≻ = 𝔼_η ∘ 𝔾_≻ ∘ 𝕂_g≻; max = evaluate ∘ ⟨id, argmax⟩ is derived, and the 𝔼 ∘ 𝔾 ∘ 𝕂 split assumes an expected-utility kernel. Υ is the unique homomorphism out of the term algebra — initial-algebra semantics (ADJ 1977).</div>
-
----
-
-<div class="kicker p3">Application &middot; example: the Bellman operator, drawn in the category</div>
-
-## First-order in, higher-order out
-
-<div class="center">
-
-![w:980](assets/order-lift.svg)
-
-</div>
-
-<div class="callout sm"><strong>The same 𝕋, in the categorical convention.</strong> The previous slide drew operators as boxes with the value function on the wires, the convention of functional programming. Here the objects are the function spaces and the operators are the arrows. The bottom row contains the only declared map, the first-order transition g, which runs forward in time. The functor ℝ^(−) sends g to 𝕂_g, reversing its direction, and composition with 𝔾, 𝔼_ξ′, and max_c yields 𝕋 : ℝ^X → ℝ^X; every higher-order object on the slide is induced from the declared data.</div>
-
-<div class="footnote">Buffer stock as before; stationary case, so next-period and current value functions share ℝ^X. Two drawings, one composite: spaces-as-objects (this slide) and operators-as-boxes (previous slide) present the same arrow 𝕋 = max_c ∘ 𝔼_ξ′ ∘ 𝔾 ∘ 𝕂_g.</div>
 
 ---
 

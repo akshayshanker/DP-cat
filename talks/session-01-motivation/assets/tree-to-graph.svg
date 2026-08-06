@@ -69,6 +69,14 @@
   <text x="62" y="184" font-size="11.5" fill="#212529" text-anchor="middle">m : X</text>
   <text x="62" y="202" font-size="11.5" fill="#212529" text-anchor="middle">c : A</text>
   <text x="62" y="220" font-size="11.5" fill="#212529" text-anchor="middle">&#958;&#8242; : Z</text>
+  <!-- the equation node itself denotes g; lifted, reversed, into the pipeline -->
+  <path d="M 242,66 Q 360,42 466,80" fill="none" stroke="#ed217c" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#ahf)"/>
+  <text x="620" y="204" font-size="11.5" fill="#ed217c" text-anchor="middle">&#10214; = &#10215; = g : X &#215; A &#215; Z &#8594; X &#8212; lifted, reversed, to &#120130;<tspan dy="3" font-size="8.5">g</tspan></text>
+  <text x="620" y="219" font-size="11.5" fill="#ed217c" text-anchor="middle">likewise u &#8594; &#120126; and &#915;(&#183;) &#8594; max<tspan dy="3" font-size="8.5">c</tspan></text>
+  <!-- the signature, beside the context -->
+  <rect x="10" y="244" width="160" height="48" rx="5" fill="#f5f8fb" stroke="#1f476b" stroke-width="1.6" stroke-dasharray="5,4"/>
+  <text x="90" y="260" font-size="8" fill="#1f476b" text-anchor="middle" letter-spacing="0.6">SIGNATURE</text>
+  <text x="90" y="278" font-size="11" fill="#212529" text-anchor="middle">op bellman : Val &#8594; Val</text>
   <!-- captions -->
   <text x="205" y="306" font-size="12" fill="#495057" text-anchor="middle">the nodes record bare syntax; typing is a judgment relative to the context</text>
   <text x="205" y="322" font-size="11.5" fill="#2f8f3d" text-anchor="middle">(m : X, c : A, &#958;&#8242; : Z) &#8866; R(m &#8722; c) + &#958;&#8242; : X</text>
@@ -106,16 +114,5 @@
   <text x="898" y="146" font-size="11" fill="#676470" text-anchor="middle">&#120139;v : &#8477;<tspan dy="-4" font-size="8.5">X</tspan></text>
   <text x="670" y="172" font-size="11.5" fill="#495057" text-anchor="middle">the boxes are operators; the wire labels are the types of their inputs and outputs</text>
   <!-- lift arrow from g to the K_g box -->
-  <line x1="490" y1="226" x2="490" y2="132" stroke="#ed217c" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#ahf)"/>
-  <text x="685" y="204" font-size="11.5" fill="#ed217c" text-anchor="middle">elaboration sends each first-order denotation to an operator:</text>
-  <text x="685" y="219" font-size="11.5" fill="#ed217c" text-anchor="middle">g &#8594; &#120130;<tspan dy="3" font-size="8.5">g</tspan><tspan dy="-3"> (reversed), u &#8594; &#120126;, &#915;(&#183;) &#8594; max</tspan><tspan dy="3" font-size="8.5">c</tspan></text>
-  <!-- bottom: denotation of the transition -->
-  <rect x="500" y="230" width="96" height="30" rx="5" fill="#fff" stroke="#39b54a" stroke-width="2"/>
-  <text x="548" y="250" font-size="13" fill="#212529" text-anchor="middle">X &#215; A &#215; Z</text>
-  <line x1="496" y1="245" x2="480" y2="245" stroke="#676470" stroke-width="1.6" marker-end="url(#ah)"/>
-  <text x="488" y="237" font-size="12.5" fill="#39b54a" text-anchor="middle">g</text>
-  <rect x="430" y="230" width="46" height="30" rx="5" fill="#fff" stroke="#39b54a" stroke-width="2"/>
-  <text x="453" y="250" font-size="13" fill="#212529" text-anchor="middle">X</text>
-  <text x="540" y="288" font-size="12" fill="#676470" text-anchor="middle">g = &#10214;transition&#10215; &#8212; the equation's denotation,</text>
-  <text x="540" y="303" font-size="12" fill="#676470" text-anchor="middle">one first-order arrow between state spaces</text>
-</svg>
+        <!-- bottom: denotation of the transition -->
+                </svg>

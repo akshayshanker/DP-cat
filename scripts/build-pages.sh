@@ -15,6 +15,12 @@ marp talks/session-01-motivation/deck.md \
   --allow-local-files \
   --html
 
+mkdir -p docs/categorical-types-and-agi/assets
+cp -R assets/. docs/categorical-types-and-agi/assets/
+
+mkdir -p docs/session-01-motivation/assets
+cp -R talks/session-01-motivation/assets/. docs/session-01-motivation/assets/
+
 cp site-index.html docs/index.html
 touch docs/.nojekyll
 
