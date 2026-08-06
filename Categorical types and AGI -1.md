@@ -325,8 +325,6 @@ style: |-
   section.title p, section.title li { color: #cfd8e2; }
   section.title .footnote, section.title .footnote p, section.title .footnote span { color: rgba(255,255,255,0.65) !important; }
   section.title footer img.ark-logo-mark { display: none; }
-  /* Title-slide hero logo — color Econ-ARK arrows mark anchored bottom-right (from Slides-intro). */
-  .title-hero-logo { position: absolute; bottom: 84px; right: 84px; width: 196px; opacity: 1.0; }
   /* Title-slide eyebrow — orange uppercase kicker echoing the orange top rule; sharp accent on the navy field. */
   section.title .title-eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ark-yellow); margin: 0 0 0.7em 0; }
   /* Keep mathematical text inside the eyebrow in its true case (the group name is the equation Tv = v). */
@@ -341,9 +339,9 @@ style: |-
 
 # Categorical types and AGI
 
-<p class="title-authors">Akshay Shanker</p>
+## 1. Categories and Functors
 
-<img src="assets/tvv-mark.svg" alt="𝕋v = v" class="title-hero-logo" />
+<p class="title-authors">Akshay Shanker</p>
 
 ---
 
