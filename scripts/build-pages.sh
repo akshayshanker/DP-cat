@@ -8,11 +8,13 @@ mkdir -p docs/categorical-types-and-agi
 
 marp "Categorical types and AGI -1.md" \
   -o docs/categorical-types-and-agi/index.html \
+  --theme-set theme/econ-ark-cat.css \
   --allow-local-files \
   --html
 
 marp "Categorical types and AGI -1.md" \
   -o docs/categorical-types-and-agi/categorical-types-and-agi.pdf \
+  --theme-set theme/econ-ark-cat.css \
   --allow-local-files \
   --html
 

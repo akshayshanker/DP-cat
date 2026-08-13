@@ -71,6 +71,6 @@
   <text x="90" y="278" font-size="11.5" fill="#212529" text-anchor="middle">op bellman : <tspan fill="#c41230">Val[&gt;] &#8594; Val[~]</tspan></text>
   <!-- captions -->
   <text x="190" y="312" font-size="12.5" fill="#495057" text-anchor="middle">the nodes record bare syntax;</text>
-  <text x="190" y="328" font-size="12.5" fill="#495057" text-anchor="middle">typing is a judgment relative to the context</text>
+  <text x="190" y="328" font-size="12.5" fill="#495057" text-anchor="middle">the red line types the expression in its context</text>
   <text x="190" y="346" font-size="12.5" fill="#2f8f3d" text-anchor="middle">(m : <tspan fill="#c41230">X</tspan>, c : <tspan fill="#c41230">A</tspan>, &#958;&#8242; : <tspan fill="#c41230">Z</tspan>) &#8866; R(m &#8722; c) + &#958;&#8242; : <tspan fill="#c41230">X</tspan></text>
 </svg>
