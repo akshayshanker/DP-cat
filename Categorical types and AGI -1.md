@@ -40,9 +40,8 @@ Sessions run over six to eight talks.
 Objective: gain *sufficient* fluency in *basic* **category theory** and **type theory** to assess their utility for:
 
 - transparency and verification in computing *applied* high-dimensional dynamic programming and reinforcement learning problems.
-- efficiently representing models symbolically and rigorously.
-- "speaking deterministically" to AI (LLM) systems.
-- giving AI the power to reason deterministically using relational graphs (artificial general intelligence?).
+- efficient symbolic and rigorous model representation.
+- "speaking deterministically" to AI (LLM) systems, i.e., giving AI the power to reason deterministically using relational graphs (artificial general intelligence?).
 
 May or may not help us prove new results.
 
@@ -523,11 +522,22 @@ p { font-size: 20px; margin: 0 0 0.55em 0; }
 
 </div>
 
+<div class="cols" style="grid-template-columns: 1fr 330px; gap: 1.2em; align-items: center;">
+<div class="small">
+
 Riehl proves (i) ⇔ (ii) directly (pp. 11–12; not reproduced here) and obtains (i) ⇔ (iii) by duality.
 
-- (i) ⇔ (ii) holds in every category, hence in $\mathsf{C}^{\mathrm{op}}$. Applied to $f^{\mathrm{op}} : y \to x$, it says that $f^{\mathrm{op}}$ is an isomorphism if and only if postcomposition by $f^{\mathrm{op}}$, from $\mathsf{C}^{\mathrm{op}}(c, y)$ to $\mathsf{C}^{\mathrm{op}}(c, x)$, is a bijection for every $c$.
+- (i) ⇔ (ii) holds in every category, hence in $\mathsf{C}^{\mathrm{op}}$. Applied to $f^{\mathrm{op}} : y \to x$, it says $f^{\mathrm{op}}$ is an isomorphism if and only if postcomposition by $f^{\mathrm{op}}$, $\mathsf{C}^{\mathrm{op}}(c, y) \to \mathsf{C}^{\mathrm{op}}(c, x)$, is a bijection for every $c$.
 - Translate back to $\mathsf{C}$. A morphism $c \to y$ of $\mathsf{C}^{\mathrm{op}}$ is a morphism $y \to c$ of $\mathsf{C}$, so the two hom-sets are $\mathsf{C}(y, c)$ and $\mathsf{C}(x, c)$; and since $f^{\mathrm{op}} k^{\mathrm{op}} = (kf)^{\mathrm{op}}$, postcomposition by $f^{\mathrm{op}}$ acts as $k \mapsto kf$, the precomposition $f^{*}$.
-- $f^{\mathrm{op}}$ is an isomorphism exactly when $f$ is, because the two inverse equations reverse into each other. The translated statement then says that $f$ is an isomorphism if and only if $f^{*}$ is a bijection for every $c$, which is (i) ⇔ (iii).
+- $f^{\mathrm{op}}$ is an isomorphism exactly when $f$ is, because the two inverse equations reverse into each other. The translated statement is then (i) ⇔ (iii).
+
+</div>
+<div class="center">
+
+![w:250](assets/precomp-triangle.svg)
+
+</div>
+</div>
 
 <div class="footnote">Riehl (2016), Lemma 1.2.3 and Remark 1.2.4 (p. 11); proof of Lemma 1.2.3, pp. 11–12 — the translated display is (1.2.6), and "the notion of isomorphism, as defined in 1.1.10, is self-dual".</div>
 
