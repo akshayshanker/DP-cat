@@ -5,7 +5,6 @@ sessions/
 CLAUDE.md
 changes.md
 Categorical types and AGI -1 — math review.md
-Categorical types and AGI -1.md
 Categorical types and AGI -2.md
 
 # Local / editor
@@ -19,6 +18,7 @@ __pycache__/
 # Built PDFs
 *.pdf
 !docs/**/*.pdf
+!Categorical types and AGI -1.pdf
 
 # Local Marp HTML outside docs/ (Pages serves docs/)
 /*.html
