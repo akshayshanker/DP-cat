@@ -514,7 +514,7 @@ p { font-size: 20px; margin: 0 0 0.55em 0; }
 
 <div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
 
-## Applying duality to Lemma 1.2.3
+## Lemma 1.2.3
 
 <div class="defbox">
 
@@ -522,22 +522,36 @@ p { font-size: 20px; margin: 0 0 0.55em 0; }
 
 </div>
 
-<div class="cols" style="grid-template-columns: 1fr 330px; gap: 1.2em; align-items: center;">
-<div class="small">
+<div class="cols">
+<div class="center">
 
-Riehl proves (i) ⇔ (ii) directly (pp. 11–12; not reproduced here) and obtains (i) ⇔ (iii) by duality.
+![w:250](assets/postcomp-triangle.svg)
 
-- (i) ⇔ (ii) holds in every category, hence in $\mathsf{C}^{\mathrm{op}}$. Applied to $f^{\mathrm{op}} : y \to x$, it says $f^{\mathrm{op}}$ is an isomorphism if and only if postcomposition by $f^{\mathrm{op}}$, $\mathsf{C}^{\mathrm{op}}(c, y) \to \mathsf{C}^{\mathrm{op}}(c, x)$, is a bijection for every $c$.
-- Translate back to $\mathsf{C}$. A morphism $c \to y$ of $\mathsf{C}^{\mathrm{op}}$ is a morphism $y \to c$ of $\mathsf{C}$, so the two hom-sets are $\mathsf{C}(y, c)$ and $\mathsf{C}(x, c)$; and since $f^{\mathrm{op}} k^{\mathrm{op}} = (kf)^{\mathrm{op}}$, postcomposition by $f^{\mathrm{op}}$ acts as $k \mapsto kf$, the precomposition $f^{*}$.
-- $f^{\mathrm{op}}$ is an isomorphism exactly when $f$ is, because the two inverse equations reverse into each other. The translated statement is then (i) ⇔ (iii).
+<div class="small"><strong>postcomposition</strong> <em>f</em><sub>*</sub> composes <em>f</em> after an arrow <em>h</em> into the domain</div>
 
 </div>
 <div class="center">
 
 ![w:250](assets/precomp-triangle.svg)
 
+<div class="small"><strong>precomposition</strong> <em>f</em><sup>*</sup> composes <em>f</em> before an arrow <em>k</em> out of the codomain</div>
+
 </div>
 </div>
+
+<div class="footnote">Riehl (2016), Lemma 1.2.3 (p. 11).</div>
+
+---
+
+<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
+
+## Applying duality to Lemma 1.2.3
+
+Riehl proves (i) ⇔ (ii) directly (pp. 11–12; not reproduced here) and obtains (i) ⇔ (iii) by duality.
+
+- (i) ⇔ (ii) holds in every category, hence in $\mathsf{C}^{\mathrm{op}}$. Applied to $f^{\mathrm{op}} : y \to x$, it says $f^{\mathrm{op}}$ is an isomorphism if and only if postcomposition by $f^{\mathrm{op}}$, $\mathsf{C}^{\mathrm{op}}(c, y) \to \mathsf{C}^{\mathrm{op}}(c, x)$, is a bijection for every $c$.
+- Translate back to $\mathsf{C}$. A morphism $c \to y$ of $\mathsf{C}^{\mathrm{op}}$ is a morphism $y \to c$ of $\mathsf{C}$, so the two hom-sets are $\mathsf{C}(y, c)$ and $\mathsf{C}(x, c)$; and since $f^{\mathrm{op}} k^{\mathrm{op}} = (kf)^{\mathrm{op}}$, postcomposition by $f^{\mathrm{op}}$ acts as $k \mapsto kf$, the precomposition $f^{*}$.
+- $f^{\mathrm{op}}$ is an isomorphism exactly when $f$ is, because the two inverse equations reverse into each other. The translated statement is then (i) ⇔ (iii).
 
 <div class="footnote">Riehl (2016), Lemma 1.2.3 and Remark 1.2.4 (p. 11); proof of Lemma 1.2.3, pp. 11–12 — the translated display is (1.2.6), and "the notion of isomorphism, as defined in 1.1.10, is self-dual".</div>
 
