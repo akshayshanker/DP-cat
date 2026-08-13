@@ -45,7 +45,7 @@ Objective: gain *sufficient* fluency in *basic* **category theory** and **type t
 
 May or may not help us prove new results.
 
-<!-- Technical material follows Riehl and draws from current research with co-authors.--> 
+<!-- Technical material follows Riehl and draws from current research with co-authors.-->
 
 ---
 
@@ -72,8 +72,8 @@ May or may not help us prove new results.
 
 <!-- A **typing judgment** $\Gamma \vdash t : A$ asserts that, under the assumptions recorded in the **context** $\Gamma$ — a finite list of typed variables $x_1 : A_1, \ldots, x_n : A_n$ — the **term** $t$ has the **type** $A$. The context, the term, and the type are three different pieces of syntax; the judgment is the assertion relating them. -->
 
-<div class="callout"><strong>Categorical type theory.</strong> A type system generates a classifying category from syntax, which records the types of objects being composed as context. 
-An <strong>elaboration</strong> is a structure-preserving map from that category into a <strong>semantic category</strong>. (A <strong>semantic category</strong> assigns each type and each expression its higher order <strong>meaning</strong>).</div>
+<div class="callout"><strong>Categorical type theory.</strong> A type system generates a classifying category from syntax, which records the types of objects being composed as context.
+An <strong>elaboration</strong> is a structure-preserving map from that category into a <strong>semantic category</strong>. (A <strong>semantic category</strong> assigns each type and each expression its higher-order <strong>meaning</strong>.)</div>
 
 <div class="footnote">Jacobs (1999), pp. 4–7 and Chapter 2: typed contexts and terms generate a category (judgments Γ ⊢ t : A appear in Definition 2.1.1, p. 124); interpretations are structure-preserving functors from its classifying category (Theorem 2.2.1, p. 126, where they are called models).</div>
 
@@ -122,16 +122,16 @@ Create a formal **declarative** symbolic system to write dynamic programs so tha
 
 1. **Introduction.**
 2. **Categories and functors.**
-	1. Categories and diagrams 
-	2. Duality 
-	3. Functors 
-	4. Introductory universality examples 
-3. **Open dynamic-programming research.** 
+	1. Categories and diagrams
+	2. Duality
+	3. Functors
+	4. Introduction to universality
+3. **Open dynamic-programming research.**
 
-Next talks: 
+Next talks:
 - formalize universality and more interesting DP applications.
-- co-limits
-- types and terms
+- colimits.
+- types and terms.
 
 ---
 <!-- _class: title -->
@@ -141,7 +141,7 @@ Next talks:
 
 # 2. Categories and functors
 
-<p class="title-authors">2.1 Categories and diagrams &middot; 2.2 Duality &middot; 2.3 Functors &middot; 2.4 Introductory universality examples</p>
+<p class="title-authors">2.1 Categories and diagrams &middot; 2.2 Duality &middot; 2.3 Functors &middot; 2.4 Introduction to universality</p>
 
 ---
 
@@ -162,8 +162,8 @@ Next talks:
 
 </div>
 
-- Definition 1.1.1 supplies no elements, no membership relation, and no underlying sets. 
-- Note how the objects are recoverable from the identity morphisms (Remark 1.1.2 in Riehl), so **morphisms** take primacy. 
+- Definition 1.1.1 supplies no elements, no membership relation, and no underlying sets.
+- Note how the objects are recoverable from the identity morphisms (Remark 1.1.2 in Riehl), so **morphisms** take primacy.
 
 <div class="footnote">Riehl (2016), Definition 1.1.1 and Remark 1.1.2 (pp. 3–4).</div>
 
@@ -203,7 +203,7 @@ In each of the examples listed in Example 1.1.3, the collection of objects is no
 
 </div>
 
-- A set is known through its elements and the membership relation. A category is known through its morphisms and their composition. 
+- A set is known through its elements and the membership relation. A category is known through its morphisms and their composition.
 - The notion of sameness in a category is isomorphism (Definition 1.1.10), not equality.
 
 <div class="footnote">Riehl (2016), Remark 1.1.5 (p. 6); Definitions 1.1.6–1.1.7, small and locally small (p. 7).</div>
@@ -261,11 +261,11 @@ In each of the examples listed in Example 1.1.3, the collection of objects is no
 
 </div>
 
-A **quiver** is a directed graph that may contain loops and parallel arrows. 
-- The objects and morphisms of a category form a quiver, and every finite directed path in it has a specified composite, well defined by the associativity axiom of Definition 1.1.1 (pp. 3–4). 
+A **quiver** is a directed graph that may contain loops and parallel arrows.
+- The objects and morphisms of a category form a quiver, and every finite directed path in it has a specified composite, well defined by the associativity axiom of Definition 1.1.1 (pp. 3–4).
 
-A diagram is *displayed* as a quiver of morphisms
--  The diagram **commutes** when the parallel directed paths it presents with common source and target have equal composites.
+A diagram is *displayed* as a quiver of morphisms.
+- The diagram **commutes** when the parallel directed paths it presents with common source and target have equal composites.
 
 <div class="footnote">Riehl (2016), §1.1: quivers, paths, and their composites, pp. 3–4; §1.6: commuting paths and the triangle (1.6.1), p. 39; Definition 1.6.4, p. 40.</div>
 
@@ -315,9 +315,9 @@ A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf
 
 ## Minimal subdiagrams
 
- A diagram drawn as a **simple acyclic quiver** (the quiver represents a poset category) has
- - at most one edge between any two vertices, no directed cycles 
- - all paths with a common source and target agree.
+A diagram drawn as a **simple acyclic quiver** (the quiver represents a poset category) has
+- at most one edge between any two vertices, no directed cycles;
+- all paths with a common source and target agree.
 
 Lemma 1.6.11 then reduces commutativity of the whole diagram to that of its **minimal subdiagrams** — for the cube $2\times2\times2$, the six faces:
 
@@ -357,8 +357,8 @@ Consider a **standard** consumption–saving problem under perfect foresight, wi
 - Define the **absolute patience factor** $\text{Þ} := (R\beta)^{1/\gamma}$.
 - Assume $G < R$.
 
-**Diagram.**  Objects are the model's parametric factors
-- an arrow $x \to y$ asserts $x < y$
+**Diagram.** Objects are the model's parametric factors:
+- an arrow $x \to y$ asserts $x < y$;
 - arrows compose by transitivity.
 
 <div class="footnote">Carroll and Shanker (2026), Theoretical Foundations of Buffer Stock Saving.</div>
@@ -405,8 +405,8 @@ Consider a **standard** consumption–saving problem under perfect foresight, wi
 
 </div>
 
-**The duality principle.** 
-- A theorem of the form "for all categories $\mathsf{C}$, a given statement holds" applies, in particular, to every opposite category $\mathsf{C}^{\mathrm{op}}$. 
+**The duality principle.**
+- A theorem of the form "for all categories $\mathsf{C}$, a given statement holds" applies, in particular, to every opposite category $\mathsf{C}^{\mathrm{op}}$.
 - Re-expressing a conclusion in terms of the data of $\mathsf{C}$ reverses the direction of every morphism and the order of every composite.
 - The re-expressed statement is the dual statement, and the re-expressed proof is the dual proof — "a two-for-one deal: any proof in category theory simultaneously proves two theorems" (p. 10).
 
@@ -423,8 +423,8 @@ Consider a **standard** consumption–saving problem under perfect foresight, wi
 **Exercise 1.2.vii** (Riehl, verbatim). Regarding a poset $(P, \leq)$ as a category, define the supremum of a subcollection of objects $A \subset P$ in such a way that the dual statement defines the infimum. Prove that the supremum of a subset of objects is unique, whenever it exists, in such a way that the dual proof demonstrates the uniqueness of the infimum.
 
 </div>
-</br>
-</br>
+<br/>
+<br/>
 
 **Notation.** $(P, \leq)$ is the category with a unique morphism $x \to y$ exactly when $x \leq y$ (Example 1.1.4(iii)), and the subcollection is $A$ with $A \subseteq P$.
 
@@ -441,18 +441,18 @@ Consider a **standard** consumption–saving problem under perfect foresight, wi
 **Definition.** An object $s$ is a **supremum** of $A$ when:
 
 - (i) for every $a \in A$ there is a morphism $a \to s$, and
-- (ii) for every $u$ with a morphism $a \to u$ for each $a \in A$,  there is a morphism $s \to u$.
+- (ii) for every $u$ with a morphism $a \to u$ for each $a \in A$, there is a morphism $s \to u$.
 
 </div>
 
 <!--The two conditions mention morphisms only, never the symbol $\leq$.
 - the **duality principle** reads the same conditions in $P^{\mathrm{op}}$, reversing every arrow.-->
 
-</br> 
+<br/>
 
-**The opposite poset.** By Definition 1.2.1, $P^{\mathrm{op}}$ has the same elements as $P$, and it has a morphism $x \to y$ exactly when $P$ has a morphism $y \to x$. It follows that $P^{\mathrm{op}}$ is $(P, \geq)$. 
+**The opposite poset.** By Definition 1.2.1, $P^{\mathrm{op}}$ has the same elements as $P$, and it has a morphism $x \to y$ exactly when $P$ has a morphism $y \to x$. It follows that $P^{\mathrm{op}}$ is $(P, \geq)$.
 
-> Note  $P^{\mathrm{op}}$  is the poset $P$ with its order $\leq$ reversed. 
+> Note that $P^{\mathrm{op}}$ is the poset $P$ with its order $\leq$ reversed.
 
 <div class="footnote">Riehl (2016): Example 1.1.4(iii), posets as categories; Example 1.2.2(ii) and the duality principle, p. 10. For A = ∅, condition (i) is vacuous and every u is an upper bound, so a supremum of ∅ is a least element of P. Conditions (i)–(ii) are a universal property, the shape Chapter 2 studies in general; in the language of Chapter 3, the supremum is the colimit of the collection A.</div>
 
@@ -470,7 +470,7 @@ Consider a **standard** consumption–saving problem under perfect foresight, wi
 
 Every arrow translates as $x \to y$ in $P^{\mathrm{op}}$ means $y \leq x$ in $P$. Thus, the dual statement for $i$ implies:
 
-- (i) $i$ is a lower bound of $A$, and 
+- (i) $i$ is a lower bound of $A$, and
 - (ii) for every lower bound $u$ of $A$, we have $u \leq i$.
 
 It follows that $i$ is the infimum of $A$.
@@ -522,7 +522,7 @@ p { font-size: 20px; margin: 0 0 0.55em 0; }
 
 </div>
 
-Riehl proves (i) ⇔ (ii) directly (pp. 11–12; not reproduced here) and obtains (i) ⇔ (iii) by duality. 
+Riehl proves (i) ⇔ (ii) directly (pp. 11–12; not reproduced here) and obtains (i) ⇔ (iii) by duality.
 
 - (i) ⇔ (ii) holds in every category, hence in $\mathsf{C}^{\mathrm{op}}$. Applied to $f^{\mathrm{op}} : y \to x$, it says that $f^{\mathrm{op}}$ is an isomorphism if and only if postcomposition by $f^{\mathrm{op}}$, from $\mathsf{C}^{\mathrm{op}}(c, y)$ to $\mathsf{C}^{\mathrm{op}}(c, x)$, is a bijection for every $c$.
 - Translate back to $\mathsf{C}$. A morphism $c \to y$ of $\mathsf{C}^{\mathrm{op}}$ is a morphism $y \to c$ of $\mathsf{C}$, so the two hom-sets are $\mathsf{C}(y, c)$ and $\mathsf{C}(x, c)$; and since $f^{\mathrm{op}} k^{\mathrm{op}} = (kf)^{\mathrm{op}}$, postcomposition by $f^{\mathrm{op}}$ acts as $k \mapsto kf$, the precomposition $f^{*}$.
@@ -582,7 +582,7 @@ Definitions dualize as theorems do.
 
 **Example 1.2.8.** In $\mathsf{Set}$, the monomorphisms are precisely the injections and the epimorphisms are precisely the surjections.
 
-</br> 
+<br/>
 
 **The axiom of choice.**
 - A **section** of $f : X \to Y$ is a right inverse, a function $s : Y \to X$ with $f \circ s = \mathrm{id}_Y$. Only a surjection can have a section, since $f \circ s = \mathrm{id}_Y$ makes $f$ onto.
@@ -609,7 +609,7 @@ Definitions dualize as theorems do.
 
 </div>
 
-**Examples 1.3.2.** The forgetful functor $U : \mathsf{Vect}_k \to \mathsf{Set}$ sends a vector space to its underlying set. 
+**Examples 1.3.2.** The forgetful functor $U : \mathsf{Vect}_k \to \mathsf{Set}$ sends a vector space to its underlying set.
 
 <div class="defbox">
 
@@ -617,7 +617,7 @@ Definitions dualize as theorems do.
 
 </div>
 
-</br>
+<br/>
 
 The forgetful functor $U$ above is faithful, since two linear maps with the same underlying function are equal.
 
@@ -641,11 +641,11 @@ The forgetful functor $U$ above is faithful, since two linear maps with the same
 
 ---
 
-# 2.4 Introductory universality examples
+# 2.4 Introduction to universality
 
 ---
 
-<div class="kicker p2">2.4 Introductory universality examples &middot; Riehl §1.3</div>
+<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §1.3</div>
 
 ## The first lemma of category theory
 
@@ -667,14 +667,14 @@ the first equality by the composition axiom of Definition 1.3.1, the second beca
 
 ---
 
-<div class="kicker p2">2.4 Introductory universality examples &middot; Riehl §1.3</div>
+<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §1.3</div>
 
 ## Consequences of the first lemma
 
 The first lemma says that functors preserve isomorphisms, and the introduction defined an **elaboration** of a typed system as a structure-preserving functor from its classifying category.
 - Together they imply that every interpretation carries each isomorphism of the classifying category to an isomorphism of the semantics.
-- This is the first instance of the pattern we want to exploit
-	- a relational property established once in a simpler setting (say, declarative syntax) transfers to every interpretation.
+- This is the first instance of the pattern we want to exploit.
+	- A relational property established once in a simpler setting (say, declarative syntax) transfers to every interpretation.
 
 
 
@@ -682,13 +682,13 @@ The first lemma says that functors preserve isomorphisms, and the introduction d
 
 ---
 
-<div class="kicker p2">2.4 Introductory universality examples &middot; Riehl §2.1</div>
+<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §2.1</div>
 
-## Prelude to universality: a category of dynamical systems
+## Prelude to universality: category of dynamical systems
 
 <div class="defbox">
 
-**The category of discrete dynamical systems** (Riehl, Examples 2.1.1 and 2.4.11). An object, called a **discrete dynamical system**, is a triple $(X, f, x_0)$, with a set $X$, a function $f : X \to X$, and a distinguished element $x_0 \in X$. A morphism $\varphi : (X, f, x_0) \to (Y, g, y_0)$ is a function $\varphi : X \to Y$ with i) $\varphi \circ f = g \circ \varphi$, and ii) $\varphi(x_0) = y_0$. Both conditions hold for identities and survive composition, thus the collection of these objects and morphisms define a category.
+**The category of discrete dynamical systems** (Riehl, Examples 2.1.1 and 2.4.11). An object, called a **discrete dynamical system**, is a triple $(X, f, x_0)$, with a set $X$, a function $f : X \to X$, and a distinguished element $x_0 \in X$. A morphism $\varphi : (X, f, x_0) \to (Y, g, y_0)$ is a function $\varphi : X \to Y$ with (i) $\varphi \circ f = g \circ \varphi$, and (ii) $\varphi(x_0) = y_0$. Both conditions hold for identities and survive composition, thus the collection of these objects and morphisms defines a category.
 
 </div>
 
@@ -699,7 +699,7 @@ The first lemma says that functors preserve isomorphisms, and the introduction d
 
 ---
 
-<div class="kicker p2">2.4 Introductory universality examples &middot; Riehl §2.1</div>
+<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §2.1</div>
 
 ## Prelude to universality: the natural numbers
 
@@ -714,13 +714,13 @@ The first lemma says that functors preserve isomorphisms, and the introduction d
 
 ---
 
-<div class="kicker p2">2.4 Introductory universality examples &middot; Riehl §2.1</div>
+<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §2.1</div>
 
 ## Prelude to universality: the natural numbers
 
 <div class="callout sm">
 
-**Universality.** For dynamical systems, the one representation that fixes the ground truth for all transformations is $(\mathbb{N}, s, 0)$, whose outgoing morphisms are exactly the trajectories. Our research objective is to define **natural** diagrams for broader classes of stochastic and branching systems.
+**Universality.** For dynamical systems, the one representation that fixes the ground truth for all transformations is $(\mathbb{N}, s, 0)$, whose outgoing morphisms are trajectories. Our research objective is to define **natural** diagrams for broader classes of stochastic and branching systems.
 
 </div>
 
@@ -786,7 +786,7 @@ applies one grammar rule at each node of a tree; the leaves, read left to right,
 
 </div>
 
-<div class="footnote">The tree is Python's own abstract syntax tree: ast.parse("v = u(c) + beta * w"), with the ast module's node names Assign, Name, BinOp, Call.</div>
+<div class="footnote">The tree is Python's own abstract syntax tree (AST): ast.parse("v = u(c) + beta * w"), with the ast module's node names Assign, Name, BinOp, Call.</div>
 
 ---
 
@@ -832,7 +832,7 @@ Formally, let $v \in \mathcal{B}_{\varphi}(X)$, the space of measurable function
 
 $$(\mathbb{T}v)(m) \;=\; \max_{c \,\in\, \mathcal{D}(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb{E}_{\xi'}\, v\big(R(m-c)+\xi'\big) \Big\} \qquad\forall m \in X$$
 
-This is the correct Bellman operator, and its properties are critical to understanding the economic problem. Can we write it out in abstract syntax so that no information is lost when we parse? **No.** 
+This is the correct Bellman operator, and its properties are critical to understanding the economic problem. Can we write it out in abstract syntax so that no information is lost when we parse? **No.**
 
 <div class="callout sm">
 
@@ -850,10 +850,10 @@ This is the correct Bellman operator, and its properties are critical to underst
 
 Call a map **higher-order** when it takes a function as an input or returns one as an output, and call syntax **first-order** when functions are not themselves inputs or outputs of the parsed expressions.
 
-A parser produces an **abstract syntax tree** (AST): one syntax tree built from the grammar's constructors. 
+A parser produces an **abstract syntax tree** (AST): one syntax tree built from the grammar's constructors.
 
-- an AST *cannot* represent bound variables
-- higher order requires some context
+- An AST *cannot* represent bound variables.
+- Higher order requires some context.
 
 <div class="sp-s"></div>
 
@@ -928,7 +928,9 @@ How can first-order typed syntax, in which functions are never inputs or outputs
 </div>
 </div>
 
-The structure with binding is a **category** rather than a tree. Standard practice leaves the binding rules and the step from AST to code **implicit** without any formal **semantics**; we want those relations formalized for recursive dynamic programs.
+With binding edges, above is a **category**, typed by its *context*. 
+An AST carries no binding relation.
+For the **higher-order** functional equations of dynamic programming there is no formal system of binding at all, so the step from equations to solver code has no formal **semantics** (concretely, there is no object called $\mathbb{T}$ in <code>DYNARE</code> that one can point to and inspect); we want such relations formalized.
 
 <div class="footnote">Higher-order abstract syntax: Pfenning–Elliott (1988); abstract syntax graphs for DSLs: Oliveira–Löh (2013); initial semantics with binding: Fiore–Plotkin–Turi (1999), Lamiaux–Ahrens (2024).</div>
 
@@ -956,7 +958,7 @@ The structure with binding is a **category** rather than a tree. Standard practi
 <div class="callout sm" style="margin-top: 0.2em;">
 
 - **Objects of $\operatorname{Cl}(\Sigma)$ are contexts**, finite lists of typed variables such as $\Gamma = (m : X,\, c : A,\, \xi' : Z)$. The value types <code>Val[>]</code> and <code>Val[~]</code> in the signature are declared types, exactly as $X$ is.
-- **Arrows of $\operatorname{Cl}(\Sigma)$ are typed expressions read in a context.** The red line beneath the tree says that, with the variables typed as listed, $R(m-c)+\xi'$ has type $X$; as an arrow it is $\Gamma \to X$. The signature line makes <code>op bellman</code> itself an arrow between value types <code>Val[>]</code> → <code>Val[~]</code>. Arrows compose by substituting expressions into expressions, so we can compose `op_bellman` with other `ops` whose signatures agree. 
+- **Arrows of $\operatorname{Cl}(\Sigma)$ are typed expressions read in a context.** The red line beneath the tree says that, with the variables typed as listed, $R(m-c)+\xi'$ has type $X$; as an arrow it is $\Gamma \to X$. The signature line makes <code>op bellman</code> itself an arrow between value types <code>Val[>]</code> → <code>Val[~]</code>. Arrows compose by substituting expressions into expressions, so we can compose `op_bellman` with other `ops` whose signatures agree.
 - **Elaboration is meaning.** An elaboration is a structure-preserving functor from $\operatorname{Cl}(\Sigma)$ to the semantic category (Jacobs, Theorem 2.2.1): it assigns each type a space and each arrow a map. It sends $X$ to the model's state space, $\Gamma$ to the product $X \times A \times Z$, the expression arrow above to the transition $g$, and both value types to the function space $\mathcal{B}_{\varphi}(X)$.
 - **Elaboration sends the operator symbol to an operator.** The image of <code>op bellman</code> is $\mathbb{T} : \mathcal{B}_{\varphi}(X) \to \mathcal{B}_{\varphi}(X)$, built from the leaf meanings $g$, $u$, $\mathcal{D}$ as the body prescribes. The unique such interpretation is the meaning functor $\Upsilon$.
 
@@ -971,7 +973,7 @@ The structure with binding is a **category** rather than a tree. Standard practi
 
 <div class="kicker p2">Application &middot; elaboration</div>
 
-## The meaning functor $\Upsilon$ 
+## The meaning functor $\Upsilon$
 
 <div class="center">
 
@@ -979,7 +981,7 @@ The structure with binding is a **category** rather than a tree. Standard practi
 
 </div>
 
-- Any typed syntax should map to a universal category (what is the universal category here?)
+- Any typed syntax should map to a universal category (what is the universal category here?).
 	- This is not abstract — it needs to happen just like parsing code.
 - We can then study the properties of opposite categories (push-forward measures).
 - Composing and factoring operators.
@@ -1000,8 +1002,6 @@ And we want to do all this using only relations between variables, market resour
 ![w:960](assets/mortgage-forward.svg)
 
 </div>
-
-<div class="footnote">The mortgage model's one-period flow: arrival, income shocks, the rent / buy / keep branches with the sell cross-link, and re-entry at the next period's arrival.</div>
 
 ---
 
