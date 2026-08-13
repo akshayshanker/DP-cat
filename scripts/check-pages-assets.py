@@ -49,7 +49,7 @@ def main() -> int:
             print(f"{page.relative_to(site)}: missing {source}")
         return 1
 
-    pdf_link = "categorical-types-and-agi/categorical-types-and-agi.pdf"
+    pdf_link = "categories-and-functors/categories-and-functors.pdf"
     pdf = site / pdf_link
     index_parser = ImageSourceParser()
     index_parser.feed((site / "index.html").read_text(encoding="utf-8"))

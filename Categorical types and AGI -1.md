@@ -580,7 +580,7 @@ Definitions dualize as theorems do.
 
 ## Monomorphisms and epimorphisms in Set
 
-**Example 1.2.8.** In $\mathsf{Set}$, the monomorphisms are precisely the injections and the epimorphisms are precisely the surjections.
+**Example 1.2.8.** In $\mathsf{Set}$, the monomorphisms are the injections and the epimorphisms are the surjections.
 
 <br/>
 
@@ -709,7 +709,7 @@ The first lemma says that functors preserve isomorphisms, and the introduction d
 
 </div>
 
-- Preserving the structure imposes exactly two equations, $r(0) = x_0$ and $r(n+1) = f(r(n))$, which say $r$ is a solution path of the difference equation $x_{n+1} = f(x_n)$ started at $x_0$. So $r(n) = f^{n}(x_0)$, and a morphism out of $(\mathbb{N}, s, 0)$ is a trajectory.
+- Preserving the structure imposes two equations, $r(0) = x_0$ and $r(n+1) = f(r(n))$, which say $r$ is a solution path of the difference equation $x_{n+1} = f(x_n)$ started at $x_0$. So $r(n) = f^{n}(x_0)$, and a morphism out of $(\mathbb{N}, s, 0)$ is a trajectory.
 - Existence of $r$ is definition by recursion, since iterating $f$ from $x_0$ defines a function on all of $\mathbb{N}$. Uniqueness is induction, since two paths obeying the same law from the same start agree at $0$ and, agreeing at $n$, at $n+1$.
 
 ---
@@ -836,7 +836,7 @@ This is the correct Bellman operator, and its properties are critical to underst
 
 <div class="callout sm">
 
-**"But I wrote the Bellman operator in Python."** A `def T(v)` on arrays is a different object, a procedure $\hat{T} : \mathbb{R}^N \to \mathbb{R}^N$ on a grid of $N$ points, and its syntax tree contains exactly the node kinds of the syntax-tree slide, assignments, calls, and loops over floats. That the grid stands for $X$, the loop for $\mathbb{E}_{\xi'}$, and the procedure for $\mathbb{T}$ appears nowhere in the program text, so the claim "this code computes $\mathbb{T}v$" cannot be checked mechanically. <span class="c-red">We simply **trust** that the author has coded the operator faithfully to the one written in the paper.</span>
+**"But I wrote the Bellman operator in Python."** A `def T(v)` on arrays is a different object, a procedure $\hat{T} : \mathbb{R}^N \to \mathbb{R}^N$ on a grid of $N$ points, and its syntax tree contains only the node kinds of the syntax-tree slide, assignments, calls, and loops over floats. That the grid stands for $X$, the loop for $\mathbb{E}_{\xi'}$, and the procedure for $\mathbb{T}$ appears nowhere in the program text, so the claim "this code computes $\mathbb{T}v$" cannot be checked mechanically. <span class="c-red">We **trust** that the author has coded the operator faithfully to the one written in the paper.</span>
 
 </div>
 
@@ -928,8 +928,8 @@ How can first-order typed syntax, in which functions are never inputs or outputs
 </div>
 </div>
 
-With binding edges, above is a **category**, typed by its *context*. 
-An AST carries no binding relation.
+With binding edges, above is a **category**, typed by its *context* — an AST carries no binding relation.
+
 For the **higher-order** functional equations of dynamic programming there is no formal system of binding at all, so the step from equations to solver code has no formal **semantics** (concretely, there is no object called $\mathbb{T}$ in <code>DYNARE</code> that one can point to and inspect); we want such relations formalized.
 
 <div class="footnote">Higher-order abstract syntax: Pfenning–Elliott (1988); abstract syntax graphs for DSLs: Oliveira–Löh (2013); initial semantics with binding: Fiore–Plotkin–Turi (1999), Lamiaux–Ahrens (2024).</div>
@@ -957,7 +957,7 @@ For the **higher-order** functional equations of dynamic programming there is no
 
 <div class="callout sm" style="margin-top: 0.2em;">
 
-- **Objects of $\operatorname{Cl}(\Sigma)$ are contexts**, finite lists of typed variables such as $\Gamma = (m : X,\, c : A,\, \xi' : Z)$. The value types <code>Val[>]</code> and <code>Val[~]</code> in the signature are declared types, exactly as $X$ is.
+- **Objects of $\operatorname{Cl}(\Sigma)$ are contexts**, finite lists of typed variables such as $\Gamma = (m : X,\, c : A,\, \xi' : Z)$. The value types <code>Val[>]</code> and <code>Val[~]</code> in the signature are declared types, as $X$ is.
 - **Arrows of $\operatorname{Cl}(\Sigma)$ are typed expressions read in a context.** The red line beneath the tree says that, with the variables typed as listed, $R(m-c)+\xi'$ has type $X$; as an arrow it is $\Gamma \to X$. The signature line makes <code>op bellman</code> itself an arrow between value types <code>Val[>]</code> → <code>Val[~]</code>. Arrows compose by substituting expressions into expressions, so we can compose `op_bellman` with other `ops` whose signatures agree.
 - **Elaboration is meaning.** An elaboration is a structure-preserving functor from $\operatorname{Cl}(\Sigma)$ to the semantic category (Jacobs, Theorem 2.2.1): it assigns each type a space and each arrow a map. It sends $X$ to the model's state space, $\Gamma$ to the product $X \times A \times Z$, the expression arrow above to the transition $g$, and both value types to the function space $\mathcal{B}_{\varphi}(X)$.
 - **Elaboration sends the operator symbol to an operator.** The image of <code>op bellman</code> is $\mathbb{T} : \mathcal{B}_{\varphi}(X) \to \mathcal{B}_{\varphi}(X)$, built from the leaf meanings $g$, $u$, $\mathcal{D}$ as the body prescribes. The unique such interpretation is the meaning functor $\Upsilon$.

@@ -8,7 +8,7 @@ Slide decks on categorical types, type theory, and dynamic programming.
 
 | Deck | Source |
 |------|--------|
-| [1. Categories and functors](https://akshayshanker.github.io/DP-cat/categorical-types-and-agi/) | `Categorical types and AGI -1.md` |
+| [1. Categories and functors](https://akshayshanker.github.io/DP-cat/categories-and-functors/) | `Categorical types and AGI -1.md` |
 
 ## Local preview
 

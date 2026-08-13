@@ -3,23 +3,23 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-rm -rf docs/session-01-motivation
-mkdir -p docs/categorical-types-and-agi
+rm -rf docs/session-01-motivation docs/categorical-types-and-agi
+mkdir -p docs/categories-and-functors
 
 marp "Categorical types and AGI -1.md" \
-  -o docs/categorical-types-and-agi/index.html \
+  -o docs/categories-and-functors/index.html \
   --theme-set theme/econ-ark-cat.css \
   --allow-local-files \
   --html
 
 marp "Categorical types and AGI -1.md" \
-  -o docs/categorical-types-and-agi/categorical-types-and-agi.pdf \
+  -o docs/categories-and-functors/categories-and-functors.pdf \
   --theme-set theme/econ-ark-cat.css \
   --allow-local-files \
   --html
 
-mkdir -p docs/categorical-types-and-agi/assets
-cp -R assets/. docs/categorical-types-and-agi/assets/
+mkdir -p docs/categories-and-functors/assets
+cp -R assets/. docs/categories-and-functors/assets/
 
 cp site-index.html docs/index.html
 touch docs/.nojekyll
