@@ -559,7 +559,7 @@ Riehl proves (i) ⇔ (ii) directly (pp. 11–12; not reproduced here) and obtain
 
 <div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
 
-## Monomorphisms and epimorphisms
+## Monomorphisms
 
 Definitions dualize as theorems do.
 
@@ -569,11 +569,35 @@ Definitions dualize as theorems do.
 
 </div>
 
+<div class="center">
+
+![w:420](assets/mono-fork.svg)
+
+</div>
+
+$$fh = fk \;\Longrightarrow\; h = k$$
+
+<div class="footnote">Riehl (2016), Definition 1.2.7 with the parallel-pair quantifiers (p. 12).</div>
+
+---
+
+<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
+
+## Epimorphisms
+
 <div class="defbox">
 
 **Definition 1.2.7 (epimorphism).** A morphism $f : x \to y$ in a category $\mathsf{C}$ is an **epimorphism** if for every object $z$ and every parallel pair $h, k : y \to z$, $hf = kf$ implies $h = k$.
 
 </div>
+
+<div class="center">
+
+![w:420](assets/epi-fork.svg)
+
+</div>
+
+$$hf = kf \;\Longrightarrow\; h = k$$
 
 <div class="footnote">Riehl (2016), Definition 1.2.7 with the parallel-pair quantifiers (p. 12).</div>
 
