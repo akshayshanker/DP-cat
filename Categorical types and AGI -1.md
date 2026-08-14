@@ -235,7 +235,7 @@ In each of the examples listed in Example 1.1.3, the collection of objects is no
 **Examples 1.1.11.**
 
 - In $\mathsf{Set}$, the isomorphisms are the bijections.
-- In $\mathsf{Top}$, the category whose objects are topological spaces and whose morphisms are continuous maps (Example 1.1.3(ii)), the isomorphisms are the **homeomorphisms**. Definition 1.1.10 requires the inverse to be a morphism of the same category, so the inverse must itself be continuous, and a continuous bijection can fail this. Wrapping a half-open interval once around a circle is a continuous bijection whose inverse is discontinuous at the point where the ends meet, so interval and circle are isomorphic in $\mathsf{Set}$ but not in $\mathsf{Top}$.
+- In $\mathsf{Top}$, the category whose objects are topological spaces and whose morphisms are continuous maps (Example 1.1.3(ii)), the isomorphisms are the **homeomorphisms**. Definition 1.1.10 requires the inverse to be a morphism of the same category, so the inverse must itself be continuous, and a continuous bijection can fail to have a continuous inverse. Wrapping a half-open interval once around a circle is a continuous bijection whose inverse is discontinuous at the point where the ends meet, so interval and circle are isomorphic in $\mathsf{Set}$ but not in $\mathsf{Top}$.
 	<!-- Author note: whether two objects count as the same is decided by the ambient category, the category in which the objects live, not by the objects' underlying sets. -->
 - In a poset, the only isomorphisms are the identities, which is the categorical statement of antisymmetry.
 
