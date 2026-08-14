@@ -500,11 +500,11 @@ p { font-size: 20px; margin: 0 0 0.55em 0; }
 
 **Step 1.** By condition (i), applied to $s$ and to $s'$ in turn, each of $s$ and $s'$ is an upper bound of $A$.
 
-**Step 2.** Condition (ii) for $s'$, applied to the upper bound $s$ produced by Step 1, yields a morphism $s' \to s$.
+**Step 2.** Condition (ii) for $s'$, applied to the upper bound $s$ produced by Step 1, yields a morphism $f : s' \to s$.
 
-**Step 3.** Condition (ii) for $s$, applied to the upper bound $s'$ produced by Step 1, yields a morphism $s \to s'$.
+**Step 3.** Condition (ii) for $s$, applied to the upper bound $s'$ produced by Step 1, yields a morphism $g : s \to s'$.
 
-**Step 4.** By Definition 1.1.1 the composites $s \to s' \to s$ and $s' \to s \to s'$ exist. A preorder, and in particular a poset, has at most one morphism between any two objects (Example 1.1.4(iii)), and $\mathrm{id}_s \in P(s, s)$ by Definition 1.1.1; hence the composite $s \to s' \to s$ equals $\mathrm{id}_s$, and likewise $s' \to s \to s'$ equals $\mathrm{id}_{s'}$. By Definition 1.1.10 the morphisms of Steps 2 and 3 are therefore mutually inverse isomorphisms, so $s \cong s'$.
+**Step 4.** By Definition 1.1.1 the composites $fg : s \to s$ and $gf : s' \to s'$ exist. A preorder, and in particular a poset, has at most one morphism between any two objects, and $\mathrm{id}_s \in P(s, s)$ by Definition 1.1.1; hence $fg = \mathrm{id}_s$ and $gf = \mathrm{id}_{s'}$. These are the equations of Definition 1.1.10, so $f : s' \to s$ is an **isomorphism** with inverse $g$, and $s \cong s'$.
 
 **Step 5.** In a poset the only isomorphisms are the identities, which is the categorical statement of antisymmetry (Example 1.1.11(v)); the isomorphism of Step 4 is thus an identity, and $s = s'$. $\blacksquare$
 
