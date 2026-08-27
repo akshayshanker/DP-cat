@@ -342,23 +342,28 @@ The indexing category is the poset $1 \leq 2 \leq 3$. A diagram of this shape is
 
 <div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
 
-## Diagrams on the same index: push forward, pull back
+## Two more diagrams: span and cospan
 
-<div class="cols" style="align-items: center;">
+<div class="cols">
 <div class="center">
 
-![w:440](assets/pushpull.svg)
+![w:280](assets/span.svg)
+
+A **span**. The indexing category is $1 \leftarrow 0 \rightarrow 2$, so a diagram of this shape is a pair of morphisms $f, g$ with a common domain.
 
 </div>
-<div class="small">
+<div class="center">
 
-- All three rows are diagrams on the two-object index $1 \to 2$. The middle row is a measurable map $g : X \to Y$ in $\mathsf{Meas}$.
-- The bottom row is the diagram of **push-forwards**: $\mathcal{P}(X)$ collects the probability measures on $X$, and $g_{*}(\mu) = \mu \circ g^{-1}$.
-- The top row is again a diagram on the two-object index, now with source $\mathbb{R}^{Y}$: the **pull-back** $g^{*}(v) = v \circ g$, where $\mathbb{R}^{X}$ collects the real functions on $X$.
-- Simulation pushes distributions forward along a transition; backward induction pulls value functions back. How the outer rows arise from the middle one is the subject of §2.3: they are its images under functors, covariant and contravariant.
+![w:280](assets/cospan.svg)
+
+A **cospan**. The indexing category is $1 \rightarrow 0 \leftarrow 2$, so a diagram of this shape is a pair of morphisms $f, g$ with a common codomain.
 
 </div>
 </div>
+
+Completing a cospan to a commutative square in the universal way produces the **pullback**; completing a span, the **pushout**. Both belong to the limit and colimit material of a later session.
+
+<div class="footnote">Riehl (2016), Definition 1.6.4, p. 40; pullbacks and pushouts belong to Chapter 3.</div>
 
 ---
 
