@@ -331,7 +331,7 @@ The indexing category has two objects and one arrow, $1 \to 2$. A diagram of thi
 
 ![w:230](assets/walking-triangle.svg)
 
-The indexing category is the poset $1 \leq 2 \leq 3$. A diagram of this shape is a **commutative triangle**: functoriality sends the arrow $1 \to 3$ to the composite $gf$, so the diagonal agrees with the two-step path.
+The indexing category is the poset $1 \leq 2 \leq 3$. A diagram of this shape is a **commutative triangle**, since functoriality sends the arrow $1 \to 3$ to the composite $gf$ and the diagonal therefore agrees with the two-step path.
 
 </div>
 </div>
