@@ -385,7 +385,7 @@ A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf
 
 </div>
 
-**Proof.** A diagram in $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$ (Definition 1.6.4), so its image under a functor $G : \mathsf{C} \to \mathsf{D}$ is the composite $GF : \mathsf{J} \to \mathsf{D}$, a diagram of shape $\mathsf{J}$. Suppose $F$ commutes, and take any two parallel paths in it with equal composites, $F f_n \cdots F f_1 = F g_m \cdots F g_1$. Because $G$ preserves composites, applying it to each side gives $GF f_n \cdots GF f_1 = GF g_m \cdots GF g_1$, so every pair of parallel paths in $GF$ has equal composites, and the image diagram commutes. $\blacksquare$
+**Proof.** A diagram in $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$ (Definition 1.6.4), so its image under a functor $G : \mathsf{C} \to \mathsf{D}$ is the composite $GF : \mathsf{J} \to \mathsf{D}$, a diagram of shape $\mathsf{J}$. Suppose $F$ commutes, and take any two parallel paths in it with equal composites, $F f_n \cdots F f_1 = F g_m \cdots F g_1$. Because $G$ preserves composites, applying it to each side gives $GF f_n \cdots GF f_1 = GF g_m \cdots GF g_1$. $\blacksquare$
 
 <div class="footnote">Riehl (2016), Example 1.6.6 and Remark 1.6.7 — the square with hf = kg, p. 41; Lemma 1.6.5 with proof, p. 41.</div>
 
@@ -431,7 +431,7 @@ Lemma 1.6.11 then reduces commutativity of the whole diagram to that of its **mi
 
 ## Pasting squares
 
-**Example (pasting, diagram 1.6.10).** Suppose the two inner squares commute, $hf = kg$ and $\ell j = mh$. Then the outer rectangle commutes, $\ell(jf) = (mk)g$:
+**Example (pasting, diagram 1.6.10).** Suppose the two inner squares commute, $hf = kg$ and $\ell j = mh$. The outer rectangle presents the parallel paths $\ell j f$ and $m k g$, and its commutativity is the equation $\ell j f = m k g$:
 
 <div class="center">
 
@@ -439,7 +439,7 @@ Lemma 1.6.11 then reduces commutativity of the whole diagram to that of its **mi
 
 </div>
 
-**Chase.** $\ell j f = (mh)f$ — substitute $\ell j = mh$ (Lemma 1.6.11); $= m(hf)$ — associativity (Definition 1.1.1); $= m(kg)$ — substitute $hf = kg$ (Lemma 1.6.11); $= (mk)g$ — associativity. $\blacksquare$
+**Chase.** Parentheses may be dropped, since associativity (Definition 1.1.1) makes the composite of a path independent of them. In the path $\ell j f$, the segment $\ell j$ has the equal composite $m h$ by one inner square, so Lemma 1.6.11 substitutes it inside the path, giving $\ell j f = m h f$. In the path $m h f$, the segment $h f$ has the equal composite $k g$ by the other inner square, so Lemma 1.6.11 substitutes once more, giving $m h f = m k g$. The parallel paths of the rectangle therefore have equal composites, and the rectangle commutes. $\blacksquare$
 
 <div class="footnote">Riehl (2016), §1.6: the two-squares-make-a-rectangle diagram (1.6.10), p. 42.</div>
 
