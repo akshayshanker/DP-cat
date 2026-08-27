@@ -305,7 +305,9 @@ Note the forgetful functor $U$ above is faithful, since two linear maps with the
 
 </div>
 
-A **quiver** is a directed graph that may contain loops and parallel arrows.
+</br>
+
+Recall **quiver** is a directed graph that may contain loops and parallel arrows.
 - The objects and morphisms of a category form a quiver, and every finite directed path in it has a specified composite, well defined by the associativity axiom of Definition 1.1.1 (pp. 3–4).
 
 
@@ -335,6 +337,28 @@ The indexing category is the poset $1 \leq 2 \leq 3$. A diagram of this shape is
 </div>
 
 <div class="footnote">Riehl (2016), §1.6: the commuting triangle (1.6.1), p. 39; Definition 1.6.4, p. 40.</div>
+
+---
+
+<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
+
+## Diagrams on the same index: push forward, pull back
+
+<div class="cols" style="align-items: center;">
+<div class="center">
+
+![w:440](assets/pushpull.svg)
+
+</div>
+<div class="small">
+
+- All three rows are diagrams on the two-object index $1 \to 2$. The middle row is a measurable map $g : X \to Y$ in $\mathsf{Meas}$.
+- The bottom row is the diagram of **push-forwards**: $\mathcal{P}(X)$ collects the probability measures on $X$, and $g_{*}(\mu) = \mu \circ g^{-1}$.
+- The top row is again a diagram on the two-object index, now with source $\mathbb{R}^{Y}$: the **pull-back** $g^{*}(v) = v \circ g$, where $\mathbb{R}^{X}$ collects the real functions on $X$.
+- Simulation pushes distributions forward along a transition; backward induction pulls value functions back. How the outer rows arise from the middle one is the subject of §2.3: they are its images under functors, covariant and contravariant.
+
+</div>
+</div>
 
 ---
 
@@ -1056,27 +1080,6 @@ For the **higher-order** functional equations of dynamic programming there is no
 - We can then study the properties of opposite categories (push-forward measures).
 - Composing and factoring operators.
 - More complex model structures (branching).
-
----
-
-<div class="kicker p2">Application &middot; elaboration</div>
-
-## Pull back functions, push forward measures
-
-<div class="cols" style="align-items: center;">
-<div class="center">
-
-![w:440](assets/pushpull.svg)
-
-</div>
-<div class="small">
-
-- One state map $g : X \to Y$ acts in both directions. On functions it acts **contravariantly**, by precomposition $g^{*}(v) = v \circ g$, the operator $\mathbb{K}_g$ of the pipeline.
-- On probability measures it acts **covariantly**, by push-forward $g_{*}(\mu) = \mu \circ g^{-1}$.
-- Backward induction pulls value functions back along the transition; simulation pushes distributions forward. The two directions are the two readings of the same arrow, in $\mathsf{C}$ and in $\mathsf{C}^{\mathrm{op}}$.
-
-</div>
-</div>
 
 ---
 
