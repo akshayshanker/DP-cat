@@ -324,14 +324,14 @@ Recall **quiver** is a directed graph that may contain loops and parallel arrows
 
 ![w:200](assets/walking-arrow.svg)
 
-The indexing category has two objects and one arrow, $1 \to 2$. A diagram of this shape in $\mathsf{C}$ is a choice of one morphism $f : x \to y$.
+The indexing category has two objects and one arrow, $1 \to 2$.
 
 </div>
 <div class="center">
 
 ![w:230](assets/walking-triangle.svg)
 
-The indexing category is the poset $1 \leq 2 \leq 3$. A diagram of this shape is a **commutative triangle**, since functoriality sends the arrow $1 \to 3$ to the composite $gf$ and the diagonal therefore agrees with the two-step path.
+**Commutative triangle** The indexing category is the poset $1 \leq 2 \leq 3$.
 
 </div>
 </div>
@@ -349,19 +349,19 @@ The indexing category is the poset $1 \leq 2 \leq 3$. A diagram of this shape is
 
 ![w:280](assets/span.svg)
 
-A **span**. The indexing category is $1 \leftarrow 0 \rightarrow 2$, so a diagram of this shape is a pair of morphisms $f, g$ with a common domain.
+A **span**. The indexing category is $1 \leftarrow 0 \rightarrow 2$.
 
 </div>
 <div class="center">
 
 ![w:280](assets/cospan.svg)
 
-A **cospan**. The indexing category is $1 \rightarrow 0 \leftarrow 2$, so a diagram of this shape is a pair of morphisms $f, g$ with a common codomain.
+A **cospan**. The indexing category is $1 \rightarrow 0 \leftarrow 2$.
 
 </div>
 </div>
 
-Completing a cospan to a commutative square in the universal way produces the **pullback**; completing a span, the **pushout**. Both belong to the limit and colimit material of a later session.
+> Teaser: Co-limit of a cospan to a commutative square in the  universal way produces the **pullback**; completing a span, the **pushout**. 
 
 <div class="footnote">Riehl (2016), Definition 1.6.4, p. 40; pullbacks and pushouts belong to Chapter 3.</div>
 
@@ -375,7 +375,7 @@ A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf
 
 <div class="center">
 
-![w:420](assets/comm-square.svg)
+![w:340](assets/comm-square.svg)
 
 </div>
 
@@ -385,7 +385,7 @@ A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf
 
 </div>
 
-**Proof.** A diagram in $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$ (Definition 1.6.4); for any functor $G : \mathsf{C} \to \mathsf{D}$, the composite $GF : \mathsf{J} \to \mathsf{D}$ defines the image of the diagram in $\mathsf{D}$. $\blacksquare$
+**Proof.** A diagram in $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$ (Definition 1.6.4), so its image under a functor $G : \mathsf{C} \to \mathsf{D}$ is the composite $GF : \mathsf{J} \to \mathsf{D}$, a diagram of shape $\mathsf{J}$. Suppose $F$ commutes, and take any two parallel paths in it with equal composites, $F f_n \cdots F f_1 = F g_m \cdots F g_1$. Because $G$ preserves composites, applying it to each side gives $GF f_n \cdots GF f_1 = GF g_m \cdots GF g_1$, so every pair of parallel paths in $GF$ has equal composites, and the image diagram commutes. $\blacksquare$
 
 <div class="footnote">Riehl (2016), Example 1.6.6 and Remark 1.6.7 — the square with hf = kg, p. 41; Lemma 1.6.5 with proof, p. 41.</div>
 
