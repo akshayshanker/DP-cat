@@ -251,9 +251,53 @@ In each of the examples listed in Example 1.1.3, the collection of objects is no
 
 ---
 
+<div class="kicker p2">2.1 Functors &middot; Riehl §§1.3, 1.5</div>
+
+## Functors
+
+<div class="defbox">
+
+**Definition 1.3.1.** A functor $F : \mathsf{C} \to \mathsf{D}$ assigns an object $Fc$ to each object $c$ and a morphism $Ff : Fc \to Fc'$ to each $f : c \to c'$, preserving the structure: $Fg \cdot Ff = F(gf)$ and $F(\mathrm{id}_c) = \mathrm{id}_{Fc}$.
+
+</div>
+
+**Examples 1.3.2.** The forgetful functor $U : \mathsf{Vect}_k \to \mathsf{Set}$ sends a vector space to its underlying set.
+
+</br>
+
+<div class="defbox">
+
+**Definition 1.5.7 (faithful).** A functor $F : \mathsf{C} \to \mathsf{D}$ is **faithful** if for each pair of objects $x, y$ of $\mathsf{C}$, the map $f \mapsto Ff : \mathsf{C}(x, y) \to \mathsf{D}(Fx, Fy)$ is injective.
+
+</div>
+
+<br/>
+
+Note the forgetful functor $U$ above is faithful, since two linear maps with the same underlying function are equal.
+
+<!--Faithfulness is a condition on each **hom-set** separately, and a faithful functor need not be injective on morphisms globally.-->
+
+<!--The free functor $F : \mathsf{Set} \to \mathsf{Group}$ sends a set to the free group on it, whose elements are the reduced words in the set's elements and their formal inverses.-->
+
+
+<div class="footnote">Riehl (2016), Definition 1.3.1 and Example 1.3.2, §1.3, pp. 14–16; Definition 1.5.7 and Remark 1.5.8, p. 32.</div>
+
+---
+
+<div class="kicker p2">2.1 Functors &middot; Riehl §1.3</div>
+
+## Functors
+
+**Examples 1.3.2.**
+
+- **The chain rule is functoriality.** Let $\mathsf{Euclid}_*$ be the category whose objects are pairs $(\mathbb{R}^n, a)$, a Euclidean space with a chosen point, and whose morphisms $(\mathbb{R}^n, a) \to (\mathbb{R}^m, b)$ are the differentiable $f$ with $f(a) = b$. Sending $(\mathbb{R}^n, a)$ to $n$ and $f$ to its Jacobian matrix at $a$ defines a functor $D : \mathsf{Euclid}_* \to \mathsf{Mat}_{\mathbb{R}}$, where $\mathsf{Mat}_{\mathbb{R}}$ is the matrix category defined earlier. Identities go to identity matrices, and composition in $\mathsf{Mat}_{\mathbb{R}}$ is matrix multiplication, so the composition axiom of Definition 1.3.1 becomes the chain rule $D(g \circ f)_a = Dg_{f(a)} \cdot Df_a$.
+<div class="footnote">Riehl (2016), Example 1.3.2 (x), §1.3, pp. 15–16.</div>
+
+---
+
 <div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
 
-## Commutative diagrams
+## Diagrams
 
 <div class="defbox">
 
@@ -264,10 +308,33 @@ In each of the examples listed in Example 1.1.3, the collection of objects is no
 A **quiver** is a directed graph that may contain loops and parallel arrows.
 - The objects and morphisms of a category form a quiver, and every finite directed path in it has a specified composite, well defined by the associativity axiom of Definition 1.1.1 (pp. 3–4).
 
-A diagram is *displayed* as a quiver of morphisms.
-- The diagram **commutes** when the parallel directed paths it presents with common source and target have equal composites.
 
 <div class="footnote">Riehl (2016), §1.1: quivers, paths, and their composites, pp. 3–4; §1.6: commuting paths and the triangle (1.6.1), p. 39; Definition 1.6.4, p. 40.</div>
+
+---
+
+<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
+
+## Simple diagrams
+
+<div class="cols">
+<div class="center">
+
+![w:200](assets/walking-arrow.svg)
+
+The indexing category has two objects and one arrow, $1 \to 2$. A diagram of this shape in $\mathsf{C}$ is a choice of one morphism $f : x \to y$.
+
+</div>
+<div class="center">
+
+![w:230](assets/walking-triangle.svg)
+
+The indexing category is the poset $1 \leq 2 \leq 3$. A diagram of this shape is a **commutative triangle**: functoriality sends the arrow $1 \to 3$ to the composite $gf$, so the diagonal agrees with the two-step path.
+
+</div>
+</div>
+
+<div class="footnote">Riehl (2016), §1.6: the commuting triangle (1.6.1), p. 39; Definition 1.6.4, p. 40.</div>
 
 ---
 
@@ -644,52 +711,6 @@ $$hf = kf \;\Longrightarrow\; h = k$$
 
 ---
 
-# 2.3 Functors
-
----
-
-<div class="kicker p2">2.3 Functors &middot; Riehl §§1.3, 1.5</div>
-
-## Functors
-
-<div class="defbox">
-
-**Definition 1.3.1.** A functor $F : \mathsf{C} \to \mathsf{D}$ assigns an object $Fc$ to each object $c$ and a morphism $Ff : Fc \to Fc'$ to each $f : c \to c'$, preserving the structure: $Fg \cdot Ff = F(gf)$ and $F(\mathrm{id}_c) = \mathrm{id}_{Fc}$.
-
-</div>
-
-**Examples 1.3.2.** The forgetful functor $U : \mathsf{Vect}_k \to \mathsf{Set}$ sends a vector space to its underlying set.
-
-<div class="defbox">
-
-**Definition 1.5.7 (faithful).** A functor $F : \mathsf{C} \to \mathsf{D}$ is **faithful** if for each pair of objects $x, y$ of $\mathsf{C}$, the map $f \mapsto Ff : \mathsf{C}(x, y) \to \mathsf{D}(Fx, Fy)$ is injective.
-
-</div>
-
-<br/>
-
-The forgetful functor $U$ above is faithful, since two linear maps with the same underlying function are equal.
-
-<!--Faithfulness is a condition on each **hom-set** separately, and a faithful functor need not be injective on morphisms globally.-->
-
-<!--The free functor $F : \mathsf{Set} \to \mathsf{Group}$ sends a set to the free group on it, whose elements are the reduced words in the set's elements and their formal inverses.-->
-
-
-<div class="footnote">Riehl (2016), Definition 1.3.1 and Example 1.3.2, §1.3, pp. 14–16; Definition 1.5.7 and Remark 1.5.8, p. 32.</div>
-
----
-
-<div class="kicker p2">2.3 Functors &middot; Riehl §1.3</div>
-
-## Functors
-
-**Examples 1.3.2.**
-
-- **The chain rule is functoriality.** Let $\mathsf{Euclid}_*$ be the category whose objects are pairs $(\mathbb{R}^n, a)$, a Euclidean space with a chosen point, and whose morphisms $(\mathbb{R}^n, a) \to (\mathbb{R}^m, b)$ are the differentiable $f$ with $f(a) = b$. Sending $(\mathbb{R}^n, a)$ to $n$ and $f$ to its Jacobian matrix at $a$ defines a functor $D : \mathsf{Euclid}_* \to \mathsf{Mat}_{\mathbb{R}}$, the matrix category defined earlier. Identities go to identity matrices, and composition in $\mathsf{Mat}_{\mathbb{R}}$ is matrix multiplication, so the composition axiom of Definition 1.3.1 becomes the chain rule $D(g \circ f)_a = Dg_{f(a)} \cdot Df_a$.
-<div class="footnote">Riehl (2016), Example 1.3.2 (x), §1.3, pp. 15–16.</div>
-
----
-
 # 2.4 Introduction to universality
 
 ---
@@ -1035,6 +1056,27 @@ For the **higher-order** functional equations of dynamic programming there is no
 - We can then study the properties of opposite categories (push-forward measures).
 - Composing and factoring operators.
 - More complex model structures (branching).
+
+---
+
+<div class="kicker p2">Application &middot; elaboration</div>
+
+## Pull back functions, push forward measures
+
+<div class="cols" style="align-items: center;">
+<div class="center">
+
+![w:440](assets/pushpull.svg)
+
+</div>
+<div class="small">
+
+- One state map $g : X \to Y$ acts in both directions. On functions it acts **contravariantly**, by precomposition $g^{*}(v) = v \circ g$, the operator $\mathbb{K}_g$ of the pipeline.
+- On probability measures it acts **covariantly**, by push-forward $g_{*}(\mu) = \mu \circ g^{-1}$.
+- Backward induction pulls value functions back along the transition; simulation pushes distributions forward. The two directions are the two readings of the same arrow, in $\mathsf{C}$ and in $\mathsf{C}^{\mathrm{op}}$.
+
+</div>
+</div>
 
 ---
 
