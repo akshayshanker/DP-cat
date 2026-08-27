@@ -395,6 +395,8 @@ A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf
 
 ## A diagram chase
 
+A **diagram chase** is a style of proof. It establishes that a diagram commutes by starting from one path and substituting, one step at a time, a segment for an equal composite until the parallel path is reached. Each substitution step is licensed by the following lemma.
+
 <div class="defbox">
 
 **Lemma 1.6.11.** If, inside a composable path $f_n, \ldots, f_1$, a segment satisfies $f_k \cdots f_i = g_m \cdots g_1$, then $f_n \cdots f_1 = f_n \cdots f_{k+1}\, g_m \cdots g_1\, f_{i-1} \cdots f_1$.
@@ -439,7 +441,11 @@ Lemma 1.6.11 then reduces commutativity of the whole diagram to that of its **mi
 
 </div>
 
-**Chase.** Parentheses may be dropped, since associativity (Definition 1.1.1) makes the composite of a path independent of them. In the path $\ell j f$, the segment $\ell j$ has the equal composite $m h$ by one inner square, so Lemma 1.6.11 substitutes it inside the path, giving $\ell j f = m h f$. In the path $m h f$, the segment $h f$ has the equal composite $k g$ by the other inner square, so Lemma 1.6.11 substitutes once more, giving $m h f = m k g$. The parallel paths of the rectangle therefore have equal composites, and the rectangle commutes. $\blacksquare$
+**Proof of $\ell j f = m k g$, by diagram chase.**
+
+$$\ell j f \;=\; m h f \;=\; m k g,$$
+
+substituting the segment $\ell j$ by $m h$, then the segment $h f$ by $k g$, each step by Lemma 1.6.11. $\blacksquare$
 
 <div class="footnote">Riehl (2016), §1.6: the two-squares-make-a-rectangle diagram (1.6.10), p. 42.</div>
 
