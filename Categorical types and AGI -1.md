@@ -284,6 +284,30 @@ Note the forgetful functor $U$ above is faithful, since two linear maps with the
 
 ---
 
+<div class="kicker p2">2.1 Functors &middot; Riehl §1.5</div>
+
+## Faithful and non-faithful functors
+
+<div class="center">
+
+![w:600](assets/faithful-map.svg)
+
+</div>
+
+**Faithful.** Distinct morphisms remain distinct.
+
+<div class="center">
+
+![w:600](assets/unfaithful-map.svg)
+
+</div>
+
+**Not faithful.** Distinct morphisms may collapse.
+
+<div class="footnote">Riehl (2016), Definition 1.5.7 (p. 32).</div>
+
+---
+
 <div class="kicker p2">2.1 Functors &middot; Riehl §1.3</div>
 
 ## Functors
@@ -367,6 +391,50 @@ A **cospan**. The indexing category is $1 \rightarrow 0 \leftarrow 2$.
 
 ---
 
+<div class="kicker p2">2.1 Categories and diagrams &middot; example</div>
+
+## Buffer stock model with income growth
+
+Consider a **standard** consumption–saving problem under perfect foresight, with parameters $R$ (return factor), $\beta$ (discount), $\gamma > 1$ (CRRA), and income growth factor $G$.
+- Define the **absolute patience factor** $\text{Þ} := (R\beta)^{1/\gamma}$.
+- Assume $G < R$.
+
+**The agent's problem.** With $u(c) = c^{1-\gamma}/(1-\gamma)$, the value functions satisfy
+
+$$v_t(m_t, p_t) = \max_{0 < c_t \leq m_t}\; u(c_t) + \beta\, v_{t+1}(m_{t+1}, p_{t+1}), \qquad m_{t+1} = R\,(m_t - c_t) + p_{t+1}, \quad p_{t+1} = G\, p_t.$$
+
+where $p_{t}$ is income at time $t$, $m_t$ is wealth, and $c_t$ is consumption.
+
+<div class="footnote">Carroll and Shanker (2026), Theoretical Foundations of Buffer Stock Saving: the problem (𝒫<sub>L</sub>) and the dynamic budget constraint of Section 2, specialized to perfect foresight.</div>
+
+---
+
+<div class="kicker p2">2.1 Categories and diagrams &middot; proof by diagram</div>
+
+## Proof by diagram
+
+**Claim.** Assume $G < R$. Then $\text{Þ} < G \;\Rightarrow\; \text{Þ} < R^{1/\gamma}G^{1-1/\gamma} \;\Rightarrow\; \text{Þ} < R$.
+
+<div class="cols">
+<div>
+
+**Proof** (by composition, on the diagram).
+- $G < R$ gives the two right-hand arrows, $G \to R^{1/\gamma}G^{1-1/\gamma}$ and $R^{1/\gamma}G^{1-1/\gamma} \to R$: each is equivalent to $G < R$.
+- Given the top arrow $\text{Þ} \to G$, composing gives $\text{Þ} \to R^{1/\gamma}G^{1-1/\gamma}$.
+- Composing once more gives $\text{Þ} \to R$. $\blacksquare$
+
+</div>
+<div class="center">
+
+![w:460](assets/bst-fig7.svg)
+
+</div>
+</div>
+
+<div class="footnote">Carroll and Shanker (2026), Theoretical Foundations of Buffer Stock Saving: Claim 2, Appendix A.2 (Equation 53); Figure 7. In the paper's terminology, Þ &lt; G is growth impatience, Þ &lt; R return impatience, G &lt; R finite human wealth, and Þ &lt; R^(1/γ)G^(1−1/γ) perfect-foresight finite value of autarky.</div>
+
+---
+
 <div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
 
 ## Commutative diagrams
@@ -393,9 +461,9 @@ A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf
 
 <div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
 
-## A diagram chase
+## Diagram chase
 
-A **diagram chase** is a style of proof. It establishes that a diagram commutes by starting from one path and substituting, one step at a time, a segment for an equal composite until the parallel path is reached. Each substitution step is licensed by the following lemma.
+A **diagram chase** is a style of proof: it establishes that a diagram commutes by substituting, one step at a time, a segment of a path for an equal composite until the parallel path is reached. Each step is licensed by the following lemma.
 
 <div class="defbox">
 
@@ -403,7 +471,7 @@ A **diagram chase** is a style of proof. It establishes that a diagram commutes 
 
 </div>
 
-**Proof.** Composition is well-defined: if two composites define the same arrow, then pre- and postcomposing each with the same sequences of arrows again gives the same arrow. $\blacksquare$
+**Proof.** By associativity (Definition 1.1.1) the path may be composed in blocks, $f_n \cdots f_1 = q\, s\, p$ with $p = f_{i-1} \cdots f_1$, $s = f_k \cdots f_i$, $q = f_n \cdots f_{k+1}$. Since $s = g_m \cdots g_1$ as arrows, so $q\, s\, p = q\, (g_m \cdots g_1)\, p = f_n \cdots f_{k+1}\, g_m \cdots g_1\, f_{i-1} \cdots f_1$. $\blacksquare$
 
 <div class="footnote">Riehl (2016), §1.6: Lemma 1.6.11 with proof, pp. 42–43; the section's epigraph is Eilenberg–Steenrod on diagrams, p. 39.</div>
 
@@ -411,29 +479,9 @@ A **diagram chase** is a style of proof. It establishes that a diagram commutes 
 
 <div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
 
-## Minimal subdiagrams
-
-A diagram drawn as a **simple acyclic quiver** (the quiver represents a poset category) has
-- at most one edge between any two vertices, no directed cycles;
-- all paths with a common source and target agree.
-
-Lemma 1.6.11 then reduces commutativity of the whole diagram to that of its **minimal subdiagrams** — for the cube $2\times2\times2$, the six faces:
-
-<div class="center">
-
-![w:330](assets/comm-cube.svg)
-
-</div>
-
-<div class="footnote">Riehl (2016), §1.6: minimal subdiagrams and the commutative cube, p. 43.</div>
-
----
-
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
-
 ## Pasting squares
 
-**Example (pasting, diagram 1.6.10).** Suppose the two inner squares commute, $hf = kg$ and $\ell j = mh$. The outer rectangle presents the parallel paths $\ell j f$ and $m k g$, and its commutativity is the equation $\ell j f = m k g$:
+**Example (pasting, diagram 1.6.10).** Suppose the two inner squares commute, $hf = kg$ and $\ell j = mh$. The outer rectangle presents the parallel paths $\ell j f$ and $m k g$, with $\ell j f = m k g$:
 
 <div class="center">
 
@@ -441,55 +489,11 @@ Lemma 1.6.11 then reduces commutativity of the whole diagram to that of its **mi
 
 </div>
 
-**Proof of $\ell j f = m k g$, by diagram chase.**
+$$\ell j f \;\overset{\ell j \,=\, mh}{=}\; m h f \;\overset{hf \,=\, kg}{=}\; m k g$$
 
-$$\ell j f \;=\; m h f \;=\; m k g,$$
-
-substituting the segment $\ell j$ by $m h$, then the segment $h f$ by $k g$, each step by Lemma 1.6.11. $\blacksquare$
+Each equality substitutes an equal segment inside the path, by Lemma 1.6.11. 
 
 <div class="footnote">Riehl (2016), §1.6: the two-squares-make-a-rectangle diagram (1.6.10), p. 42.</div>
-
----
-
-<div class="kicker p2">2.1 Categories and diagrams &middot; example</div>
-
-## Buffer stock model with income growth
-
-Consider a **standard** consumption–saving problem under perfect foresight, with parameters $R$ (return factor), $\beta$ (discount), $\gamma > 1$ (CRRA), and income growth factor $G$.
-- Define the **absolute patience factor** $\text{Þ} := (R\beta)^{1/\gamma}$.
-- Assume $G < R$.
-
-**Diagram.** Objects are the model's parametric factors:
-- an arrow $x \to y$ asserts $x < y$;
-- arrows compose by transitivity.
-
-<div class="footnote">Carroll and Shanker (2026), Theoretical Foundations of Buffer Stock Saving.</div>
-
----
-
-<div class="kicker p2">2.1 Categories and diagrams &middot; proof by diagram</div>
-
-## Proof by diagram
-
-**Claim.** Assume $G < R$. Then $\text{Þ} < G \;\Rightarrow\; \text{Þ} < R^{1/\gamma}G^{1-1/\gamma} \;\Rightarrow\; \text{Þ} < R$.
-
-<div class="cols">
-<div>
-
-**Proof** (by composition, on the diagram).
-- $G < R$ gives the two right-hand arrows, $G \to R^{1/\gamma}G^{1-1/\gamma}$ and $R^{1/\gamma}G^{1-1/\gamma} \to R$: each is equivalent to $G < R$.
-- Given the top arrow $\text{Þ} \to G$, pasting gives $\text{Þ} \to R^{1/\gamma}G^{1-1/\gamma}$.
-- Pasting once more gives $\text{Þ} \to R$. $\blacksquare$
-
-</div>
-<div class="center">
-
-![w:460](assets/bst-fig7.svg)
-
-</div>
-</div>
-
-<div class="footnote">Carroll and Shanker (2026), Theoretical Foundations of Buffer Stock Saving: Claim 2, Appendix A.2 (Equation 53); Figure 7. In the paper's terminology, Þ &lt; G is growth impatience, Þ &lt; R return impatience, G &lt; R finite human wealth, and Þ &lt; R^(1/γ)G^(1−1/γ) perfect-foresight finite value of autarky.</div>
 
 ---
 
@@ -503,7 +507,7 @@ Consider a **standard** consumption–saving problem under perfect foresight, wi
 
 <div class="defbox">
 
-**Definition 1.2.1.** The opposite category $\mathsf{C}^{\mathrm{op}}$ has the same objects as $\mathsf{C}$ and, for each morphism $f : x \to y$ between objects $x$ and $y$ of $\mathsf{C}$, a morphism $f^{\mathrm{op}} : y \to x$, with composites $f^{\mathrm{op}} g^{\mathrm{op}} = (gf)^{\mathrm{op}}$. From here on objects are written in lowercase, following Riehl §1.2.
+**Definition 1.2.1.** The opposite category $\mathsf{C}^{\mathrm{op}}$ has the same objects as $\mathsf{C}$ and, for each morphism $f : x \to y$ between objects $x$ and $y$ of $\mathsf{C}$, a morphism $f^{\mathrm{op}} : y \to x$, with composites $f^{\mathrm{op}} g^{\mathrm{op}} = (gf)^{\mathrm{op}}$. 
 
 </div>
 
@@ -522,7 +526,7 @@ Consider a **standard** consumption–saving problem under perfect foresight, wi
 
 <div class="defbox">
 
-**Exercise 1.2.vii** (Riehl, verbatim). Regarding a poset $(P, \leq)$ as a category, define the supremum of a subcollection of objects $A \subset P$ in such a way that the dual statement defines the infimum. Prove that the supremum of a subset of objects is unique, whenever it exists, in such a way that the dual proof demonstrates the uniqueness of the infimum.
+**Exercise 1.2.vii** (Riehl). Consider the poset $(P, \leq)$ as a category. Define the supremum of a subcollection of objects $A \subset P$ in such a way that the dual statement defines the infimum. Prove that the supremum of a subset of objects is unique, whenever it exists, in such a way that the dual proof demonstrates the uniqueness of the infimum.
 
 </div>
 <br/>
@@ -543,7 +547,7 @@ Consider a **standard** consumption–saving problem under perfect foresight, wi
 **Definition.** An object $s$ is a **supremum** of $A$ when:
 
 - (i) for every $a \in A$ there is a morphism $a \to s$, and
-- (ii) for every $u$ with a morphism $a \to u$ for each $a \in A$, there is a morphism $s \to u$.
+- (ii) for every object $u$ of $P$ such that there is a morphism $a \to u$ for each $a \in A$, there is a morphism $s \to u$.
 
 </div>
 
@@ -572,12 +576,12 @@ Consider a **standard** consumption–saving problem under perfect foresight, wi
 
 Every arrow translates as $x \to y$ in $P^{\mathrm{op}}$ means $y \leq x$ in $P$. Thus, the dual statement for $i$ implies:
 
-- (i) $i$ is a lower bound of $A$, and
-- (ii) for every lower bound $u$ of $A$, we have $u \leq i$.
+- (i) $i$ is a lower bound of $A$ in $P$, and
+- (ii) for every lower bound $u$ of $A$ in $P$, we have $u \leq i$.
 
 It follows that $i$ is the infimum of $A$.
 
-Since $P^{\mathrm{op}}$ is again a poset, the uniqueness proof for suprema applies to it verbatim; the result, once read in $P$, then says that the infimum is unique.
+Since $P^{\mathrm{op}}$ is again a poset, we can apply the uniqueness proof for suprema to $P^{\mathrm{op}}$. Reading the result in $P$ then says that the infimum is unique.
 
 
 <div class="footnote">Riehl (2016), Exercise 1.2.vii (pp. 13–14); the reversed order of P<sup>op</sup> is Example 1.2.2(ii) (p. 10).</div>
@@ -707,6 +711,25 @@ $$hf = kf \;\Longrightarrow\; h = k$$
 
 <div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
 
+## Monomorphisms and epimorphisms in Set
+
+**Example 1.2.8.** In $\mathsf{Set}$, the monomorphisms are the injections and the epimorphisms are the surjections.
+
+<br/>
+
+**The axiom of choice.**
+- A **section** of $f : X \to Y$ is a right inverse, a function $s : Y \to X$ with $f \circ s = \mathrm{id}_Y$. Only a surjection can have a section, since $f \circ s = \mathrm{id}_Y$ makes $f$ onto.
+- The axiom of choice is equivalent to the assertion that **every surjection admits a section**, since a section chooses one element of $f^{-1}(y)$ for each $y$.
+- In $\mathsf{Set}$ the epimorphisms are the surjections (Example 1.2.8), and an epimorphism admitting a section is called **split**.
+- The axiom of choice therefore says that **every epimorphism in $\mathsf{Set}$ is split**.
+
+
+<div class="footnote">Riehl (2016), Examples 1.2.8 and 1.2.9 (p. 12), Remark 1.2.10 (p. 13), §1.2.</div>
+
+---
+
+<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
+
 ## Duality for monomorphisms and epimorphisms
 
 <div class="defbox">
@@ -724,25 +747,6 @@ $$hf = kf \;\Longrightarrow\; h = k$$
 **Step 4.** Apply the first equivalence in $\mathsf{C}^{\mathrm{op}}$, whose opposite category is $\mathsf{C}$ (Definition 1.2.1 applied twice), with $f^{\mathrm{op}}$ in place of $f$; the second equivalence follows. $\blacksquare$
 
 <div class="footnote">Riehl (2016), the duality clause following Definition 1.2.7 (p. 12); Definition 1.2.1 (pp. 9–10).</div>
-
----
-
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
-
-## Monomorphisms and epimorphisms in Set
-
-**Example 1.2.8.** In $\mathsf{Set}$, the monomorphisms are the injections and the epimorphisms are the surjections.
-
-<br/>
-
-**The axiom of choice.**
-- A **section** of $f : X \to Y$ is a right inverse, a function $s : Y \to X$ with $f \circ s = \mathrm{id}_Y$. Only a surjection can have a section, since $f \circ s = \mathrm{id}_Y$ makes $f$ onto.
-- The axiom of choice is equivalent to the assertion that **every surjection admits a section**, since a section chooses one element of $f^{-1}(y)$ for each $y$.
-- In $\mathsf{Set}$ the epimorphisms are the surjections (Example 1.2.8), and an epimorphism admitting a section is called **split**.
-- The axiom of choice therefore says that **every epimorphism in $\mathsf{Set}$ is split**.
-
-
-<div class="footnote">Riehl (2016), Examples 1.2.8 and 1.2.9 (p. 12), Remark 1.2.10 (p. 13), §1.2.</div>
 
 ---
 
@@ -793,14 +797,14 @@ The first lemma says that functors preserve isomorphisms, and the introduction d
 
 <div class="defbox">
 
-**The category of discrete dynamical systems** (Riehl, Examples 2.1.1 and 2.4.11). An object, called a **discrete dynamical system**, is a triple $(X, f, x_0)$, with a set $X$, a function $f : X \to X$, and a distinguished element $x_0 \in X$. A morphism $\varphi : (X, f, x_0) \to (Y, g, y_0)$ is a function $\varphi : X \to Y$ with (i) $\varphi \circ f = g \circ \varphi$, and (ii) $\varphi(x_0) = y_0$. Both conditions hold for identities and survive composition, thus the collection of these objects and morphisms defines a category.
+**The category of discrete dynamical systems** (Riehl, Examples 2.1.1 and 2.4.11). A set $X$ with an endomorphism $f : X \to X$ and a distinguished element $x_0 \in X$ is called a **discrete dynamical system**. The data define the discrete-time evolution of $x_0$, the sequence $(x_n)_{n \in \mathbb{N}}$ with $x_{n+1} := f(x_n)$. A morphism $\varphi : (X, f, x_0) \to (Y, g, y_0)$ is a function $\varphi : X \to Y$ that commutes with the endomorphisms, $\varphi \circ f = g \circ \varphi$, and preserves the distinguished elements, $\varphi(x_0) = y_0$.
 
 </div>
 
 - The equation $\varphi \circ f = g \circ \varphi$ is a commutative square: $\varphi$ carries one step of $f$ to one step of $g$.
 - The perfect-foresight buffer-stock model of the earlier example, with a fixed consumption policy $c$ satisfying $c(m) \leq m$, is an object of this category: $X = \mathbb{R}_{+}$ holds market resources $m$, the law of motion is $f(m) = (R/G)\,(m - c(m)) + 1$, and $x_0 = m_0$.
 
-<div class="footnote">Riehl (2016), Example 2.1.1 (pp. 53–54); the same category returns as Example 2.4.11 (p. 75). The category is large: its objects do not form a set (Remark 1.1.5, p. 6).</div>
+<div class="footnote">Riehl (2016): the objects and the term are Example 2.1.1 (pp. 54–55); the morphisms are Example 2.4.11 (p. 75), which presents this category as the category of elements of U : End → Set — maps in End are functions making the square analogous to diagram (2.1.2) commute, and the element construction adds preservation of the distinguished element. The letter φ is ours. The category is large: its objects do not form a set (Remark 1.1.5, p. 6).</div>
 
 ---
 
@@ -814,7 +818,7 @@ The first lemma says that functors preserve isomorphisms, and the introduction d
 
 </div>
 
-- Preserving the structure imposes two equations, $r(0) = x_0$ and $r(n+1) = f(r(n))$, which say $r$ is a solution path of the difference equation $x_{n+1} = f(x_n)$ started at $x_0$. So $r(n) = f^{n}(x_0)$, and a morphism out of $(\mathbb{N}, s, 0)$ is a trajectory.
+- Preserving the structure imposes two equations, $r(0) = x_0$ and $r(n+1) = f(r(n))$, which say $r$ is a solution path of the difference equation $x_{n+1} = f(x_n)$ started at $x_0$. So $r(n) = x_n$, and a morphism out of $(\mathbb{N}, s, 0)$ is a trajectory.
 - Existence of $r$ is definition by recursion, since iterating $f$ from $x_0$ defines a function on all of $\mathbb{N}$. Uniqueness is induction, since two paths obeying the same law from the same start agree at $0$ and, agreeing at $n$, at $n+1$.
 
 ---
