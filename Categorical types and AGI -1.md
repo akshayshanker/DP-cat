@@ -319,6 +319,35 @@ Note the forgetful functor $U$ above is faithful, since two linear maps with the
 
 ---
 
+<div class="kicker p2">2.1 Functors &middot; an economic example</div>
+
+## Functors
+
+**Example.**
+
+- **The law of iterated expectations is functoriality.** Fix a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ and let $\mathsf{Info}$ be the preorder category whose objects are the sub-σ-algebras $\mathcal{G} \subseteq \mathcal{F}$, the information sets, ordered by reverse inclusion, so that there is exactly one morphism $\mathcal{H} \to \mathcal{G}$ when $\mathcal{G} \subseteq \mathcal{H}$. Sending $\mathcal{G}$ to $L^2(\Omega, \mathcal{G}, \mathbb{P})$ and the morphism $\mathcal{H} \to \mathcal{G}$ to the conditional expectation $\mathbb{E}[\,\cdot \mid \mathcal{G}] : L^2(\Omega, \mathcal{H}, \mathbb{P}) \to L^2(\Omega, \mathcal{G}, \mathbb{P})$ defines a functor $\mathsf{Info} \to \mathsf{Vect}_{\mathbb{R}}$. The identity axiom holds because a $\mathcal{G}$-measurable variable is its own conditional expectation, and for $\mathcal{G} \subseteq \mathcal{H} \subseteq \mathcal{K}$ the composition axiom is the tower property
+  $$\mathbb{E}\big[\,\mathbb{E}[x \mid \mathcal{H}] \,\big|\, \mathcal{G}\big] = \mathbb{E}[x \mid \mathcal{G}], \qquad x \in L^2(\Omega, \mathcal{K}, \mathbb{P}).$$
+- With $\mathcal{G} = \mathcal{F}_t$ and $\mathcal{H} = \mathcal{F}_{t+1}$ the information of an agent at successive dates, the composition axiom reads $\mathbb{E}_t[\mathbb{E}_{t+1}[x]] = \mathbb{E}_t[x]$, the law of iterated expectations of rational-expectations models.
+
+<div class="footnote">On L² the conditional expectation is the orthogonal projection onto the closed subspace L²(Ω, 𝒢, P); its linearity and the tower property are standard and not proved here. The preorder category was defined on the categories slide.</div>
+
+---
+
+<div class="kicker p2">2.1 Functors &middot; an economic example</div>
+
+## Functors
+
+**Example.**
+
+- **Time-consistent discounting is a functor.** Regard the dates $(\mathbb{N}, \leq)$ as a preorder category and the positive reals under multiplication as the one-object category $\mathsf{B}(\mathbb{R}_{>0}, \times)$. A functor $D : (\mathbb{N}, \leq) \to \mathsf{B}(\mathbb{R}_{>0}, \times)$ assigns to each pair of dates $k \leq m$ a discount weight $D(k, m) > 0$, the weight the date-$k$ self places on date-$m$ utility, and the two axioms of Definition 1.3.1 read
+  $$D(k, k) = 1, \qquad D(k, m) = D(n, m)\, D(k, n) \quad \text{for } k \leq n \leq m.$$
+- Exponential discounting, $D(k, m) = \beta^{\,m-k}$, satisfies both. Quasi-hyperbolic discounting, $D(k, m) = \beta\, \delta^{\,m-k}$ for $m > k$ with $\beta < 1$, fails the composition axiom, since $D(0, 2) = \beta\delta^2$ while $D(1, 2)\, D(0, 1) = \beta^2 \delta^2$.
+- The composition axiom says $D(k, m) / D(k, n) = D(n, m)$, so the date-$k$ self and the date-$n$ self trade off utility at $n$ against utility at $m$ at the same rate. A discounting scheme that satisfies both axioms is therefore time consistent, and the β–δ weights, which fail the composition axiom, are not.
+
+<div class="footnote">The one-object category BM of a monoid M and the preorder category were defined on the categories slide; here M = (ℝ<sub>&gt;0</sub>, ×). These two examples are not in Riehl.</div>
+
+---
+
 <div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
 
 ## Diagrams
@@ -754,78 +783,113 @@ $$hf = kf \;\Longrightarrow\; h = k$$
 
 ---
 
-<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §1.3</div>
+<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §2.1</div>
 
-## The first lemma of category theory
+## Discrete dynamical systems
 
 <div class="defbox">
 
-**Lemma 1.3.8.** *Functors preserve isomorphisms.*
+**Definition** (Riehl, Example 2.1.1). A **discrete dynamical system** is a set $X$ with a function $g : X \to X$ and a chosen element $x_0 \in X$. Applying $g$ repeatedly to $x_0$ produces the recursive sequence $x_{n+1} = g(x_n)$, the **trajectory** of $x_0$.
 
 </div>
 
-**Proof.** The proof uses Definition 1.1.10 (isomorphism and inverse) and the two functoriality axioms of Definition 1.3.1.
+- **Example A.** The triple $(\mathbb{N}, s, 0)$, the natural numbers with the successor $s(n) = n + 1$ and starting point $0$; its trajectory is $0, 1, 2, \ldots$
+- **Example B.** The perfect-foresight buffer-stock model of the earlier example, with a fixed consumption policy $c$ satisfying $c(m) \leq m$: $X = \mathbb{R}_{+}$ holds market resources $m$, the law of motion is $g(m) = (R/G)\,(m - c(m)) + 1$, and $x_0 = m_0$.
 
-Let $F : \mathsf{C} \to \mathsf{D}$ be a functor and $f : x \to y$ an isomorphism with inverse $g : y \to x$ (Definition 1.1.10). Then
-
-$$Fg \cdot Ff \;=\; F(gf) \;=\; F(\mathrm{id}_x) \;=\; \mathrm{id}_{Fx},$$
-
-the first equality by the composition axiom of Definition 1.3.1, the second because $gf = \mathrm{id}_x$ (Definition 1.1.10), the third by the identity axiom of Definition 1.3.1. So $Fg$ is a left inverse of $Ff$; exchanging the roles of $f$ and $g$ in the same three equalities gives $Ff \cdot Fg = \mathrm{id}_{Fy}$, so the inverse is two-sided and $Ff$ is an isomorphism (Definition 1.1.10). $\blacksquare$
-
-<div class="footnote">Riehl (2016), Lemma 1.3.8 with proof, §1.3, p. 19. The lemma appears immediately after functors are first defined in Eilenberg–Mac Lane (1942) — "arguably the first lemma in category theory" (Riehl).</div>
-
----
-
-<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §1.3</div>
-
-## Consequences of the first lemma
-
-The first lemma says that functors preserve isomorphisms, and the introduction defined an **elaboration** of a typed system as a structure-preserving functor from its classifying category.
-- Together they imply that every interpretation carries each isomorphism of the classifying category to an isomorphism of the semantics.
-- This is the first instance of the pattern we want to exploit.
-	- A relational property established once in a simpler setting (say, declarative syntax) transfers to every interpretation.
-
-
-
-
+<div class="footnote">Riehl (2016), Example 2.1.1, pp. 54–55; Riehl's f is our g.</div>
 
 ---
 
 <div class="kicker p2">2.4 Introduction to universality &middot; Riehl §2.1</div>
 
-## Prelude to universality: category of dynamical systems
+## What makes $(\mathbb{N}, s, 0)$ universal?
 
 <div class="defbox">
 
-**The category of discrete dynamical systems** (Riehl, Examples 2.1.1 and 2.4.11). A set $X$ with an endomorphism $f : X \to X$ and a distinguished element $x_0 \in X$ is called a **discrete dynamical system**. The data define the discrete-time evolution of $x_0$, the sequence $(x_n)_{n \in \mathbb{N}}$ with $x_{n+1} := f(x_n)$. A morphism $\varphi : (X, f, x_0) \to (Y, g, y_0)$ is a function $\varphi : X \to Y$ that commutes with the endomorphisms, $\varphi \circ f = g \circ \varphi$, and preserves the distinguished elements, $\varphi(x_0) = y_0$.
+**Morphism of dynamical systems** (Riehl, Example 2.4.11). A morphism $\varphi : (X, g, x_0) \to (Y, g', y_0)$ is a function $\varphi : X \to Y$ that commutes with the laws of motion, $\varphi \circ g = g' \circ \varphi$, and preserves the starting points, $\varphi(x_0) = y_0$. It carries the trajectory of $x_0$ onto the trajectory of $y_0$.
 
 </div>
 
-- The equation $\varphi \circ f = g \circ \varphi$ is a commutative square: $\varphi$ carries one step of $f$ to one step of $g$.
-- The perfect-foresight buffer-stock model of the earlier example, with a fixed consumption policy $c$ satisfying $c(m) \leq m$, is an object of this category: $X = \mathbb{R}_{+}$ holds market resources $m$, the law of motion is $f(m) = (R/G)\,(m - c(m)) + 1$, and $x_0 = m_0$.
+<div class="cols" style="grid-template-columns: 1fr 400px; gap: 1.2em; align-items: center;">
+<div>
 
-<div class="footnote">Riehl (2016): the objects and the term are Example 2.1.1 (pp. 54–55); the morphisms are Example 2.4.11 (p. 75), which presents this category as the category of elements of U : End → Set — maps in End are functions making the square analogous to diagram (2.1.2) commute, and the element construction adds preservation of the distinguished element. The letter φ is ours. The category is large: its objects do not form a set (Remark 1.1.5, p. 6).</div>
+- For $\varphi : (\mathbb{N}, s, 0) \to (X, g, x_0)$ the two conditions read $\varphi(n+1) = g(\varphi(n))$ and $\varphi(0) = x_0$, so $\varphi$ is the trajectory of $x_0$, defined by recursion and unique by induction, $\varphi(n) = x_n$.
+- Every system thus receives exactly one morphism from $(\mathbb{N}, s, 0)$, and to choose it is to choose an initial condition; the next two slides make this precise.
+
+</div>
+<div class="center">
+
+![w:360](assets/ds-square.svg)
+
+</div>
+</div>
+
+<div class="footnote">Riehl (2016): the square is diagram (2.1.2), p. 55; the morphisms are those of Example 2.4.11, p. 75, where the category is the category of elements of the forgetful functor U : End → Set.</div>
 
 ---
 
-<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §2.1</div>
+<div class="kicker p2">2.4 Introduction to universality &middot; universal morphisms</div>
 
-## Prelude to universality: the natural numbers
+## Generalising: universal morphisms
 
 <div class="defbox">
 
-**A universal property of the natural numbers** (Riehl, Example 2.1.1). The triple $(\mathbb{N}, s, 0)$, with the successor function $s(n) = n + 1$, is itself a discrete dynamical system, and for every discrete dynamical system $(X, f, x_0)$ there is exactly one morphism $r : (\mathbb{N}, s, 0) \to (X, f, x_0)$.
+**Definition** (universal morphism). Let $F : \mathsf{C} \to \mathsf{D}$ be a functor and $X$ an object of $\mathsf{D}$. A **universal morphism from $X$ to $F$** is a pair $(A, u)$, with $A$ an object of $\mathsf{C}$ and $u : X \to F(A)$ a morphism of $\mathsf{D}$, such that for every object $A'$ of $\mathsf{C}$ and every morphism $f : X \to F(A')$ in $\mathsf{D}$ there is exactly one morphism $h : A \to A'$ in $\mathsf{C}$ with $F(h) \circ u = f$.
 
 </div>
 
-- Preserving the structure imposes two equations, $r(0) = x_0$ and $r(n+1) = f(r(n))$, which say $r$ is a solution path of the difference equation $x_{n+1} = f(x_n)$ started at $x_0$. So $r(n) = x_n$, and a morphism out of $(\mathbb{N}, s, 0)$ is a trajectory.
-- Existence of $r$ is definition by recursion, since iterating $f$ from $x_0$ defines a function on all of $\mathbb{N}$. Uniqueness is induction, since two paths obeying the same law from the same start agree at $0$ and, agreeing at $n$, at $n+1$.
+<div class="center">
+
+![w:470](assets/univ-triangle.svg)
+
+</div>
+
+Every $f$ factors through $u$ in exactly one way; the dashed arrows are the ones the definition asserts.
+
+<div class="footnote">Mac Lane's universal arrow, stated as Definition 12 in Mahadevan (2026); the concrete-category version is Adámek, Herrlich, and Strecker, Definition 8.22 (p. 140). Riehl's equivalent is the universal element, Definition 2.3.4 (p. 69), with Proposition 2.4.8 (p. 75).</div>
 
 ---
 
-<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §2.1</div>
+<div class="kicker p2">2.4 Introduction to universality &middot; Riehl §2.4</div>
 
-## Prelude to universality: the natural numbers
+## Claim: $(\mathbb{N}, s, 0)$ is a universal morphism
+
+Take $\mathsf{C} = \mathsf{End}$ (sets with a function to themselves; morphisms commute with those functions), $\mathsf{D} = \mathsf{Set}$, $F = U$ the forgetful functor, and $X = \mathbf{1}$, so that $f : \mathbf{1} \to U(X, g)$ picks an initial condition $x_0$. The pair is $A = (\mathbb{N}, s)$ with $u : \mathbf{1} \to \mathbb{N}$ picking $0$.
+
+<div class="cols" style="grid-template-columns: 1fr 440px; gap: 1.2em; align-items: center;">
+<div class="small">
+
+<div class="defbox">
+
+**Claim.** $\big((\mathbb{N}, s),\, u\big)$ is a universal morphism from $\mathbf{1}$ to $U$.
+
+</div>
+
+**Proof. Step 1.** In $\mathsf{End}$, $h : (\mathbb{N}, s) \to (X, g)$ means $h(n+1) = g(h(n))$, and $U(h) \circ u = f$ means $h(0) = x_0$.
+
+**Step 2.** Definition by recursion gives such an $h$. Two such agree at $0$, and agreement at $n$ gives agreement at $n+1$, so by induction they agree everywhere.
+
+**Step 3.** Hence $h$ is the trajectory $h(n) = x_n$, the morphism $\varphi$ of the previous slide. $\blacksquare$
+
+</div>
+<div class="center">
+
+![w:440](assets/univ-triangle-N.svg)
+
+</div>
+</div>
+
+<div class="footnote">Riehl (2016), Example 2.4.11 (p. 75): the category of elements of U, represented by (ℕ, s) with universal element 0. Adámek, Herrlich, and Strecker, Example 8.23(6) (pp. 141–142).</div>
+
+---
+
+<div class="kicker p2">2.4 Introduction to universality &middot; implications</div>
+
+## Implications
+
+- A morphism out of $(\mathbb{N}, s)$ is determined by where it sends $0$, and every choice occurs, so $\mathsf{End}\big((\mathbb{N}, s), (X, g)\big) \cong X$ by $h \mapsto h(0)$. The universal pair is unique up to a unique isomorphism.
+- Every set $X$ has its own universal morphism to $U$, the system $X \times \mathbb{N}$ with shift $(x, n) \mapsto (x, n+1)$, the free dynamical system on $X$. The assignment $X \mapsto X \times \mathbb{N}$ is the **left adjoint** of $U$, a notion of a later session.
+- Products, free groups, and tensor products are universal morphisms for suitable $F$, and so are limits and colimits. The supremum of Exercise 1.2.vii is a colimit, which is where Session B begins.
 
 <div class="callout sm">
 
@@ -833,7 +897,7 @@ The first lemma says that functors preserve isomorphisms, and the introduction d
 
 </div>
 
-<div class="footnote">Riehl (2016), Example 2.1.1 and diagram (2.1.2), pp. 53–55; "universal" is made precise in Chapter 2 as initial or terminal (p. 54).</div>
+<div class="footnote">Wikipedia, "Universal property", sections "Equivalent formulations" and "Relation to adjoint functors"; Adámek, Herrlich, and Strecker, Example 8.23(1) (p. 141): free over a singleton means representing the forgetful functor.</div>
 
 ---
 
