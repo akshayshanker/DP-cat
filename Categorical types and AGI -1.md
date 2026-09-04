@@ -125,13 +125,14 @@ Create a formal **declarative** symbolic system to write dynamic programs so tha
 	1. Categories
 	2. Functors and diagrams
 	3. Duality
-	4. Introduction to universality
+	4. Introduction to universality via simple DP
 3. **Dynamic-programming research.**
 
 Next talks:
-- formalize universality and more interesting DP applications.
-- colimits.
-- types and terms.
+- Equivalence of categories (natural transformations), formalize universality, Yoneda Lemma
+- DP applications (further)
+- Colimits.
+- Types and terms.
 
 ---
 <!-- _class: title -->
