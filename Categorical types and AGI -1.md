@@ -49,7 +49,7 @@ May or may not help us prove new results.
 
 ---
 
-<div class="kicker p2">Introduction &middot; Category theory</div>
+<div class="kicker p1">Introduction &middot; Category theory</div>
 
 ## Category theory
 
@@ -63,7 +63,7 @@ May or may not help us prove new results.
 
 ---
 
-<div class="kicker p2">Introduction &middot; Type theory</div>
+<div class="kicker p1">Introduction &middot; Type theory</div>
 
 ## Type theory
 
@@ -79,7 +79,7 @@ An <strong>elaboration</strong> is a structure-preserving map from that category
 
 ---
 
-<div class="kicker p3">Introduction &middot; Motivation</div>
+<div class="kicker p1">Introduction &middot; Motivation</div>
 
 ## Why should economists care?
 
@@ -93,7 +93,7 @@ Category theory can give us a *simple and common* language to formally represent
 
 ---
 
-<div class="kicker p3">Introduction &middot; Motivation</div>
+<div class="kicker p1">Introduction &middot; Motivation</div>
 
 ## Research program: Symbolic dynamic programming
 
@@ -115,18 +115,18 @@ Create a formal **declarative** symbolic system to write dynamic programs so tha
 
 ---
 
-<div class="kicker p3">Introduction &middot; contents</div>
+<div class="kicker p1">Introduction &middot; contents</div>
 
 ## Road-map
 
 
 1. **Introduction.**
 2. **Categories and functors.**
-	1. Categories and diagrams
-	2. Duality
-	3. Functors
+	1. Categories
+	2. Functors and diagrams
+	3. Duality
 	4. Introduction to universality
-3. **Open dynamic-programming research.**
+3. **Dynamic-programming research.**
 
 Next talks:
 - formalize universality and more interesting DP applications.
@@ -141,26 +141,23 @@ Next talks:
 
 # 2. Categories and functors
 
-<p class="title-authors">2.1 Categories and diagrams &middot; 2.2 Duality &middot; 2.3 Functors &middot; 2.4 Introduction to universality</p>
+<p class="title-authors">2.1 Categories &middot; 2.2 Functors and diagrams &middot; 2.3 Duality &middot; 2.4 Introduction to universality</p>
 
 ---
 
-# 2.1 Categories and diagrams
+# 2.1 Categories
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.1</div>
+<div class="kicker p2">2.1 Categories &middot; Riehl §1.1</div>
 
 ## A category
 
-<div class="defbox">
-
-**Definition 1.1.1.** A category consists of a collection of **objects** $X, Y, Z, \ldots$ and a collection of **morphisms** $f, g, h, \ldots$ such that each morphism has a specified domain and codomain ($f : X \to Y$), each object has an identity $\mathrm{id}_X : X \to X$, and each composable pair has a specified composite — $f : X \to Y$ and $g : Y \to Z$ yield $gf : X \to Z$ — subject to two axioms:
-
-- **unitality**: $\mathrm{id}_Y f = f = f\, \mathrm{id}_X$ for every $f : X \to Y$;
-- **associativity**: $h(gf) = (hg)f$ for every composable triple.
-
-</div>
+> [!definition] **Definition 1.1.1.**
+> A category consists of a collection of **objects** $X, Y, Z, \ldots$ and a collection of **morphisms** $f, g, h, \ldots$ such that each morphism has a specified domain and codomain ($f : X \to Y$), each object has an identity $\mathrm{id}_X : X \to X$, and each composable pair has a specified composite — $f : X \to Y$ and $g : Y \to Z$ yield $gf : X \to Z$ — subject to two axioms:
+>
+> - **unitality**: $\mathrm{id}_Y f = f = f\, \mathrm{id}_X$ for every $f : X \to Y$;
+> - **associativity**: $h(gf) = (hg)f$ for every composable triple.
 
 - Definition 1.1.1 supplies no elements, no membership relation, and no underlying sets.
 - Note how the objects are recoverable from the identity morphisms (Remark 1.1.2 in Riehl), so **morphisms** take primacy.
@@ -169,7 +166,7 @@ Next talks:
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.1</div>
+<div class="kicker p2">2.1 Categories &middot; Riehl §1.1</div>
 
 ## Examples of categories
 
@@ -185,23 +182,17 @@ Concrete categories: the objects have underlying sets, and the morphisms are str
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.1</div>
+<div class="kicker p2">2.1 Categories &middot; Riehl §1.1</div>
 
 ## Categories versus sets
 
 In each of the examples listed in Example 1.1.3, the collection of objects is not a set (Remark 1.1.5).
 
-<div class="defbox">
+> [!notation] **Notation.**
+> For objects $x, y$, write $\mathsf{C}(x, y)$ for the collection of morphisms $x \to y$.
 
-**Notation.** For objects $x, y$, write $\mathsf{C}(x, y)$ for the collection of morphisms $x \to y$.
-
-</div>
-
-<div class="defbox">
-
-**Definitions 1.1.6–1.1.7.** A category is **small** if it has only a set's worth of arrows in total, and **locally small** if between any pair of objects there is only a set's worth of morphisms — that is, each $\mathsf{C}(x, y)$ is a set. Small implies locally small, because a subcollection of a set is a set. The converse fails.
-
-</div>
+> [!definition] **Definitions 1.1.6–1.1.7.**
+> A category is **small** if it has only a set's worth of arrows in total, and **locally small** if between any pair of objects there is only a set's worth of morphisms — that is, each $\mathsf{C}(x, y)$ is a set. Small implies locally small, because a subcollection of a set is a set. The converse fails.
 
 - A set is known through its elements and the membership relation. A category is known through its morphisms and their composition.
 - The notion of sameness in a category is isomorphism (Definition 1.1.10), not equality.
@@ -210,30 +201,43 @@ In each of the examples listed in Example 1.1.3, the collection of objects is no
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.1</div>
+<div class="kicker p2">2.1 Categories &middot; Riehl §1.1</div>
 
 ## Morphisms need not be functions
 
-- $\mathsf{Mat}_{\mathbb{R}}$ denotes the category of real matrices. Its objects are the positive integers, a morphism $n \to m$ is an $m \times n$ real matrix, and composition is matrix multiplication.
-- $\mathsf{B}M$ denotes the one-object category built from a monoid $M$, a set carrying an associative multiplication with a unit. The morphisms of the single object are the elements of $M$, and composition is the multiplication of $M$.
-- A preorder $(P, \leq)$, a set with a reflexive and transitive relation, is a category with exactly one morphism $x \to y$ when $x \leq y$ and none otherwise. Transitivity supplies the composites, and reflexivity supplies the identities.
+**Examples**
+- $\mathsf{Mat}_{\mathbb{R}}$ denotes the category of real matrices
+	- Objects are the positive integers
+	- Morphism $n \to m$ is an $m \times n$ real matrix
+	- Identity morphism is the identity matrix
+	- Regarding composition, consider $A : m \to n$ and $B : n \to p$; the composite $BA : m \to p$ is the matrix product
+- A preorder $(P, \leq)$, a set with a reflexive and transitive relation, is a category with exactly one morphism $x \to y$ when $x \leq y$ and none otherwise
+	- Reflexivity gives the identities: $a \leq a$, so $a \to a$ for each $a \in P$
+	- Transitivity gives composition: $x \leq y$ and $y \leq z$ imply $x \to z$
 
 <div class="footnote">Riehl (2016), Example 1.1.4 (i)–(iii), pp. 5–6.</div>
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.1</div>
+<div class="kicker p2">2.1 Categories &middot; Riehl §1.1</div>
 
 ## Isomorphism
 
-<div class="defbox">
+> [!definition] **Definition 1.1.10.**
+> A morphism $f : X \to Y$ is an **isomorphism** when there exists $g : Y \to X$ with $gf = \mathrm{id}_X$ and $fg = \mathrm{id}_Y$; the objects are then isomorphic, $X \cong Y$.
 
-**Definition 1.1.10.** A morphism $f : X \to Y$ is an **isomorphism** when there exists $g : Y \to X$ with $gf = \mathrm{id}_X$ and $fg = \mathrm{id}_Y$; the objects are then isomorphic, $X \cong Y$.
+**Counter-example** (a map that is not an isomorphism)
+- In $\mathsf{Set}$, let $X = \{0\}$, $Y = \{0, 1\}$, $f : X \to Y$ with $f(0) = 0$, and $g : Y \to X$ the only map back
+	- $gf = \mathrm{id}_X$, but $fg$ sends both points of $Y$ to $0$, so $fg \neq \mathrm{id}_Y$
+	- No other $g$ exists, so $f$ has no inverse and is not an isomorphism
 
-</div>
+---
+
+<div class="kicker p2">2.1 Categories &middot; Riehl §1.1</div>
+
+## Examples of isomorphisms
 
 **Examples 1.1.11.**
-
 - In $\mathsf{Set}$, the isomorphisms are the bijections.
 - In $\mathsf{Top}$, the category whose objects are topological spaces and whose morphisms are continuous maps (Example 1.1.3(ii)), the isomorphisms are the **homeomorphisms**. Definition 1.1.10 requires the inverse to be a morphism of the same category, so the inverse must itself be continuous, and a continuous bijection can fail to have a continuous inverse. Wrapping a half-open interval once around a circle is a continuous bijection whose inverse is discontinuous at the point where the ends meet, so interval and circle are isomorphic in $\mathsf{Set}$ but not in $\mathsf{Top}$.
 	<!-- Author note: whether two objects count as the same is decided by the ambient category, the category in which the objects live, not by the objects' underlying sets. -->
@@ -251,25 +255,23 @@ In each of the examples listed in Example 1.1.3, the collection of objects is no
 
 ---
 
-<div class="kicker p2">2.1 Functors &middot; Riehl §§1.3, 1.5</div>
+# 2.2 Functors and diagrams
+
+---
+
+<div class="kicker p2">2.2 Functors and diagrams &middot; Riehl §§1.3, 1.5</div>
 
 ## Functors
 
-<div class="defbox">
-
-**Definition 1.3.1.** A functor $F : \mathsf{C} \to \mathsf{D}$ assigns an object $Fc$ to each object $c$ and a morphism $Ff : Fc \to Fc'$ to each $f : c \to c'$, preserving the structure: $Fg \cdot Ff = F(gf)$ and $F(\mathrm{id}_c) = \mathrm{id}_{Fc}$.
-
-</div>
+> [!definition] **Definition 1.3.1.**
+> A functor $F : \mathsf{C} \to \mathsf{D}$ assigns an object $Fc$ to each object $c$ and a morphism $Ff : Fc \to Fc'$ to each $f : c \to c'$, preserving the structure: $Fg \cdot Ff = F(gf)$ and $F(\mathrm{id}_c) = \mathrm{id}_{Fc}$.
 
 **Examples 1.3.2.** The forgetful functor $U : \mathsf{Vect}_k \to \mathsf{Set}$ sends a vector space to its underlying set.
 
-</br>
+<br/>
 
-<div class="defbox">
-
-**Definition 1.5.7 (faithful).** A functor $F : \mathsf{C} \to \mathsf{D}$ is **faithful** if for each pair of objects $x, y$ of $\mathsf{C}$, the map $f \mapsto Ff : \mathsf{C}(x, y) \to \mathsf{D}(Fx, Fy)$ is injective.
-
-</div>
+> [!definition] **Definition 1.5.7 (faithful).**
+> A functor $F : \mathsf{C} \to \mathsf{D}$ is **faithful** if for each pair of objects $x, y$ of $\mathsf{C}$, the map $f \mapsto Ff : \mathsf{C}(x, y) \to \mathsf{D}(Fx, Fy)$ is injective.
 
 <br/>
 
@@ -284,7 +286,7 @@ Note the forgetful functor $U$ above is faithful, since two linear maps with the
 
 ---
 
-<div class="kicker p2">2.1 Functors &middot; Riehl §1.5</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; Riehl §1.5</div>
 
 ## Faithful and non-faithful functors
 
@@ -308,59 +310,83 @@ Note the forgetful functor $U$ above is faithful, since two linear maps with the
 
 ---
 
-<div class="kicker p2">2.1 Functors &middot; Riehl §1.3</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; Examples</div>
 
-## Functors
+## The chain rule
 
-**Examples 1.3.2.**
+- Let $\mathsf{Euclid}_*$ be the category
+	- Objects are pairs $(\mathbb{R}^n, a)$, a Euclidean space with a chosen point
+	- Morphisms $(\mathbb{R}^n, a) \to (\mathbb{R}^m, b)$ are the differentiable $f$ with $f(a) = b$
+- Recall $\mathsf{Mat}_{\mathbb{R}}$ is the matrix category defined earlier
+- Sending $(\mathbb{R}^n, a)$ to $n$ and $f$ to its Jacobian matrix at $a$ defines a functor $D : \mathsf{Euclid}_* \to \mathsf{Mat}_{\mathbb{R}}$
+- Check functoriality axioms
+	- Identities go to identity matrices
+	- Composition in $\mathsf{Mat}_{\mathbb{R}}$ is matrix multiplication, so the composition axiom of Definition 1.3.1 becomes the chain rule $D(g \circ f)_a = Dg_{f(a)} \cdot Df_a$
 
-- **The chain rule is functoriality.** Let $\mathsf{Euclid}_*$ be the category whose objects are pairs $(\mathbb{R}^n, a)$, a Euclidean space with a chosen point, and whose morphisms $(\mathbb{R}^n, a) \to (\mathbb{R}^m, b)$ are the differentiable $f$ with $f(a) = b$. Sending $(\mathbb{R}^n, a)$ to $n$ and $f$ to its Jacobian matrix at $a$ defines a functor $D : \mathsf{Euclid}_* \to \mathsf{Mat}_{\mathbb{R}}$, where $\mathsf{Mat}_{\mathbb{R}}$ is the matrix category defined earlier. Identities go to identity matrices, and composition in $\mathsf{Mat}_{\mathbb{R}}$ is matrix multiplication, so the composition axiom of Definition 1.3.1 becomes the chain rule $D(g \circ f)_a = Dg_{f(a)} \cdot Df_a$.
 <div class="footnote">Riehl (2016), Example 1.3.2 (x), §1.3, pp. 15–16.</div>
 
 ---
 
-<div class="kicker p2">2.1 Functors &middot; an economic example</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; Examples</div>
 
-## Functors
+## Law of iterated expectations
 
-**Example.**
+**Example**
 
-- **The law of iterated expectations is functoriality.** Fix a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ and let $\mathsf{Info}$ be the preorder category whose objects are the sub-σ-algebras $\mathcal{G} \subseteq \mathcal{F}$, the information sets, ordered by reverse inclusion, so that there is exactly one morphism $\mathcal{H} \to \mathcal{G}$ when $\mathcal{G} \subseteq \mathcal{H}$. Sending $\mathcal{G}$ to $L^2(\Omega, \mathcal{G}, \mathbb{P})$ and the morphism $\mathcal{H} \to \mathcal{G}$ to the conditional expectation $\mathbb{E}[\,\cdot \mid \mathcal{G}] : L^2(\Omega, \mathcal{H}, \mathbb{P}) \to L^2(\Omega, \mathcal{G}, \mathbb{P})$ defines a functor $\mathsf{Info} \to \mathsf{Vect}_{\mathbb{R}}$. The identity axiom holds because a $\mathcal{G}$-measurable variable is its own conditional expectation, and for $\mathcal{G} \subseteq \mathcal{H} \subseteq \mathcal{K}$ the composition axiom is the tower property
+*Very cool!*
+- Fix a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ and let $\mathsf{Info}$ be the preorder category whose objects are the sub-σ-algebras $\mathcal{G} \subseteq \mathcal{F}$ (the information sets, ordered by reverse inclusion)
+- There is exactly one morphism $\mathcal{H} \to \mathcal{G}$ when $\mathcal{G} \subseteq \mathcal{H}$. 
+- Sending $\mathcal{G}$ to $L^2(\Omega, \mathcal{G}, \mathbb{P})$ and the morphism $\mathcal{H} \to \mathcal{G}$ to the conditional expectation $\mathbb{E}[\,\cdot \mid \mathcal{G}] : L^2(\Omega, \mathcal{H}, \mathbb{P}) \to L^2(\Omega, \mathcal{G}, \mathbb{P})$ defines a functor $\mathsf{Info} \to \mathsf{Vect}_{\mathbb{R}}$
+	- The identity axiom holds because a $\mathcal{G}$-measurable variable is its own conditional expectation
+	- For $\mathcal{G} \subseteq \mathcal{H} \subseteq \mathcal{K}$ the composition axiom is the tower property
   $$\mathbb{E}\big[\,\mathbb{E}[x \mid \mathcal{H}] \,\big|\, \mathcal{G}\big] = \mathbb{E}[x \mid \mathcal{G}], \qquad x \in L^2(\Omega, \mathcal{K}, \mathbb{P}).$$
-- With $\mathcal{G} = \mathcal{F}_t$ and $\mathcal{H} = \mathcal{F}_{t+1}$ the information of an agent at successive dates, the composition axiom reads $\mathbb{E}_t[\mathbb{E}_{t+1}[x]] = \mathbb{E}_t[x]$, the law of iterated expectations of rational-expectations models.
-
-<div class="footnote">On L² the conditional expectation is the orthogonal projection onto the closed subspace L²(Ω, 𝒢, P); its linearity and the tower property are standard and not proved here. The preorder category was defined on the categories slide.</div>
+- With $\mathcal{G} = \mathcal{F}_t$ and $\mathcal{H} = \mathcal{F}_{t+1}$ the information of an agent at successive dates, the composition axiom reads $\mathbb{E}_t[\mathbb{E}_{t+1}[x]] = \mathbb{E}_t[x]$, the law of iterated expectations.
 
 ---
 
-<div class="kicker p2">2.1 Functors &middot; an economic example</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; Examples</div>
 
-## Functors
+## Time-consistent discounting is a functor
 
-**Example.**
+**Example**
+- Dates form the preorder category $(\mathbb{N}, \leq)$: one morphism $k \to m$ when $k \leq m$
+- Discount weights form a category $\mathsf{B}\mathbb{R}_{>0}$ with a single object $\bullet$
+	- A morphism $\bullet \to \bullet$ is a positive number $r$; as with matrices, a morphism need not be a function
+	- Composing $r$ after $s$ is the number $rs$, and the identity morphism is $1$
+- A functor $D : (\mathbb{N}, \leq) \to \mathsf{B}\mathbb{R}_{>0}$ sends every date to $\bullet$ and the morphism $k \to m$ to a positive number $D(k, m)$
+	- Read $D(k, m)$ as the weight the date-$k$ self places on date-$m$ utility
+	- Identity axiom: $D(k, k) = 1$
+	- Composition axiom: $D(k, m) = D(n, m)\, D(k, n)$ for $k \leq n \leq m$
 
-- **Time-consistent discounting is a functor.** Regard the dates $(\mathbb{N}, \leq)$ as a preorder category and the positive reals under multiplication as the one-object category $\mathsf{B}(\mathbb{R}_{>0}, \times)$. A functor $D : (\mathbb{N}, \leq) \to \mathsf{B}(\mathbb{R}_{>0}, \times)$ assigns to each pair of dates $k \leq m$ a discount weight $D(k, m) > 0$, the weight the date-$k$ self places on date-$m$ utility, and the two axioms of Definition 1.3.1 read
-  $$D(k, k) = 1, \qquad D(k, m) = D(n, m)\, D(k, n) \quad \text{for } k \leq n \leq m.$$
-- Exponential discounting, $D(k, m) = \beta^{\,m-k}$, satisfies both. Quasi-hyperbolic discounting, $D(k, m) = \beta\, \delta^{\,m-k}$ for $m > k$ with $\beta < 1$, fails the composition axiom, since $D(0, 2) = \beta\delta^2$ while $D(1, 2)\, D(0, 1) = \beta^2 \delta^2$.
-- The composition axiom says $D(k, m) / D(k, n) = D(n, m)$, so the date-$k$ self and the date-$n$ self trade off utility at $n$ against utility at $m$ at the same rate. A discounting scheme that satisfies both axioms is therefore time consistent, and the β–δ weights, which fail the composition axiom, are not.
-
-<div class="footnote">The one-object category BM of a monoid M and the preorder category were defined on the categories slide; here M = (ℝ<sub>&gt;0</sub>, ×). These two examples are not in Riehl.</div>
+<div class="footnote">The discounting example is not in Riehl. One-object categories: Riehl (2016), Example 1.1.4(ii), p. 5; the preorder category is Example 1.1.4(iii).</div>
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; Examples</div>
+
+## Time-consistent discounting is a functor (continued)
+
+**Example** (continued)
+- Exponential discounting $D(k, m) = \beta^{\,m-k}$ satisfies both axioms
+	- $D(k, k) = \beta^{0} = 1$ and $\beta^{\,m-n}\, \beta^{\,n-k} = \beta^{\,m-k}$
+- Quasi-hyperbolic discounting $D(k, m) = \beta\, \delta^{\,m-k}$ for $m > k$, with $\beta < 1$, fails composition
+	- $D(0, 2) = \beta\delta^2$ but $D(1, 2)\, D(0, 1) = \beta^2 \delta^2$
+- Composition says $D(k, m) / D(k, n) = D(n, m)$
+	- The date-$k$ self and the date-$n$ self trade off dates $n$ and $m$ at the same rate
+	- Agreement of all selves on these rates is time consistency, so the β–δ weights are time inconsistent
+
+---
+
+<div class="kicker p2">2.2 Functors and diagrams &middot; Riehl §1.6</div>
 
 ## Diagrams
 
-<div class="defbox">
+> [!definition] **Definition 1.6.4.**
+> A **diagram** in a category $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$; the domain $\mathsf{J}$ is called the indexing category of the diagram.
 
-**Definition 1.6.4.** A **diagram** in a category $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$; the domain $\mathsf{J}$ is called the indexing category of the diagram.
+<br/>
 
-</div>
-
-</br>
-
-Recall **quiver** is a directed graph that may contain loops and parallel arrows.
+A **quiver** is a directed graph that may contain loops and parallel arrows.
 - The objects and morphisms of a category form a quiver, and every finite directed path in it has a specified composite, well defined by the associativity axiom of Definition 1.1.1 (pp. 3–4).
 
 
@@ -368,7 +394,7 @@ Recall **quiver** is a directed graph that may contain loops and parallel arrows
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; Riehl §1.6</div>
 
 ## Simple diagrams
 
@@ -377,14 +403,14 @@ Recall **quiver** is a directed graph that may contain loops and parallel arrows
 
 ![w:200](assets/walking-arrow.svg)
 
-The indexing category has two objects and one arrow, $1 \to 2$.
+**Arrow.** The indexing category has two objects and one arrow, $1 \to 2$.
 
 </div>
 <div class="center">
 
 ![w:230](assets/walking-triangle.svg)
 
-**Commutative triangle** The indexing category is the poset $1 \leq 2 \leq 3$.
+**Commutative triangle.** The indexing category is the poset $1 \leq 2 \leq 3$.
 
 </div>
 </div>
@@ -393,7 +419,7 @@ The indexing category has two objects and one arrow, $1 \to 2$.
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; Riehl §1.6</div>
 
 ## Two more diagrams: span and cospan
 
@@ -414,13 +440,13 @@ A **cospan**. The indexing category is $1 \rightarrow 0 \leftarrow 2$.
 </div>
 </div>
 
-> Teaser: Co-limit of a cospan to a commutative square in the  universal way produces the **pullback**; completing a span, the **pushout**. 
+> Teaser: completing a cospan to a commutative square in the universal way produces the **pullback**, a limit; completing a span, the **pushout**, a colimit.
 
 <div class="footnote">Riehl (2016), Definition 1.6.4, p. 40; pullbacks and pushouts belong to Chapter 3.</div>
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; example</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; example</div>
 
 ## Buffer stock model with income growth
 
@@ -438,7 +464,7 @@ where $p_{t}$ is income at time $t$, $m_t$ is wealth, and $c_t$ is consumption.
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; proof by diagram</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; proof by diagram</div>
 
 ## Proof by diagram
 
@@ -464,7 +490,7 @@ where $p_{t}$ is income at time $t$, $m_t$ is wealth, and $c_t$ is consumption.
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; Riehl §1.6</div>
 
 ## Commutative diagrams
 
@@ -476,11 +502,8 @@ A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf
 
 </div>
 
-<div class="defbox">
-
-**Lemma 1.6.5.** Functors preserve commutative diagrams.
-
-</div>
+> [!lemma] **Lemma 1.6.5.**
+> Functors preserve commutative diagrams.
 
 **Proof.** A diagram in $\mathsf{C}$ is a functor $F : \mathsf{J} \to \mathsf{C}$ (Definition 1.6.4), so its image under a functor $G : \mathsf{C} \to \mathsf{D}$ is the composite $GF : \mathsf{J} \to \mathsf{D}$, a diagram of shape $\mathsf{J}$. Suppose $F$ commutes, and take any two parallel paths in it with equal composites, $F f_n \cdots F f_1 = F g_m \cdots F g_1$. Because $G$ preserves composites, applying it to each side gives $GF f_n \cdots GF f_1 = GF g_m \cdots GF g_1$. $\blacksquare$
 
@@ -488,25 +511,22 @@ A square indexed by $2 \times 2$ (Example 1.6.6, Remark 1.6.7) commutes when $hf
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; Riehl §1.6</div>
 
 ## Diagram chase
 
 A **diagram chase** is a style of proof: it establishes that a diagram commutes by substituting, one step at a time, a segment of a path for an equal composite until the parallel path is reached. Each step is licensed by the following lemma.
 
-<div class="defbox">
+> [!lemma] **Lemma 1.6.11.**
+> If, inside a composable path $f_n, \ldots, f_1$, a segment satisfies $f_k \cdots f_i = g_m \cdots g_1$, then $f_n \cdots f_1 = f_n \cdots f_{k+1}\, g_m \cdots g_1\, f_{i-1} \cdots f_1$.
 
-**Lemma 1.6.11.** If, inside a composable path $f_n, \ldots, f_1$, a segment satisfies $f_k \cdots f_i = g_m \cdots g_1$, then $f_n \cdots f_1 = f_n \cdots f_{k+1}\, g_m \cdots g_1\, f_{i-1} \cdots f_1$.
-
-</div>
-
-**Proof.** By associativity (Definition 1.1.1) the path may be composed in blocks, $f_n \cdots f_1 = q\, s\, p$ with $p = f_{i-1} \cdots f_1$, $s = f_k \cdots f_i$, $q = f_n \cdots f_{k+1}$. Since $s = g_m \cdots g_1$ as arrows, so $q\, s\, p = q\, (g_m \cdots g_1)\, p = f_n \cdots f_{k+1}\, g_m \cdots g_1\, f_{i-1} \cdots f_1$. $\blacksquare$
+**Proof.** By associativity (Definition 1.1.1) the path may be composed in blocks, $f_n \cdots f_1 = q\, s\, p$ with $p = f_{i-1} \cdots f_1$, $s = f_k \cdots f_i$, $q = f_n \cdots f_{k+1}$. Since $s = g_m \cdots g_1$ as arrows, $q\, s\, p = q\, (g_m \cdots g_1)\, p = f_n \cdots f_{k+1}\, g_m \cdots g_1\, f_{i-1} \cdots f_1$. $\blacksquare$
 
 <div class="footnote">Riehl (2016), §1.6: Lemma 1.6.11 with proof, pp. 42–43; the section's epigraph is Eilenberg–Steenrod on diagrams, p. 39.</div>
 
 ---
 
-<div class="kicker p2">2.1 Categories and diagrams &middot; Riehl §1.6</div>
+<div class="kicker p2">2.2 Functors and diagrams &middot; Riehl §1.6</div>
 
 ## Pasting squares
 
@@ -526,19 +546,16 @@ Each equality substitutes an equal segment inside the path, by Lemma 1.6.11.
 
 ---
 
-# 2.2 Duality
+# 2.3 Duality
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2</div>
 
 ## Duality through the opposite category
 
-<div class="defbox">
-
-**Definition 1.2.1.** The opposite category $\mathsf{C}^{\mathrm{op}}$ has the same objects as $\mathsf{C}$ and, for each morphism $f : x \to y$ between objects $x$ and $y$ of $\mathsf{C}$, a morphism $f^{\mathrm{op}} : y \to x$, with composites $f^{\mathrm{op}} g^{\mathrm{op}} = (gf)^{\mathrm{op}}$. 
-
-</div>
+> [!definition] **Definition 1.2.1.**
+> The opposite category $\mathsf{C}^{\mathrm{op}}$ has the same objects as $\mathsf{C}$ and, for each morphism $f : x \to y$ between objects $x$ and $y$ of $\mathsf{C}$, a morphism $f^{\mathrm{op}} : y \to x$, with composites $f^{\mathrm{op}} g^{\mathrm{op}} = (gf)^{\mathrm{op}}$. 
 
 **The duality principle.**
 - A theorem of the form "for all categories $\mathsf{C}$, a given statement holds" applies, in particular, to every opposite category $\mathsf{C}^{\mathrm{op}}$.
@@ -549,15 +566,13 @@ Each equality substitutes an equal segment inside the path, by Lemma 1.6.11.
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2, Exercise 1.2.vii</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2, Exercise 1.2.vii</div>
 
 ## Exercise 1.2.vii
 
-<div class="defbox">
+> [!exercise] **Exercise 1.2.vii** (Riehl).
+> Consider the poset $(P, \leq)$ as a category. Define the supremum of a subcollection of objects $A \subset P$ in such a way that the dual statement defines the infimum. Prove that the supremum of a subset of objects is unique, whenever it exists, in such a way that the dual proof demonstrates the uniqueness of the infimum.
 
-**Exercise 1.2.vii** (Riehl). Consider the poset $(P, \leq)$ as a category. Define the supremum of a subcollection of objects $A \subset P$ in such a way that the dual statement defines the infimum. Prove that the supremum of a subset of objects is unique, whenever it exists, in such a way that the dual proof demonstrates the uniqueness of the infimum.
-
-</div>
 <br/>
 <br/>
 
@@ -567,18 +582,15 @@ Each equality substitutes an equal segment inside the path, by Lemma 1.6.11.
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2, Exercise 1.2.vii</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2, Exercise 1.2.vii</div>
 
-## Supremum of a poset
+## Supremum in a poset
 
-<div class="defbox">
-
-**Definition.** An object $s$ is a **supremum** of $A$ when:
-
-- (i) for every $a \in A$ there is a morphism $a \to s$, and
-- (ii) for every object $u$ of $P$ such that there is a morphism $a \to u$ for each $a \in A$, there is a morphism $s \to u$.
-
-</div>
+> [!definition] **Definition.**
+> An object $s$ is a **supremum** of $A$ when:
+>
+> - (i) for every $a \in A$ there is a morphism $a \to s$, and
+> - (ii) for every object $u$ of $P$ such that there is a morphism $a \to u$ for each $a \in A$, there is a morphism $s \to u$.
 
 <!--The two conditions mention morphisms only, never the symbol $\leq$.
 - the **duality principle** reads the same conditions in $P^{\mathrm{op}}$, reversing every arrow.-->
@@ -587,23 +599,18 @@ Each equality substitutes an equal segment inside the path, by Lemma 1.6.11.
 
 **The opposite poset.** By Definition 1.2.1, $P^{\mathrm{op}}$ has the same elements as $P$, and it has a morphism $x \to y$ exactly when $P$ has a morphism $y \to x$. It follows that $P^{\mathrm{op}}$ is $(P, \geq)$.
 
-> Note that $P^{\mathrm{op}}$ is the poset $P$ with its order $\leq$ reversed.
-
 <div class="footnote">Riehl (2016): Example 1.1.4(iii), posets as categories; Example 1.2.2(ii) and the duality principle, p. 10. For A = ∅, condition (i) is vacuous and every u is an upper bound, so a supremum of ∅ is a least element of P. Conditions (i)–(ii) are a universal property, the shape Chapter 2 studies in general; in the language of Chapter 3, the supremum is the colimit of the collection A.</div>
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2, Exercise 1.2.vii</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2, Exercise 1.2.vii</div>
 
 ## The dual statement: infimum
 
-<div class="defbox">
+> [!definition] **Dual statement.**
+> An object $i$ is a supremum of $A$ in $P^{\mathrm{op}}$ when: (i) for every $a \in A$ there is a morphism $a \to i$ in $P^{\mathrm{op}}$; (ii) for every $u$ with a morphism $a \to u$ in $P^{\mathrm{op}}$ for each $a \in A$, there is a morphism $i \to u$ in $P^{\mathrm{op}}$.
 
-**Dual statement.** An object $i$ is a supremum of $A$ in $P^{\mathrm{op}}$ when: (i) for every $a \in A$ there is a morphism $a \to i$ in $P^{\mathrm{op}}$; (ii) for every $u$ with a morphism $a \to u$ in $P^{\mathrm{op}}$ for each $a \in A$, there is a morphism $i \to u$ in $P^{\mathrm{op}}$.
-
-</div>
-
-Every arrow translates as $x \to y$ in $P^{\mathrm{op}}$ means $y \leq x$ in $P$. Thus, the dual statement for $i$ implies:
+Each arrow translates: $x \to y$ in $P^{\mathrm{op}}$ means $y \leq x$ in $P$. Thus the dual statement for $i$ says:
 
 - (i) $i$ is a lower bound of $A$ in $P$, and
 - (ii) for every lower bound $u$ of $A$ in $P$, we have $u \leq i$.
@@ -617,15 +624,12 @@ Since $P^{\mathrm{op}}$ is again a poset, we can apply the uniqueness proof for 
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2, Exercise 1.2.vii</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2, Exercise 1.2.vii</div>
 
 ## Uniqueness of the supremum
 
-<div class="defbox">
-
-**Proposition.** If $s$ and $s'$ are both suprema of $A \subseteq P$, then $s = s'$.
-
-</div>
+> [!proposition] **Proposition.**
+> If $s$ and $s'$ are both suprema of $A \subseteq P$, then $s = s'$.
 
 <style scoped>
 p { font-size: 20px; margin: 0 0 0.55em 0; }
@@ -647,15 +651,12 @@ p { font-size: 20px; margin: 0 0 0.55em 0; }
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2</div>
 
 ## Lemma 1.2.3
 
-<div class="defbox">
-
-**Lemma 1.2.3.** For $f : x \to y$ in $\mathsf{C}$ the following are equivalent: (i) $f$ is an isomorphism; (ii) for every object $c$, postcomposition $f_{*} : \mathsf{C}(c, x) \to \mathsf{C}(c, y)$, $h \mapsto f h$, is a bijection; (iii) for every object $c$, precomposition $f^{*} : \mathsf{C}(y, c) \to \mathsf{C}(x, c)$, $k \mapsto k f$, is a bijection.
-
-</div>
+> [!lemma] **Lemma 1.2.3.**
+> For $f : x \to y$ in $\mathsf{C}$ the following are equivalent: (i) $f$ is an isomorphism; (ii) for every object $c$, postcomposition $f_{*} : \mathsf{C}(c, x) \to \mathsf{C}(c, y)$, $h \mapsto f h$, is a bijection; (iii) for every object $c$, precomposition $f^{*} : \mathsf{C}(y, c) \to \mathsf{C}(x, c)$, $k \mapsto k f$, is a bijection.
 
 <div class="cols">
 <div class="center">
@@ -678,7 +679,7 @@ p { font-size: 20px; margin: 0 0 0.55em 0; }
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2</div>
 
 ## Applying duality to Lemma 1.2.3
 
@@ -692,17 +693,14 @@ Riehl proves (i) ⇔ (ii) directly (pp. 11–12; not reproduced here) and obtain
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2</div>
 
 ## Monomorphisms
 
 Definitions dualize as theorems do.
 
-<div class="defbox">
-
-**Definition 1.2.7 (monomorphism).** A morphism $f : x \to y$ in a category $\mathsf{C}$ is a **monomorphism** if for every object $w$ and every parallel pair $h, k : w \to x$, $fh = fk$ implies $h = k$.
-
-</div>
+> [!definition] **Definition 1.2.7 (monomorphism).**
+> A morphism $f : x \to y$ in a category $\mathsf{C}$ is a **monomorphism** if for every object $w$ and every parallel pair $h, k : w \to x$, $fh = fk$ implies $h = k$.
 
 <div class="center">
 
@@ -716,15 +714,12 @@ $$fh = fk \;\Longrightarrow\; h = k$$
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2</div>
 
 ## Epimorphisms
 
-<div class="defbox">
-
-**Definition 1.2.7 (epimorphism).** A morphism $f : x \to y$ in a category $\mathsf{C}$ is an **epimorphism** if for every object $z$ and every parallel pair $h, k : y \to z$, $hf = kf$ implies $h = k$.
-
-</div>
+> [!definition] **Definition 1.2.7 (epimorphism).**
+> A morphism $f : x \to y$ in a category $\mathsf{C}$ is an **epimorphism** if for every object $z$ and every parallel pair $h, k : y \to z$, $hf = kf$ implies $h = k$.
 
 <div class="center">
 
@@ -738,7 +733,7 @@ $$hf = kf \;\Longrightarrow\; h = k$$
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2</div>
 
 ## Monomorphisms and epimorphisms in Set
 
@@ -757,15 +752,12 @@ $$hf = kf \;\Longrightarrow\; h = k$$
 
 ---
 
-<div class="kicker p2">2.2 Duality &middot; Riehl §1.2</div>
+<div class="kicker p2">2.3 Duality &middot; Riehl §1.2</div>
 
 ## Duality for monomorphisms and epimorphisms
 
-<div class="defbox">
-
-**Proposition.** Let $f : x \to y$ be a morphism of $\mathsf{C}$. Then $f$ is a monomorphism in $\mathsf{C}$ if and only if $f^{\mathrm{op}} : y \to x$ is an epimorphism in $\mathsf{C}^{\mathrm{op}}$, and $f$ is an epimorphism in $\mathsf{C}$ if and only if $f^{\mathrm{op}}$ is a monomorphism in $\mathsf{C}^{\mathrm{op}}$.
-
-</div>
+> [!proposition] **Proposition.**
+> Let $f : x \to y$ be a morphism of $\mathsf{C}$. Then $f$ is a monomorphism in $\mathsf{C}$ if and only if $f^{\mathrm{op}} : y \to x$ is an epimorphism in $\mathsf{C}^{\mathrm{op}}$, and $f$ is an epimorphism in $\mathsf{C}$ if and only if $f^{\mathrm{op}}$ is a monomorphism in $\mathsf{C}^{\mathrm{op}}$.
 
 **Proof. Step 1.** By Definition 1.2.1, $h \mapsto h^{\mathrm{op}}$ matches each parallel pair $h, k : w \to x$ in $\mathsf{C}$ with a parallel pair $h^{\mathrm{op}}, k^{\mathrm{op}} : x \to w$ in $\mathsf{C}^{\mathrm{op}}$, every such pair arises this way, and $h = k$ exactly when $h^{\mathrm{op}} = k^{\mathrm{op}}$.
 
@@ -787,11 +779,8 @@ $$hf = kf \;\Longrightarrow\; h = k$$
 
 ## Discrete dynamical systems
 
-<div class="defbox">
-
-**Definition** (Riehl, Example 2.1.1). A **discrete dynamical system** is a set $X$ with a function $g : X \to X$ and a chosen element $x_0 \in X$. Applying $g$ repeatedly to $x_0$ produces the recursive sequence $x_{n+1} = g(x_n)$, the **trajectory** of $x_0$.
-
-</div>
+> [!definition] **Definition** (Riehl, Example 2.1.1).
+> A **discrete dynamical system** is a set $X$ with a function $g : X \to X$ and a chosen element $x_0 \in X$. Applying $g$ repeatedly to $x_0$ produces the recursive sequence $x_{n+1} = g(x_n)$, the **trajectory** of $x_0$.
 
 - **Example A.** The triple $(\mathbb{N}, s, 0)$, the natural numbers with the successor $s(n) = n + 1$ and starting point $0$; its trajectory is $0, 1, 2, \ldots$
 - **Example B.** The perfect-foresight buffer-stock model of the earlier example, with a fixed consumption policy $c$ satisfying $c(m) \leq m$: $X = \mathbb{R}_{+}$ holds market resources $m$, the law of motion is $g(m) = (R/G)\,(m - c(m)) + 1$, and $x_0 = m_0$.
@@ -804,11 +793,8 @@ $$hf = kf \;\Longrightarrow\; h = k$$
 
 ## What makes $(\mathbb{N}, s, 0)$ universal?
 
-<div class="defbox">
-
-**Morphism of dynamical systems** (Riehl, Example 2.4.11). A morphism $\varphi : (X, g, x_0) \to (Y, g', y_0)$ is a function $\varphi : X \to Y$ that commutes with the laws of motion, $\varphi \circ g = g' \circ \varphi$, and preserves the starting points, $\varphi(x_0) = y_0$. It carries the trajectory of $x_0$ onto the trajectory of $y_0$.
-
-</div>
+> [!definition] **Morphism of dynamical systems** (Riehl, Example 2.4.11).
+> A morphism $\varphi : (X, g, x_0) \to (Y, g', y_0)$ is a function $\varphi : X \to Y$ that commutes with the laws of motion, $\varphi \circ g = g' \circ \varphi$, and preserves the starting points, $\varphi(x_0) = y_0$. It carries the trajectory of $x_0$ onto the trajectory of $y_0$.
 
 <div class="cols" style="grid-template-columns: 1fr 400px; gap: 1.2em; align-items: center;">
 <div>
@@ -832,11 +818,8 @@ $$hf = kf \;\Longrightarrow\; h = k$$
 
 ## Generalising: universal morphisms
 
-<div class="defbox">
-
-**Definition** (universal morphism). Let $F : \mathsf{C} \to \mathsf{D}$ be a functor and $X$ an object of $\mathsf{D}$. A **universal morphism from $X$ to $F$** is a pair $(A, u)$, with $A$ an object of $\mathsf{C}$ and $u : X \to F(A)$ a morphism of $\mathsf{D}$, such that for every object $A'$ of $\mathsf{C}$ and every morphism $f : X \to F(A')$ in $\mathsf{D}$ there is exactly one morphism $h : A \to A'$ in $\mathsf{C}$ with $F(h) \circ u = f$.
-
-</div>
+> [!definition] **Definition** (universal morphism).
+> Let $F : \mathsf{C} \to \mathsf{D}$ be a functor and $X$ an object of $\mathsf{D}$. A **universal morphism from $X$ to $F$** is a pair $(A, u)$, with $A$ an object of $\mathsf{C}$ and $u : X \to F(A)$ a morphism of $\mathsf{D}$, such that for every object $A'$ of $\mathsf{C}$ and every morphism $f : X \to F(A')$ in $\mathsf{D}$ there is exactly one morphism $h : A \to A'$ in $\mathsf{C}$ with $F(h) \circ u = f$.
 
 <div class="center">
 
@@ -852,18 +835,15 @@ Every $f$ factors through $u$ in exactly one way; the dashed arrows are the ones
 
 <div class="kicker p2">2.4 Introduction to universality &middot; Riehl §2.4</div>
 
-## Claim: $(\mathbb{N}, s, 0)$ is a universal morphism
+## Claim: $(\mathbb{N}, s, 0)$ is universal
 
 Take $\mathsf{C} = \mathsf{End}$ (sets with a function to themselves; morphisms commute with those functions), $\mathsf{D} = \mathsf{Set}$, $F = U$ the forgetful functor, and $X = \mathbf{1}$, so that $f : \mathbf{1} \to U(X, g)$ picks an initial condition $x_0$. The pair is $A = (\mathbb{N}, s)$ with $u : \mathbf{1} \to \mathbb{N}$ picking $0$.
 
 <div class="cols" style="grid-template-columns: 1fr 440px; gap: 1.2em; align-items: center;">
 <div class="small">
 
-<div class="defbox">
-
-**Claim.** $\big((\mathbb{N}, s),\, u\big)$ is a universal morphism from $\mathbf{1}$ to $U$.
-
-</div>
+> [!claim] **Claim.**
+> $\big((\mathbb{N}, s),\, u\big)$ is a universal morphism from $\mathbf{1}$ to $U$.
 
 **Proof. Step 1.** In $\mathsf{End}$, $h : (\mathbb{N}, s) \to (X, g)$ means $h(n+1) = g(h(n))$, and $U(h) \circ u = f$ means $h(0) = x_0$.
 
@@ -891,11 +871,8 @@ Take $\mathsf{C} = \mathsf{End}$ (sets with a function to themselves; morphisms 
 - Every set $X$ has its own universal morphism to $U$, the system $X \times \mathbb{N}$ with shift $(x, n) \mapsto (x, n+1)$, the free dynamical system on $X$. The assignment $X \mapsto X \times \mathbb{N}$ is the **left adjoint** of $U$, a notion of a later session.
 - Products, free groups, and tensor products are universal morphisms for suitable $F$, and so are limits and colimits. The supremum of Exercise 1.2.vii is a colimit, which is where Session B begins.
 
-<div class="callout sm">
-
-**Universality.** For dynamical systems, the one representation that fixes the ground truth for all transformations is $(\mathbb{N}, s, 0)$, whose outgoing morphisms are trajectories. Our research objective is to define **natural** diagrams for broader classes of stochastic and branching systems.
-
-</div>
+> [!callout-sm] **Universality.**
+> For dynamical systems, the one representation that fixes the ground truth for all transformations is $(\mathbb{N}, s, 0)$, whose outgoing morphisms are trajectories. Our research objective is to define **natural** diagrams for broader classes of stochastic and branching systems.
 
 <div class="footnote">Wikipedia, "Universal property", sections "Equivalent formulations" and "Relation to adjoint functors"; Adámek, Herrlich, and Strecker, Example 8.23(1) (p. 141): free over a singleton means representing the forgetful functor.</div>
 
@@ -912,7 +889,7 @@ Take $\mathsf{C} = \mathsf{End}$ (sets with a function to themselves; morphisms 
 
 ---
 
-<div class="kicker p1">Application &middot; grammar</div>
+<div class="kicker p3">3 Dynamic-programming research &middot; grammar</div>
 
 ## Context-free grammar
 
@@ -941,7 +918,7 @@ Take $\mathsf{C} = \mathsf{End}$ (sets with a function to themselves; morphisms 
 
 ---
 
-<div class="kicker p1">Application &middot; grammar</div>
+<div class="kicker p3">3 Dynamic-programming research &middot; grammar</div>
 
 ## Syntax trees
 
@@ -963,9 +940,9 @@ applies one grammar rule at each node of a tree; the leaves, read left to right,
 
 ---
 
-<div class="kicker p1">Application &middot; the buffer-stock example</div>
+<div class="kicker p3">3 Dynamic-programming research &middot; the buffer-stock example</div>
 
-## First-order syntax for the Bellman operator
+## The Bellman operator
 
 Now consider the following Bellman operator:
 
@@ -996,7 +973,7 @@ $$v(m) \;=\; \max_{c \,\in\, \mathcal{D}(m)} \Big\{\, u(c) \;+\; \beta\, \mathbb
 
 ---
 
-<div class="kicker p1">Application &middot; the buffer-stock example</div>
+<div class="kicker p3">3 Dynamic-programming research &middot; the buffer-stock example</div>
 
 ## Syntax for the Bellman operator
 
@@ -1007,17 +984,14 @@ $$(\mathbb{T}v)(m) \;=\; \max_{c \,\in\, \mathcal{D}(m)} \Big\{\, u(c) \;+\; \be
 
 This is the correct Bellman operator, and its properties are critical to understanding the economic problem. Can we write it out in abstract syntax so that no information is lost when we parse? **No.**
 
-<div class="callout sm">
-
-**"But I wrote the Bellman operator in Python."** A `def T(v)` on arrays is a different object, a procedure $\hat{T} : \mathbb{R}^N \to \mathbb{R}^N$ on a grid of $N$ points, and its syntax tree contains only the node kinds of the syntax-tree slide, assignments, calls, and loops over floats. That the grid stands for $X$, the loop for $\mathbb{E}_{\xi'}$, and the procedure for $\mathbb{T}$ appears nowhere in the program text, so the claim "this code computes $\mathbb{T}v$" cannot be checked mechanically. <span class="c-red">We **trust** that the author has coded the operator faithfully to the one written in the paper.</span>
-
-</div>
+> [!callout-sm] **"But I wrote the Bellman operator in Python."**
+> A `def T(v)` on arrays is a different object, a procedure $\hat{T} : \mathbb{R}^N \to \mathbb{R}^N$ on a grid of $N$ points, and its syntax tree contains only the node kinds of the syntax-tree slide, assignments, calls, and loops over floats. That the grid stands for $X$, the loop for $\mathbb{E}_{\xi'}$, and the procedure for $\mathbb{T}$ appears nowhere in the program text, so the claim "this code computes $\mathbb{T}v$" cannot be checked mechanically. <span class="c-red">We **trust** that the author has coded the operator faithfully to the one written in the paper.</span>
 
 
 
 ---
 
-<div class="kicker p1">Application &middot; the buffer-stock example</div>
+<div class="kicker p3">3 Dynamic-programming research &middot; the buffer-stock example</div>
 
 ## First-order syntax for the Bellman operator
 
@@ -1030,17 +1004,14 @@ A parser produces an **abstract syntax tree** (AST): one syntax tree built from 
 
 <div class="sp-s"></div>
 
-<div class="callout">
-
-How can first-order typed syntax, in which functions are never inputs or outputs, represent the higher-order map $\mathbb{T} : v \mapsto \mathbb{T}v$?
-
-</div>
+> [!callout]
+> How can first-order typed syntax, in which functions are never inputs or outputs, represent the higher-order map $\mathbb{T} : v \mapsto \mathbb{T}v$?
 
 <div class="footnote">Goguen, Thatcher, Wagner, and Wright (1977), Proposition 2.1: the well-formed expressions (trees) of each type form the carriers of the term algebra.</div>
 
 ---
 
-<div class="kicker p1">Application &middot; binding</div>
+<div class="kicker p3">3 Dynamic-programming research &middot; binding</div>
 
 ## An AST cannot represent bound variables
 
@@ -1109,7 +1080,7 @@ For the **higher-order** functional equations of dynamic programming there is no
 
 ---
 
-<div class="kicker p2">Application &middot; elaboration</div>
+<div class="kicker p3">3 Dynamic-programming research &middot; elaboration</div>
 
 ## Elaboration of the Bellman operator
 
@@ -1144,7 +1115,7 @@ For the **higher-order** functional equations of dynamic programming there is no
 
 ---
 
-<div class="kicker p2">Application &middot; elaboration</div>
+<div class="kicker p3">3 Dynamic-programming research &middot; elaboration</div>
 
 ## The meaning functor $\Upsilon$
 
@@ -1162,9 +1133,9 @@ For the **higher-order** functional equations of dynamic programming there is no
 
 ---
 
-<div class="kicker p2">Application &middot; elaboration</div>
+<div class="kicker p3">3 Dynamic-programming research &middot; elaboration</div>
 
-## The meaning functor $\Upsilon$
+## The meaning functor $\Upsilon$ (continued)
 
 And we want to do all this using only relations between variables, market resources → assets → next-period assets, and no other math. Hence category theory.
 
