@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 940 326" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#676470"/></marker>
+    <marker id="ahf" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#ed217c"/></marker>
+  </defs>
+  <!-- ============ left: AST of the stage declaration (bare syntax; types live in the context box) ============ -->
+  <!-- edges -->
+  <line x1="130" y1="40" x2="55" y2="58" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="130" y1="40" x2="137" y2="58" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="130" y1="40" x2="210" y2="58" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="210" y1="92" x2="130" y2="106" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="210" y1="92" x2="275" y2="106" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="275" y1="140" x2="220" y2="154" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="275" y1="140" x2="335" y2="154" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="220" y1="188" x2="165" y2="202" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="220" y1="188" x2="275" y2="202" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="275" y1="236" x2="220" y2="250" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="275" y1="236" x2="330" y2="250" stroke="#adb5bd" stroke-width="1.3"/>
+  <!-- elided sub-branches under reward and feasibility -->
+  <line x1="45" y1="92" x2="38" y2="106" stroke="#adb5bd" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <line x1="65" y1="92" x2="72" y2="106" stroke="#adb5bd" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="55" y="120" font-size="13" fill="#9aa0a6" text-anchor="middle">&#8943;</text>
+  <line x1="129" y1="92" x2="125" y2="99" stroke="#adb5bd" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <line x1="145" y1="92" x2="149" y2="99" stroke="#adb5bd" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="137" y="104" font-size="11" fill="#9aa0a6" text-anchor="middle">&#8943;</text>
+  <!-- root: operator declaration -->
+  <rect x="82" y="6" width="96" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="2.2"/>
+  <text x="130" y="18" font-size="7.5" fill="#676470" text-anchor="middle" letter-spacing="0.5">DECLARATION</text>
+  <text x="130" y="33" font-size="12" fill="#1f476b" text-anchor="middle">op bellman</text>
+  <!-- L1: the listed equations -->
+  <rect x="19" y="58" width="72" height="34" rx="5" fill="#fff" stroke="#f05a28" stroke-width="1.8"/>
+  <text x="55" y="70" font-size="7.5" fill="#b4451e" text-anchor="middle" letter-spacing="0.5">REWARD</text>
+  <text x="55" y="85" font-size="12" fill="#212529" text-anchor="middle">u(c)</text>
+  <rect x="97" y="58" width="80" height="34" rx="5" fill="#fff" stroke="#c41230" stroke-width="1.8"/>
+  <text x="137" y="70" font-size="7.5" fill="#c41230" text-anchor="middle" letter-spacing="0.5">FEASIBILITY</text>
+  <text x="137" y="85" font-size="12" fill="#212529" text-anchor="middle">c &#8712; &#119967;(m)</text>
+  <rect x="182" y="58" width="56" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
+  <text x="210" y="70" font-size="7.5" fill="#676470" text-anchor="middle" letter-spacing="0.5">EQUATION</text>
+  <text x="210" y="85" font-size="13" fill="#1f476b" text-anchor="middle">=</text>
+  <!-- transition subtree: bare syntax -->
+  <rect x="95" y="106" width="70" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
+  <text x="130" y="118" font-size="7.5" fill="#676470" text-anchor="middle" letter-spacing="0.5">NEXT STATE</text>
+  <text x="130" y="133" font-size="12" fill="#212529" text-anchor="middle">m&#8242;</text>
+  <rect x="245" y="106" width="60" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
+  <text x="275" y="118" font-size="7.5" fill="#676470" text-anchor="middle" letter-spacing="0.5">OP</text>
+  <text x="275" y="133" font-size="13" fill="#1f476b" text-anchor="middle">+</text>
+  <rect x="192" y="154" width="56" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
+  <text x="220" y="166" font-size="7.5" fill="#676470" text-anchor="middle" letter-spacing="0.5">OP</text>
+  <text x="220" y="181" font-size="13" fill="#1f476b" text-anchor="middle">&#183;</text>
+  <rect x="300" y="154" width="70" height="34" rx="5" fill="#fff" stroke="#39b54a" stroke-width="1.8"/>
+  <text x="335" y="166" font-size="7.5" fill="#2f8f3d" text-anchor="middle" letter-spacing="0.5">SHOCK</text>
+  <text x="335" y="181" font-size="12" fill="#212529" text-anchor="middle">&#958;&#8242;</text>
+  <rect x="134" y="202" width="62" height="34" rx="5" fill="#fff" stroke="#ced4da" stroke-width="1.8"/>
+  <text x="165" y="214" font-size="7.5" fill="#9aa0a6" text-anchor="middle" letter-spacing="0.5">PARAM</text>
+  <text x="165" y="229" font-size="12" fill="#676470" text-anchor="middle">R</text>
+  <rect x="247" y="202" width="56" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
+  <text x="275" y="214" font-size="7.5" fill="#676470" text-anchor="middle" letter-spacing="0.5">OP</text>
+  <text x="275" y="229" font-size="13" fill="#1f476b" text-anchor="middle">&#8722;</text>
+  <rect x="187" y="250" width="66" height="34" rx="5" fill="#fff" stroke="#39b54a" stroke-width="1.8"/>
+  <text x="220" y="262" font-size="7.5" fill="#2f8f3d" text-anchor="middle" letter-spacing="0.5">STATE</text>
+  <text x="220" y="277" font-size="12" fill="#212529" text-anchor="middle">m</text>
+  <rect x="299" y="250" width="62" height="34" rx="5" fill="#fff" stroke="#39b54a" stroke-width="1.8"/>
+  <text x="330" y="262" font-size="7.5" fill="#2f8f3d" text-anchor="middle" letter-spacing="0.5">CONTROL</text>
+  <text x="330" y="277" font-size="12" fill="#212529" text-anchor="middle">c</text>
+  <!-- the typing context, outside the tree -->
+  <rect x="10" y="150" width="104" height="84" rx="5" fill="#f6fbf6" stroke="#39b54a" stroke-width="1.6" stroke-dasharray="5,4"/>
+  <text x="62" y="166" font-size="8" fill="#2f8f3d" text-anchor="middle" letter-spacing="0.6">CONTEXT</text>
+  <text x="62" y="184" font-size="11.5" fill="#212529" text-anchor="middle">m : X</text>
+  <text x="62" y="202" font-size="11.5" fill="#212529" text-anchor="middle">c : A</text>
+  <text x="62" y="220" font-size="11.5" fill="#212529" text-anchor="middle">&#958;&#8242; : Z</text>
+  <!-- the equation node itself denotes g; lifted, reversed, into the pipeline -->
+  <path d="M 242,66 Q 360,42 466,80" fill="none" stroke="#ed217c" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#ahf)"/>
+  <text x="620" y="204" font-size="11.5" fill="#ed217c" text-anchor="middle">&#10214; = &#10215; = g : X &#215; A &#215; Z &#8594; X &#8212; lifted, reversed, to &#120130;<tspan dy="3" font-size="8.5">g</tspan></text>
+  <text x="620" y="219" font-size="11.5" fill="#ed217c" text-anchor="middle">likewise u &#8594; &#120126; and &#119967;(&#183;) &#8594; max<tspan dy="3" font-size="8.5">c</tspan></text>
+  <!-- the signature, beside the context -->
+  <rect x="10" y="244" width="160" height="48" rx="5" fill="#f5f8fb" stroke="#1f476b" stroke-width="1.6" stroke-dasharray="5,4"/>
+  <text x="90" y="260" font-size="8" fill="#1f476b" text-anchor="middle" letter-spacing="0.6">SIGNATURE</text>
+  <text x="90" y="278" font-size="11" fill="#212529" text-anchor="middle">op bellman : Val &#8594; Val</text>
+  <!-- captions -->
+  <text x="205" y="306" font-size="12" fill="#495057" text-anchor="middle">the nodes record bare syntax; typing is a judgment relative to the context</text>
+  <text x="205" y="322" font-size="11.5" fill="#2f8f3d" text-anchor="middle">(m : X, c : A, &#958;&#8242; : Z) &#8866; R(m &#8722; c) + &#958;&#8242; : X</text>
+  <!-- ============ middle: the map ============ -->
+  <text x="398" y="124" font-size="22" fill="#676470" text-anchor="middle">&#8658;</text>
+  <text x="398" y="156" font-size="26" fill="#1f476b" text-anchor="middle" font-style="italic">&#933;</text>
+  <text x="398" y="178" font-size="11.5" fill="#1f476b" text-anchor="middle">elaboration</text>
+  <!-- ============ right: the declaration's denotation, an operator pipeline ============ -->
+  <text x="670" y="16" font-size="13.5" fill="#1f476b" text-anchor="middle">&#933;(op bellman) = &#120139; = max<tspan dy="3" font-size="10">c</tspan><tspan dy="-3"> &#8728; &#120124;</tspan><tspan dy="3" font-size="10">&#958;&#8242;</tspan><tspan dy="-3"> &#8728; &#120126; &#8728; &#120130;</tspan><tspan dy="3" font-size="10">g</tspan></text>
+  <line x1="420" y1="28" x2="920" y2="28" stroke="#ced4da" stroke-width="1.1"/>
+  <line x1="420" y1="28" x2="420" y2="36" stroke="#ced4da" stroke-width="1.1"/>
+  <line x1="920" y1="28" x2="920" y2="36" stroke="#ced4da" stroke-width="1.1"/>
+  <!-- wires and operator boxes -->
+  <line x1="420" y1="103" x2="450" y2="103" stroke="#676470" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="435" y="146" font-size="11" fill="#676470" text-anchor="middle">v : &#8477;<tspan dy="-4" font-size="8.5">X</tspan></text>
+  <rect x="455" y="80" width="80" height="46" rx="6" fill="#fff" stroke="#39b54a" stroke-width="2.2"/>
+  <text x="495" y="100" font-size="16" fill="#212529" text-anchor="middle">&#120130;<tspan dy="4" font-size="11">g</tspan></text>
+  <text x="495" y="118" font-size="9.5" fill="#676470" text-anchor="middle">pull back via g</text>
+  <line x1="535" y1="103" x2="570" y2="103" stroke="#676470" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="552" y="146" font-size="11" fill="#676470" text-anchor="middle">&#8477;<tspan dy="-4" font-size="8.5">X&#215;A&#215;Z</tspan></text>
+  <rect x="575" y="80" width="86" height="46" rx="6" fill="#fff" stroke="#f05a28" stroke-width="2.2"/>
+  <text x="618" y="100" font-size="16" fill="#212529" text-anchor="middle">&#120126; : u + &#946;&#183;</text>
+  <text x="618" y="118" font-size="9.5" fill="#676470" text-anchor="middle">reward, discount</text>
+  <line x1="661" y1="103" x2="696" y2="103" stroke="#676470" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="678" y="146" font-size="11" fill="#676470" text-anchor="middle">&#8477;<tspan dy="-4" font-size="8.5">X&#215;A&#215;Z</tspan></text>
+  <rect x="701" y="80" width="68" height="46" rx="6" fill="#fff" stroke="#00aeef" stroke-width="2.2"/>
+  <text x="735" y="100" font-size="16" fill="#212529" text-anchor="middle">&#120124;<tspan dy="4" font-size="11">&#958;&#8242;</tspan></text>
+  <text x="735" y="118" font-size="9.5" fill="#676470" text-anchor="middle">integrate &#958;&#8242;</text>
+  <line x1="769" y1="103" x2="804" y2="103" stroke="#676470" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="786" y="146" font-size="11" fill="#676470" text-anchor="middle">&#8477;<tspan dy="-4" font-size="8.5">X&#215;A</tspan></text>
+  <rect x="809" y="80" width="70" height="46" rx="6" fill="#fff" stroke="#c41230" stroke-width="2.2"/>
+  <text x="844" y="100" font-size="16" fill="#212529" text-anchor="middle">max<tspan dy="4" font-size="11">c</tspan></text>
+  <text x="844" y="118" font-size="9.5" fill="#676470" text-anchor="middle">optimise over &#119967;(m)</text>
+  <line x1="879" y1="103" x2="914" y2="103" stroke="#676470" stroke-width="1.6" marker-end="url(#ah)"/>
+  <text x="898" y="146" font-size="11" fill="#676470" text-anchor="middle">&#120139;v : &#8477;<tspan dy="-4" font-size="8.5">X</tspan></text>
+  <text x="670" y="172" font-size="11.5" fill="#495057" text-anchor="middle">the boxes are operators; the wire labels are the types of their inputs and outputs</text>
+  <!-- lift arrow from g to the K_g box -->
+        <!-- bottom: denotation of the transition -->
+                </svg>

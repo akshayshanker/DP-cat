@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 470 250" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <marker id="c1s" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#495057"/></marker>
+    <marker id="c1g" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#39b54a"/></marker>
+  </defs>
+  <text x="70" y="56" font-size="17" font-style="italic" fill="#212529" text-anchor="middle">1</text>
+  <text x="375" y="56" font-size="17" font-style="italic" fill="#212529" text-anchor="middle">(&#222;/G)<tspan dy="-7" font-size="11">&#947;&#8722;1</tspan></text>
+  <text x="375" y="216" font-size="17" font-style="italic" fill="#212529" text-anchor="middle">&#946;G<tspan dy="-7" font-size="11">1&#8722;&#947;</tspan></text>
+  <text x="95" y="216" font-size="17" font-style="italic" fill="#212529" text-anchor="middle">&#946;G<tspan dy="-7" font-size="11">1&#8722;&#947;</tspan><tspan dy="7" font-size="17">E[&#968;<tspan dy="-7" font-size="11">1&#8722;&#947;</tspan><tspan dy="7" font-size="17">]</tspan></tspan></text>
+  <line x1="95" y1="50" x2="310" y2="50" stroke="#495057" stroke-width="1.5" marker-end="url(#c1s)"/>
+  <text x="200" y="38" font-size="13" font-style="italic" fill="#1f476b" text-anchor="middle">GIC fails</text>
+  <line x1="375" y1="68" x2="375" y2="194" stroke="#495057" stroke-width="1.5" marker-end="url(#c1s)"/>
+  <text x="391" y="134" font-size="13" font-style="italic" fill="#1f476b" text-anchor="start">RIC fails</text>
+  <line x1="330" y1="210" x2="165" y2="210" stroke="#495057" stroke-width="1.5" marker-end="url(#c1s)"/>
+  <text x="248" y="234" font-size="13" font-style="italic" fill="#1f476b" text-anchor="middle">Jensen</text>
+  <line x1="70" y1="68" x2="70" y2="192" stroke="#39b54a" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#c1g)"/>
+  <text x="84" y="134" font-size="13" fill="#39b54a" text-anchor="start" font-family="Helvetica Neue, Arial, sans-serif">FVAC fails</text>
+</svg>
