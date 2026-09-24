@@ -49,16 +49,20 @@ def main() -> int:
             print(f"{page.relative_to(site)}: missing {source}")
         return 1
 
-    pdf_link = "categories-and-functors/categories-and-functors.pdf"
-    pdf = site / pdf_link
     index_parser = ImageSourceParser()
     index_parser.feed((site / "index.html").read_text(encoding="utf-8"))
-    if not pdf.is_file():
-        print(f"missing required PDF: {pdf.relative_to(site)}")
-        return 1
-    if pdf_link not in index_parser.links:
-        print(f"index.html: missing link to {pdf_link}")
-        return 1
+    for pdf_link in (
+        "categories-and-functors/categories-and-functors.pdf",
+        "free-category/free-category.pdf",
+        "stages-and-yoneda/stages-and-yoneda.pdf",
+    ):
+        pdf = site / pdf_link
+        if not pdf.is_file():
+            print(f"missing required PDF: {pdf.relative_to(site)}")
+            return 1
+        if pdf_link not in index_parser.links:
+            print(f"index.html: missing link to {pdf_link}")
+            return 1
 
     obsolete_deck = "session-01-motivation"
     if (site / obsolete_deck).exists():

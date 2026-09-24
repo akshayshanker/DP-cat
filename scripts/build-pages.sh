@@ -21,6 +21,15 @@ marp "Categorical types and AGI -1.md" \
 mkdir -p docs/categories-and-functors/assets
 cp -R assets/. docs/categories-and-functors/assets/
 
+# Session B and Session C
+for pair in "Categorical types and AGI -2.md|free-category" "Categorical types and AGI -3.md|stages-and-yoneda"; do
+  src="${pair%%|*}"; dir="${pair##*|}"
+  mkdir -p "docs/$dir/assets"
+  marp "$src" -o "docs/$dir/index.html" --theme-set theme/econ-ark-cat.css --allow-local-files --html
+  marp "$src" -o "docs/$dir/$dir.pdf" --theme-set theme/econ-ark-cat.css --allow-local-files --html
+  grep -oh 'assets/[^)" ]*' "$src" | sort -u | while read -r f; do cp "$f" "docs/$dir/assets/"; done
+done
+
 cp site-index.html docs/index.html
 touch docs/.nojekyll
 
