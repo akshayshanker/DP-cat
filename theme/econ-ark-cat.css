@@ -34,6 +34,7 @@ section {
   background: var(--ark-bg);
   padding: 58px 84px 88px 84px;
   justify-content: flex-start;
+  align-content: start;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -125,6 +126,9 @@ blockquote {
 .defbox p { margin: 0 0 0.35em 0; }
 .defbox p:last-child, .defbox ul:last-child { margin-bottom: 0; }
 .defbox ul { margin: 0.25em 0 0.1em 0; }
+.defbox ol { margin: 0.3em 0 0.1em 0; padding-left: 1.4em; }
+.defbox ol:last-child { margin-bottom: 0; }
+.defbox li { margin: 0.12em 0; }
 .alert {
   margin: 1em 0;
   padding: 0.75em 1.1em;
@@ -145,7 +149,7 @@ table {
   margin: 0.85em 0 1em 0;
   background: transparent;
 }
-th, td {
+section table th, section table td, th, td {
   padding: 0.45em 0.85em 0.45em 0;
   vertical-align: top;
   border: none;
@@ -164,6 +168,8 @@ th {
   border-bottom: 2px solid var(--ark-blue);
 }
 tbody tr:last-child td { border-bottom: none; }
+section table th { border-bottom: 2px solid var(--ark-blue); }
+section table tr, section table tr:nth-child(2n) { background: transparent; border-top: none; }
 pre, code {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 15px;
@@ -178,7 +184,7 @@ pre {
   line-height: 1.45;
   border-radius: 0;
 }
-code { color: var(--ark-blue); background: transparent; }
+code { color: var(--ark-blue); background: transparent; padding: 0; }
 pre code { color: var(--ark-body); }
 .katex-display { margin: 0.65em 0 !important; }
 .small { font-size: 17px; line-height: 1.55; }
@@ -223,7 +229,7 @@ section.title .bn { color: #9adbd9; }
 .callout.lg { font-size: 22px; }
 .callout.sm { font-size: 20px; line-height: 1.45; }
 /* QUOTE slide — vertically centred large quotation with a restrained source line. Apply with a local _class: quote directive. */
-section.quote { justify-content: center; padding: 58px 170px 88px 170px; }
+section.quote { justify-content: center; align-content: safe center; padding: 58px 170px 88px 170px; }
 section.quote blockquote {
   border-left: none;
   background: transparent;
@@ -301,7 +307,7 @@ pre.sm, .cols pre.sm { font-size: 12px; line-height: 1.38; }
 .reason.r-green { border-color: var(--ark-green); border-top-color: var(--ark-green); } .reason.r-green .rn, .reason.r-green .rt { color: var(--ark-green); }
 .reason.r-yellow { border-color: var(--ark-yellow); border-top-color: var(--ark-yellow); } .reason.r-yellow .rn, .reason.r-yellow .rt { color: #9b6b00; }
 .kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ark-grey); margin: 0 0 0.4em; }
-.kicker.p1 { color: var(--ark-red); } .kicker.p2 { color: var(--ark-orng); } .kicker.p3 { color: var(--ark-cyan); }
+.kicker.p1 { color: var(--ark-red); } .kicker.p2 { color: var(--ark-orng); } .kicker.p3 { color: var(--ark-cyan); } .kicker.p4 { color: var(--ark-green); }
 .ladder { font-size: 15px; }
 .rung { background: var(--ark-soft); border-left: 5px solid var(--ark-line-2); border-radius: 0 4px 4px 0; padding: 0.32em 0.7em; margin: 0 0 6px; line-height: 1.2; color: var(--ark-body); }
 .rung .rrole { display: block; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ark-grey); margin-bottom: 1px; }
@@ -314,6 +320,7 @@ pre.sm, .cols pre.sm { font-size: 12px; line-height: 1.38; }
 .rung .rrole { margin-bottom: 3px; }
 /* TITLE slide — dark navy gradient, oversized white type (from Slides-intro-17042026). Apply with a local _class: title directive. */
 section.title {
+  align-content: safe center;
   background: linear-gradient(135deg, #1f476b 0%, #2c4053 100%);
   color: #ffffff;
   padding: 60px 84px 88px 84px;

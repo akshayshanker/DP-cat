@@ -5,9 +5,14 @@ sessions/
 CLAUDE.md
 changes.md
 Categorical types and AGI -1 — math review.md
-Categorical types and AGI -2.md
+
+# AI working material and agent instructions — never publish
+AI/
+AGENTS.md
+tmp/
 
 # Local / editor
+.vscode/
 .DS_Store
 .obsidian/
 __pycache__/
