@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 14 540 218" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <marker id="bc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#495057"/></marker>
+    <marker id="bcg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#39b54a"/></marker>
+  </defs>
+  <!-- nodes -->
+  <text x="110" y="56" font-size="18" font-style="italic" fill="#212529" text-anchor="middle">&#222;</text>
+  <text x="440" y="56" font-size="18" font-style="italic" fill="#212529" text-anchor="middle">G</text>
+  <text x="110" y="211" font-size="18" font-style="italic" fill="#212529" text-anchor="middle">R</text>
+  <text x="440" y="211" font-size="18" font-style="italic" fill="#212529" text-anchor="middle">R<tspan dy="-7" font-size="12">1/&#947;</tspan><tspan dy="7" font-size="18">G&#771;</tspan><tspan dy="-7" font-size="12">1&#8722;1/&#947;</tspan></text>
+  <!-- imposed failures: reversed solid arrows into Thorn -->
+  <line x1="418" y1="50" x2="128" y2="50" stroke="#495057" stroke-width="1.5" marker-end="url(#bc)"/>
+  <text x="273" y="30" font-size="13" font-style="italic" fill="#1f476b" text-anchor="middle">GIC fails: G &#8804; &#222;</text>
+  <line x1="110" y1="190" x2="110" y2="66" stroke="#495057" stroke-width="1.5" marker-end="url(#bc)"/>
+  <text x="98" y="130" font-size="12" font-style="italic" fill="#1f476b" text-anchor="end">RIC fails: R &#8804; &#222;</text>
+  <!-- conclusion: reversed diagonal, dashed -->
+  <line x1="404" y1="190" x2="128" y2="64" stroke="#39b54a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#bcg)"/>
+  <text x="282" y="184" font-size="12" fill="#39b54a" text-anchor="middle" font-family="Helvetica Neue, Arial, sans-serif">FVAC fails</text>
+</svg>

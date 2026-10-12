@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 380 352" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, sans-serif">
+  <!-- Derived from tree-to-graph.svg (left panel): same text content, larger fonts, type expressions in red. -->
+  <!-- tree edges -->
+  <line x1="130" y1="40" x2="55" y2="58" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="130" y1="40" x2="137" y2="58" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="130" y1="40" x2="210" y2="58" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="210" y1="92" x2="130" y2="106" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="210" y1="92" x2="275" y2="106" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="275" y1="140" x2="220" y2="154" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="275" y1="140" x2="335" y2="154" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="220" y1="188" x2="165" y2="202" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="220" y1="188" x2="275" y2="202" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="275" y1="236" x2="220" y2="250" stroke="#adb5bd" stroke-width="1.3"/>
+  <line x1="275" y1="236" x2="330" y2="250" stroke="#adb5bd" stroke-width="1.3"/>
+  <!-- elided sub-branches under reward and feasibility -->
+  <line x1="45" y1="92" x2="38" y2="106" stroke="#adb5bd" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <line x1="65" y1="92" x2="72" y2="106" stroke="#adb5bd" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="55" y="120" font-size="13" fill="#9aa0a6" text-anchor="middle">&#8943;</text>
+  <line x1="129" y1="92" x2="125" y2="99" stroke="#adb5bd" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <line x1="145" y1="92" x2="149" y2="99" stroke="#adb5bd" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="137" y="104" font-size="11" fill="#9aa0a6" text-anchor="middle">&#8943;</text>
+  <!-- root: operator declaration -->
+  <rect x="82" y="6" width="96" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="2.2"/>
+  <text x="130" y="18" font-size="9" fill="#676470" text-anchor="middle" letter-spacing="0.5">DECLARATION</text>
+  <text x="130" y="33" font-size="12.5" fill="#1f476b" text-anchor="middle">op bellman</text>
+  <!-- L1: the listed equations -->
+  <rect x="19" y="58" width="72" height="34" rx="5" fill="#fff" stroke="#f05a28" stroke-width="1.8"/>
+  <text x="55" y="70" font-size="9" fill="#b4451e" text-anchor="middle" letter-spacing="0.5">REWARD</text>
+  <text x="55" y="85" font-size="12.5" fill="#212529" text-anchor="middle">u(c)</text>
+  <rect x="97" y="58" width="80" height="34" rx="5" fill="#fff" stroke="#c41230" stroke-width="1.8"/>
+  <text x="137" y="70" font-size="9" fill="#c41230" text-anchor="middle" letter-spacing="0.5">FEASIBILITY</text>
+  <text x="137" y="85" font-size="12.5" fill="#212529" text-anchor="middle">c &#8712; &#119967;(m)</text>
+  <rect x="182" y="58" width="56" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
+  <text x="210" y="70" font-size="9" fill="#676470" text-anchor="middle" letter-spacing="0.5">EQUATION</text>
+  <text x="210" y="85" font-size="13.5" fill="#1f476b" text-anchor="middle">=</text>
+  <!-- transition subtree: bare syntax -->
+  <rect x="95" y="106" width="70" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
+  <text x="130" y="118" font-size="9" fill="#676470" text-anchor="middle" letter-spacing="0.5">NEXT STATE</text>
+  <text x="130" y="133" font-size="12.5" fill="#212529" text-anchor="middle">m&#8242;</text>
+  <rect x="245" y="106" width="60" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
+  <text x="275" y="118" font-size="9" fill="#676470" text-anchor="middle" letter-spacing="0.5">OP</text>
+  <text x="275" y="133" font-size="13.5" fill="#1f476b" text-anchor="middle">+</text>
+  <rect x="192" y="154" width="56" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
+  <text x="220" y="166" font-size="9" fill="#676470" text-anchor="middle" letter-spacing="0.5">OP</text>
+  <text x="220" y="181" font-size="13.5" fill="#1f476b" text-anchor="middle">&#183;</text>
+  <rect x="300" y="154" width="70" height="34" rx="5" fill="#fff" stroke="#39b54a" stroke-width="1.8"/>
+  <text x="335" y="166" font-size="9" fill="#2f8f3d" text-anchor="middle" letter-spacing="0.5">SHOCK</text>
+  <text x="335" y="181" font-size="12.5" fill="#212529" text-anchor="middle">&#958;&#8242;</text>
+  <rect x="134" y="202" width="62" height="34" rx="5" fill="#fff" stroke="#ced4da" stroke-width="1.8"/>
+  <text x="165" y="214" font-size="9" fill="#9aa0a6" text-anchor="middle" letter-spacing="0.5">PARAM</text>
+  <text x="165" y="229" font-size="12.5" fill="#676470" text-anchor="middle">R</text>
+  <rect x="247" y="202" width="56" height="34" rx="5" fill="#fff" stroke="#1f476b" stroke-width="1.8"/>
+  <text x="275" y="214" font-size="9" fill="#676470" text-anchor="middle" letter-spacing="0.5">OP</text>
+  <text x="275" y="229" font-size="13.5" fill="#1f476b" text-anchor="middle">&#8722;</text>
+  <rect x="187" y="250" width="66" height="34" rx="5" fill="#fff" stroke="#39b54a" stroke-width="1.8"/>
+  <text x="220" y="262" font-size="9" fill="#2f8f3d" text-anchor="middle" letter-spacing="0.5">STATE</text>
+  <text x="220" y="277" font-size="12.5" fill="#212529" text-anchor="middle">m</text>
+  <rect x="299" y="250" width="62" height="34" rx="5" fill="#fff" stroke="#39b54a" stroke-width="1.8"/>
+  <text x="330" y="262" font-size="9" fill="#2f8f3d" text-anchor="middle" letter-spacing="0.5">CONTROL</text>
+  <text x="330" y="277" font-size="12.5" fill="#212529" text-anchor="middle">c</text>
+  <!-- the typing context, outside the tree -->
+  <rect x="10" y="150" width="104" height="84" rx="5" fill="#f6fbf6" stroke="#39b54a" stroke-width="1.6" stroke-dasharray="5,4"/>
+  <text x="62" y="166" font-size="9" fill="#2f8f3d" text-anchor="middle" letter-spacing="0.6">CONTEXT</text>
+  <text x="62" y="184" font-size="12.5" fill="#212529" text-anchor="middle">m : <tspan fill="#c41230">X</tspan></text>
+  <text x="62" y="202" font-size="12.5" fill="#212529" text-anchor="middle">c : <tspan fill="#c41230">A</tspan></text>
+  <text x="62" y="220" font-size="12.5" fill="#212529" text-anchor="middle">&#958;&#8242; : <tspan fill="#c41230">Z</tspan></text>
+  <!-- the signature, beside the context -->
+  <rect x="10" y="244" width="160" height="48" rx="5" fill="#f5f8fb" stroke="#1f476b" stroke-width="1.6" stroke-dasharray="5,4"/>
+  <text x="90" y="260" font-size="9" fill="#1f476b" text-anchor="middle" letter-spacing="0.6">SIGNATURE</text>
+  <text x="90" y="278" font-size="11.5" fill="#212529" text-anchor="middle">op bellman : <tspan fill="#c41230">Val[&gt;] &#8594; Val[~]</tspan></text>
+  <!-- captions -->
+  <text x="190" y="312" font-size="12.5" fill="#495057" text-anchor="middle">the nodes record bare syntax;</text>
+  <text x="190" y="328" font-size="12.5" fill="#495057" text-anchor="middle">the red line types the expression in its context</text>
+  <text x="190" y="346" font-size="12.5" fill="#2f8f3d" text-anchor="middle">(m : <tspan fill="#c41230">X</tspan>, c : <tspan fill="#c41230">A</tspan>, &#958;&#8242; : <tspan fill="#c41230">Z</tspan>) &#8866; R(m &#8722; c) + &#958;&#8242; : <tspan fill="#c41230">X</tspan></text>
+</svg>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, sans-serif">
+  <!-- Derived from tree-to-graph.svg (right panel): same text content, larger fonts, type expressions in red. -->
+  <defs>
+    <marker id="ahp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#676470"/></marker>
+  </defs>
+  <text x="300" y="17" font-size="17.5" fill="#1f476b" text-anchor="middle"><tspan font-family="STIXGeneral, STIX Two Math, Cambria Math, Times New Roman, serif">&#978;</tspan>(op bellman) = &#120139; = max<tspan dy="3.5" font-size="13">c</tspan><tspan dy="-3.5"> &#8728; &#120124;</tspan><tspan dy="3.5" font-size="13">&#958;&#8242;</tspan><tspan dy="-3.5"> &#8728; &#120126; &#8728; &#120130;</tspan><tspan dy="3.5" font-size="13">g</tspan></text>
+  <line x1="20" y1="28" x2="580" y2="28" stroke="#ced4da" stroke-width="1.1"/>
+  <line x1="20" y1="28" x2="20" y2="36" stroke="#ced4da" stroke-width="1.1"/>
+  <line x1="580" y1="28" x2="580" y2="36" stroke="#ced4da" stroke-width="1.1"/>
+  <!-- wires and operator boxes -->
+  <line x1="12" y1="76" x2="44" y2="76" stroke="#676470" stroke-width="1.6" marker-end="url(#ahp)"/>
+  <text x="28" y="122" font-size="12.5" fill="#676470" text-anchor="middle">v : <tspan fill="#c41230">&#8477;</tspan><tspan fill="#c41230" dy="-4" font-size="9.5">X</tspan></text>
+  <rect x="50" y="52" width="98" height="48" rx="6" fill="#fff" stroke="#39b54a" stroke-width="2.2"/>
+  <text x="99" y="74" font-size="16" fill="#212529" text-anchor="middle">&#120130;<tspan dy="4" font-size="11">g</tspan></text>
+  <text x="99" y="93" font-size="12.5" fill="#676470" text-anchor="middle">precompose</text>
+  <line x1="148" y1="76" x2="179" y2="76" stroke="#676470" stroke-width="1.6" marker-end="url(#ahp)"/>
+  <text x="163" y="122" font-size="12.5" fill="#c41230" text-anchor="middle">&#8477;<tspan dy="-4" font-size="9.5">X&#215;A&#215;Z</tspan></text>
+  <rect x="184" y="52" width="108" height="48" rx="6" fill="#fff" stroke="#f05a28" stroke-width="2.2"/>
+  <text x="238" y="74" font-size="16" fill="#212529" text-anchor="middle">&#120126; : u + &#946;&#183;</text>
+  <text x="238" y="93" font-size="12.5" fill="#676470" text-anchor="middle">reward, discount</text>
+  <line x1="292" y1="76" x2="323" y2="76" stroke="#676470" stroke-width="1.6" marker-end="url(#ahp)"/>
+  <text x="307" y="122" font-size="12.5" fill="#c41230" text-anchor="middle">&#8477;<tspan dy="-4" font-size="9.5">X&#215;A&#215;Z</tspan></text>
+  <rect x="328" y="52" width="80" height="48" rx="6" fill="#fff" stroke="#00aeef" stroke-width="2.2"/>
+  <text x="368" y="74" font-size="16" fill="#212529" text-anchor="middle">&#120124;<tspan dy="4" font-size="11">&#958;&#8242;</tspan></text>
+  <text x="368" y="93" font-size="12.5" fill="#676470" text-anchor="middle">integrate &#958;&#8242;</text>
+  <line x1="408" y1="76" x2="437" y2="76" stroke="#676470" stroke-width="1.6" marker-end="url(#ahp)"/>
+  <text x="422" y="122" font-size="12.5" fill="#c41230" text-anchor="middle">&#8477;<tspan dy="-4" font-size="9.5">X&#215;A</tspan></text>
+  <rect x="442" y="52" width="124" height="48" rx="6" fill="#fff" stroke="#c41230" stroke-width="2.2"/>
+  <text x="504" y="74" font-size="16" fill="#212529" text-anchor="middle">max<tspan dy="4" font-size="11">c</tspan></text>
+  <text x="504" y="93" font-size="12.5" fill="#676470" text-anchor="middle">optimise over &#119967;(m)</text>
+  <line x1="566" y1="76" x2="592" y2="76" stroke="#676470" stroke-width="1.6" marker-end="url(#ahp)"/>
+  <text x="568" y="122" font-size="12.5" fill="#676470" text-anchor="middle">&#120139;v : <tspan fill="#c41230">&#8477;</tspan><tspan fill="#c41230" dy="-4" font-size="9.5">X</tspan></text>
+  <text x="300" y="148" font-size="12.5" fill="#495057" text-anchor="middle">the boxes are operators; the wire labels are the types of their inputs and outputs</text>
+  <!-- precomposition sends the transition to the first operator box -->
+  <text x="300" y="172" font-size="12.5" fill="#ed217c" text-anchor="middle">g maps to &#120130;<tspan dy="3" font-size="9.5">g</tspan><tspan dy="-3"> by precomposition</tspan></text>
+  <text x="300" y="190" font-size="12.5" fill="#ed217c" text-anchor="middle">(&#120130;<tspan dy="3" font-size="9.5">g</tspan><tspan dy="-3">v)(m,c,&#958;&#8242;) = v(g(m,c,&#958;&#8242;))</tspan></text>
+</svg>
